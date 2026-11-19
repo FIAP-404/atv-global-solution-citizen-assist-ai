@@ -15,7 +15,9 @@ Portal React com identidade FIAP e estrutura inspirada no GOV.BR. As telas de in
 - Assistente demonstrativo com resposta direta ou em passos e tratamento de perguntas vazias, ambíguas e fora da base.
 - Layout responsivo, navegação por teclado, alto contraste e impressão da orientação.
 
-**Esta é a etapa de front-end.** A API Python ainda será implementada pela equipe. Os 15 registros são dados de demonstração e têm verificação de conteúdo pendente; as datas de revisão não foram preenchidas artificialmente. Os testes do navegador não substituem a avaliação final do sistema em Python.
+**O front-end e a estrutura de integração estão preparados.** A API FastAPI e a entrada por terminal já encaminham as chamadas às funções dos quatro módulos, cujas implementações ficam com os colegas. Os 15 registros são dados de demonstração e têm verificação de conteúdo pendente; as datas de revisão não foram preenchidas artificialmente. Os testes da estrutura não substituem a avaliação final do sistema em Python.
+
+**Decisões fechadas:** base JSON, assistente sem IA externa e dois modelos de instrução de resposta. A escolha de quem assume cada módulo fica com o grupo.
 
 ### Como executar
 
@@ -43,6 +45,26 @@ O build é gerado em `frontend/dist/`. A suíte inclui 12 cenários de consulta 
 
 ### Conexão com Python
 
+Os colegas podem começar pelo [guia de execução e entrega dos módulos](docs/python-quickstart.md). Requer Python 3.11 ou superior.
+
+Na raiz do projeto, usando PowerShell:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
+.\.venv\Scripts\python.exe -m unittest discover -s tests -v
+.\.venv\Scripts\python.exe -m uvicorn backend.api:app --host 127.0.0.1 --port 8000 --reload
+```
+
+A documentação da API fica em [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs). Consultas retornam erro explícito de módulo pendente enquanto os colegas não implementarem as funções; o servidor não inventa resultados.
+
+Entrada por terminal, reutilizando os mesmos módulos:
+
+```powershell
+.\.venv\Scripts\python.exe -m src.main --question "CPF" --mode direct
+.\.venv\Scripts\python.exe -m src.main --evaluate --output results/evaluation.json
+```
+
 Sem configuração, a interface usa o adaptador de demonstração. Para conectar o backend, copie `frontend/.env.example` para `frontend/.env.local`, configure `VITE_API_BASE_URL` e reinicie o Vite.
 
 Os endpoints consumidos e seus formatos estão no [contrato de integração](docs/api-contract.md). A [divisão de trabalho](docs/team-work-packages.md) separa quatro entregas: base e conteúdo; busca e navegação; respostas e integração HTTP; avaliação e evidências.
@@ -52,11 +74,15 @@ Os endpoints consumidos e seus formatos estão no [contrato de integração](doc
 | Caminho | Conteúdo |
 |---|---|
 | `frontend/` | Aplicação React, componentes, estilos e testes |
+| `backend/` | API e contratos prontos; quatro módulos com implementação pendente |
+| `src/main.py` | Entrada por terminal com consulta e avaliação |
+| `tests/` | Testes Python da integração; testes de cada algoritmo devem ser adicionados pelos colegas |
 | `data/services.demo.json` | Quinze orientações iniciais, ainda em revisão |
 | `data/demo-test-cases.json` | Doze cenários iniciais para a demonstração |
 | `docs/assignment.md` | Enunciado transcrito |
 | `docs/api-contract.md` | Contrato da futura API Python |
 | `docs/team-work-packages.md` | Responsabilidades e critérios para os colegas |
+| `docs/python-quickstart.md` | Instalação, execução e como entregar cada módulo |
 | `docs/ai-usage.md` | Registro do apoio de IA e validação crítica |
 | `docs/design/` | Especificação, direção visual e referências de marca |
 
@@ -70,7 +96,7 @@ No modo de demonstração, as consultas usam dados locais e não chamam um model
 
 - Confirmar integrantes e RMs.
 - Revisar as 15 orientações, suas fontes, relações e datas de verificação.
-- Implementar e integrar o backend Python e a execução por terminal.
+- Implementar os quatro módulos Python e testar a integração final pela API e pelo terminal.
 - Documentar e comparar os dois modelos de instrução da resposta.
 - Executar a avaliação em Python, registrar acertos e tempos, interpretar os resultados e realizar o teste de usabilidade.
 - Concluir a documentação, o vídeo e o TXT com os dois links exigidos.

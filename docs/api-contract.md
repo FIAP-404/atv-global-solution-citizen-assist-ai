@@ -1,12 +1,16 @@
 # Python API integration contract
 
-Status: proposed interface implemented by the frontend adapter. There is no Python server in this phase.
+Status: the frontend adapter and coordinator FastAPI transport now share this interface. The four Python algorithm modules are intentionally pending. See `python-quickstart.md` for commands and `team-work-packages.md` for exact function signatures and ownership.
+
+Approved architecture: JSON knowledge base, source-bound deterministic response instructions and **no external AI**. The group chooses who owns each module. The coordinator owns API/terminal integration.
 
 ## Running modes
 
 The React application runs against the local JSON fixture when `VITE_API_BASE_URL` is absent. To connect a Python server, copy `frontend/.env.example` to `frontend/.env.local`, configure the address and restart Vite. Example base URL: `http://127.0.0.1:8000/api/v1`.
 
 The only frontend network boundary is `frontend/src/api/client.ts`. Set CORS on the Python server to allow the actual frontend origin, usually `http://127.0.0.1:5173`. Do not embed secrets in any `VITE_` variable: these values are public in the browser bundle.
+
+Start the prepared server with `python -m uvicorn backend.api:app --host 127.0.0.1 --port 8000 --reload` in the configured virtual environment. `/docs` exposes the interactive schema. `GET /api/v1/health` confirms the HTTP transport only. Consultations return HTTP 503 with `error="module_pending"` until the required core functions are implemented; there is no demo fallback in the Python server. Its final data path is `data/services.json`, which the content owner must create after review.
 
 ## Service record
 
@@ -40,24 +44,24 @@ Return `200` with `{ "items": [Service], "query": "cpf" }`, ordered by relevance
 
 ### `POST /assistant/query`
 
-Request:
+Request example for a question outside the initial catalog:
 
 ```json
-{ "question": "Como acessar a Carteira de Trabalho Digital?", "mode": "steps" }
+{ "question": "Qual é a previsão do tempo?", "mode": "steps" }
 ```
 
-Response:
+Response example for an unsupported question (a matched response instead includes a full service record):
 
 ```json
 {
-  "status": "matched",
-  "message": "Encontrei uma orientação relacionada à sua pergunta.",
+  "status": "unsupported",
+  "message": "Não encontrei informação suficiente na base para orientar sobre essa dúvida.",
   "services": [],
   "mode": "steps"
 }
 ```
 
-The example omits service bodies for brevity. For `matched`, `services` MUST contain exactly one full `Service` record, not an empty array. The frontend renders that record's summary, source, limitations and (for `steps`) its steps.
+See `data/services.demo.json` for full draft records. For `matched`, `services` MUST contain exactly one full `Service` record, not an empty array. The frontend renders that record's summary, source, limitations and (for `steps`) its steps.
 
 | Status | Services | Expected behavior |
 | --- | --- | --- |

@@ -4,6 +4,8 @@
 
 Codex assisted with transcribing the supplied assignment capture, researching public design references, proposing the interface, implementing React screens, writing draft service records and preparing the Python integration contract and team handoff.
 
+On 2026-11-19 the user approved FastAPI, JSON data and no external AI, with module ownership to be selected by the group. Codex prepared the coordinator's HTTP/terminal wiring, fixed signatures, pending module bodies and transport tests. The four algorithms remain for the colleagues to implement; no successful real consultation or final evaluation is claimed by the scaffold tests.
+
 The FIAP logo and reference images were supplied by the user. They were preserved unchanged; the UI uses the original assets. GOV.BR layout references come from its official portal and design-system documentation.
 
 ## Critical validation
