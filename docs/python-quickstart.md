@@ -1,6 +1,13 @@
 # Comece por aqui: Python
 
-O projeto está na branch `feat/citizen-portal-frontend`. Escolham entre vocês quem implementa cada um dos quatro módulos descritos em [team-work-packages.md](team-work-packages.md).
+O projeto está na branch `main`. Atualizem a cópia local antes de criar a branch do próprio módulo:
+
+```powershell
+git switch main
+git pull --ff-only origin main
+```
+
+Escolham entre vocês quem implementa cada um dos quatro módulos descritos em [team-work-packages.md](team-work-packages.md).
 
 **O assistente não usa IA externa.** Ele consulta a base verificada e aplica dois modelos de instrução de resposta. FastAPI conecta as funções ao React; a execução por terminal reutiliza as mesmas funções.
 
