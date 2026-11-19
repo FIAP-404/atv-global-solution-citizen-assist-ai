@@ -4,7 +4,7 @@ Date: 2026-11-18. Scope: the React frontend with local demo data, not the Python
 
 ## Automated checks
 
-- `npm test`: 21 passing tests, including 12 starter consultation scenarios, accent/alias matching, filtering, empty/ambiguous/unsupported behavior, catalog integrity and rejection of malformed API responses.
+- `npm test`: 25 passing tests, including 12 starter consultation scenarios, accent/alias matching, filtering, empty/ambiguous/unsupported behavior, catalog integrity, rejection of malformed API responses and HTTP cancellation.
 - `npm run build`: TypeScript checking and a Vite production build passed.
 - Runtime dependencies were installed with npm and recorded in `frontend/package-lock.json`.
 
@@ -32,7 +32,21 @@ Checked in the in-app browser using the local Vite server:
 
 ## Verification limits
 
-No real Python API, network failure integration test, external LLM, production deployment, physical phone or full screen-reader audit was exercised. The share action and print stylesheet are implemented but were not exercised through the operating system dialogs. Service references and requirements remain subject to content review. Performance and usability metrics for the final assignment have not been measured.
+No real Python API, external LLM, production deployment, physical phone or full screen-reader audit was exercised. A controlled HTTP failure fixture was exercised during the simplification review below. The share action and print stylesheet are implemented but were not exercised through the operating system dialogs. Service references and requirements remain subject to content review. Performance and usability metrics for the final assignment have not been measured.
+
+## Simplification review
+
+Three read-only reviewers examined reuse, quality and efficiency. Confirmed fixes:
+
+- Reject array/object values for string-enum fields instead of coercing them with `String`, preventing accepted malformed API records from crashing service cards.
+- Abort catalog, search and assistant requests when they become obsolete or their page unmounts. Keep the 12-second timeout and suppress state updates from cancelled requests.
+- Add JSON content type only for requests with a body, avoiding unnecessary preflight for simple catalog GET requests.
+- Show an error in the results toolbar when a search fails, instead of showing the previous query's count.
+- Derive the saved flag once per service card and format TypeScript/JSX for team readability.
+
+Regression evidence: the new enum test failed before the fix and passed afterwards. Transport tests cover headers, HTTP failures and cancellation of an in-flight request. A temporary local HTTP fixture returned two CPF results and then a controlled 503 for a new query; the browser displayed the error without the old result count. The fixture was only a test aid, not an implementation of the Python backend. The assistant demo was rechecked with its response source and restored composer focus.
+
+No caching, indexing or additional component layers were added for the 15-record catalog. Conversation history remains in memory for the current page lifetime; arbitrary truncation was deferred because it would change behavior.
 
 ## Coordination template
 

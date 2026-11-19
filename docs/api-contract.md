@@ -70,6 +70,8 @@ The example omits service bodies for brevity. For `matched`, `services` MUST con
 
 For malformed payloads, unsupported modes or questions above 500 characters, return an appropriate `4xx` JSON error. Technical failures return `5xx`. The frontend displays a retry message without inventing an answer. Requests time out after 12 seconds; the adapter does not silently fall back to demo content when a configured server fails.
 
+The frontend cancels obsolete requests when filters change or a requesting page unmounts. Simple GET requests do not send a JSON content type; JSON POST requests do.
+
 The adapter validates service fields, array shapes, unique identifiers, HTTPS source URLs, response modes and status/cardinality consistency before passing responses to React. Malformed successful responses produce the same recoverable error UI as a failed request.
 
 ## Frontend-owned behavior

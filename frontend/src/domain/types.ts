@@ -14,7 +14,10 @@ export interface Service {
   limitations: string;
   relatedIds: string[];
 }
-export interface SearchResult { items: Service[]; query: string; }
+export interface SearchResult {
+  items: Service[];
+  query: string;
+}
 export interface Answer {
   status: 'empty' | 'ambiguous' | 'matched' | 'unsupported';
   message: string;
