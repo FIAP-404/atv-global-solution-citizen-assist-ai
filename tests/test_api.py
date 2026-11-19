@@ -153,6 +153,83 @@ class ApiHandoffTests(unittest.TestCase):
             response.json()["items"][0]["source"]["reviewedAt"], "2026-11-19"
         )
 
+    def test_blank_required_text_and_list_members_are_rejected(self):
+        fields = ["id", "title", "summary", "agency", "audience", "limitations"]
+        invalid_records = [{**self.records[0], field: "   "} for field in fields]
+        invalid_records += [
+            {**self.records[0], field: ["   "]}
+            for field in ["keywords", "steps", "preparation", "relatedIds"]
+        ]
+        invalid_records.append(
+            {**self.records[0], "source": {**self.records[0]["source"], "title": "   "}}
+        )
+        for record in invalid_records:
+            with self.subTest(record=record):
+                with patch("backend.knowledge.load_services", return_value=[record]):
+                    self.assertEqual(
+                        self.client.get("/api/v1/services").status_code, 500
+                    )
+
+    def test_duplicate_ids_and_blank_answer_messages_are_rejected(self):
+        duplicate = [self.records[0], self.records[0]]
+        with patch("backend.knowledge.load_services", return_value=duplicate):
+            self.assertEqual(self.client.get("/api/v1/services").status_code, 500)
+        invalid_answers = [
+            {
+                "status": "unsupported",
+                "message": "   ",
+                "services": [],
+                "mode": "direct",
+            },
+            {
+                "status": "ambiguous",
+                "message": "Choose a service",
+                "services": duplicate,
+                "mode": "direct",
+            },
+        ]
+        for answer in invalid_answers:
+            with self.subTest(answer=answer):
+                with patch(
+                    "backend.knowledge.load_services", return_value=self.records
+                ):
+                    with patch(
+                        "backend.assistant.answer_question", return_value=answer
+                    ):
+                        response = self.client.post(
+                            "/api/v1/assistant/query", json={"question": "CPF"}
+                        )
+                self.assertEqual(response.status_code, 500)
+
+    def test_empty_lists_remain_valid_in_the_transport_contract(self):
+        record = {
+            **self.records[0],
+            "keywords": [],
+            "steps": [],
+            "preparation": [],
+            "relatedIds": [],
+        }
+        with patch("backend.knowledge.load_services", return_value=[record]):
+            self.assertEqual(self.client.get("/api/v1/services").status_code, 200)
+
+    def test_blank_question_is_delegated_to_the_assistant_empty_state(self):
+        answer = {
+            "status": "empty",
+            "message": "Enter a question",
+            "services": [],
+            "mode": "direct",
+        }
+        with patch("backend.knowledge.load_services", return_value=[]):
+            with patch(
+                "backend.assistant.answer_question", return_value=answer
+            ) as respond:
+                response = self.client.post(
+                    "/api/v1/assistant/query", json={"question": "   "}
+                )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), answer)
+        respond.assert_called_once_with([], "   ", "direct")
+
 
 if __name__ == "__main__":
     unittest.main()

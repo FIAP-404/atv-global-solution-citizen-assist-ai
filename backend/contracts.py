@@ -1,8 +1,9 @@
 from datetime import date
-from typing import Literal, Self
+from typing import Annotated, Literal, Self
 
 from pydantic import (
     BaseModel,
+    AfterValidator,
     ConfigDict,
     Field,
     HttpUrl,
@@ -15,8 +16,17 @@ ResponseMode = Literal["direct", "steps"]
 AnswerStatus = Literal["empty", "unsupported", "ambiguous", "matched"]
 
 
+def require_nonblank(value: str) -> str:
+    if not value.strip():
+        raise ValueError("Response text must not be blank.")
+    return value
+
+
+NonBlankText = Annotated[str, AfterValidator(require_nonblank)]
+
+
 class SourceReference(BaseModel):
-    title: str
+    title: NonBlankText
     url: HttpUrl
     reviewedAt: str | None
 
@@ -36,23 +46,32 @@ class SourceReference(BaseModel):
 
 
 class ServiceRecord(BaseModel):
-    id: str
+    id: NonBlankText
     topic: Topic
-    title: str
-    summary: str
-    keywords: list[str]
-    agency: str
+    title: NonBlankText
+    summary: NonBlankText
+    keywords: list[NonBlankText]
+    agency: NonBlankText
     channel: Literal["digital", "in-person", "mixed"]
     source: SourceReference
-    audience: str
-    steps: list[str]
-    preparation: list[str]
-    limitations: str
-    relatedIds: list[str]
+    audience: NonBlankText
+    steps: list[NonBlankText]
+    preparation: list[NonBlankText]
+    limitations: NonBlankText
+    relatedIds: list[NonBlankText]
+
+
+def require_unique_services(records: list[ServiceRecord]) -> list[ServiceRecord]:
+    if len({record.id for record in records}) != len(records):
+        raise ValueError("Response service identifiers must be unique.")
+    return records
+
+
+ServiceItems = Annotated[list[ServiceRecord], AfterValidator(require_unique_services)]
 
 
 class CatalogResponse(BaseModel):
-    items: list[ServiceRecord]
+    items: ServiceItems
     query: str = ""
 
 
@@ -65,8 +84,8 @@ class QuestionRequest(BaseModel):
 
 class AnswerResponse(BaseModel):
     status: AnswerStatus
-    message: str
-    services: list[ServiceRecord]
+    message: NonBlankText
+    services: ServiceItems
     mode: ResponseMode
 
     @model_validator(mode="after")

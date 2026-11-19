@@ -78,6 +78,8 @@ The frontend cancels obsolete requests when filters change or a requesting page 
 
 The adapter validates service fields, array shapes, unique identifiers, HTTPS source URLs, response modes and status/cardinality consistency before passing responses to React. Malformed successful responses produce the same recoverable error UI as a failed request.
 
+Python response schemas also reject blank required text, blank entries within string arrays and duplicate service IDs. Empty arrays are allowed at the transport boundary; the knowledge module still owns completeness and domain validation. Blank user questions intentionally remain valid input so the response module can produce `status="empty"`. The terminal reuses the API question schema and response-mode choices.
+
 ## Frontend-owned behavior
 
 Routing, filters, comparisons (up to three records), printing, share-link copying and ephemeral preparation checklists stay in React. Saved state stores only service IDs under `citizen-assist:saved` in localStorage. Chat text and checklist state are not persisted. The browser demo search is temporary scaffolding for screen development; it is not a substitute for Python coursework.

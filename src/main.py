@@ -3,10 +3,11 @@ import json
 import sys
 from collections.abc import Sequence
 from pathlib import Path
+from typing import get_args
 
 from backend import assistant, evaluation, knowledge
 from backend.config import DATA_PATH, DEMO_CASES_PATH, EVALUATION_PATH
-from backend.contracts import AnswerResponse
+from backend.contracts import AnswerResponse, QuestionRequest, ResponseMode
 from backend.errors import ModuleNotReadyError
 
 
@@ -23,27 +24,28 @@ def main(argv: Sequence[str] | None = None) -> int:
         action="store_true",
         help="Run both response modes against the evaluation cases.",
     )
-    parser.add_argument("--mode", choices=["direct", "steps"], default="direct")
+    parser.add_argument("--mode", choices=get_args(ResponseMode), default="direct")
     parser.add_argument("--cases", type=Path, default=DEMO_CASES_PATH)
     parser.add_argument("--output", type=Path, default=EVALUATION_PATH)
     args = parser.parse_args(argv)
     try:
-        records = knowledge.load_services(DATA_PATH)
-        if args.evaluate:
-            cases = json.loads(args.cases.read_text(encoding="utf-8"))
-            if not isinstance(cases, list):
-                raise ValueError("Evaluation cases must be a JSON array.")
-            result = evaluation.evaluate_questions(records, cases, args.output)
-        else:
+        payload = None
+        if not args.evaluate:
             question = (
                 args.question
                 if args.question is not None
                 else input("Enter your question: ")
             )
-            if len(question) > 500:
-                raise ValueError("Questions must contain at most 500 characters.")
+            payload = QuestionRequest(question=question, mode=args.mode)
+        records = knowledge.load_services(DATA_PATH)
+        if payload is None:
+            cases = json.loads(args.cases.read_text(encoding="utf-8"))
+            if not isinstance(cases, list):
+                raise ValueError("Evaluation cases must be a JSON array.")
+            result = evaluation.evaluate_questions(records, cases, args.output)
+        else:
             result = AnswerResponse.model_validate(
-                assistant.answer_question(records, question, args.mode)
+                assistant.answer_question(records, payload.question, payload.mode)
             ).model_dump(mode="json")
         print(json.dumps(result, ensure_ascii=False, indent=2))
         return 0

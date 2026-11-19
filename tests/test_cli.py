@@ -57,6 +57,16 @@ class CliHandoffTests(unittest.TestCase):
         cases = json.loads(DEMO_CASES_PATH.read_text(encoding="utf-8"))
         evaluate.assert_called_once_with([], cases, Path("results/test-report.json"))
 
+    def test_invalid_question_is_rejected_before_loading_the_base(self):
+        output, error = io.StringIO(), io.StringIO()
+        with patch("backend.knowledge.load_services", return_value=[]) as load:
+            with redirect_stdout(output), redirect_stderr(error):
+                result = main(["--question", "a" * 501])
+        self.assertEqual(result, 2)
+        self.assertEqual(output.getvalue(), "")
+        self.assertIn("500", error.getvalue())
+        load.assert_not_called()
+
 
 if __name__ == "__main__":
     unittest.main()
