@@ -20,7 +20,7 @@
   {
     "id": "identity", "topic": "documents", "title": "Carteira de Identidade Nacional", "summary": "Entenda por onde começar a consulta sobre a CIN e como localizar o órgão emissor do seu estado.",
     "keywords": ["cin", "rg", "identidade", "documento", "carteira de identidade"], "agency": "Governo Federal e órgãos estaduais", "channel": "in-person",
-    "source": { "title": "GOV.BR · Identidade", "url": "https://www.gov.br/identidade/pt-br", "reviewedAt": null },
+    "source": { "title": "Governo Digital · Carteira de Identidade Nacional", "url": "https://www.gov.br/governodigital/pt-br/identidade/cin", "reviewedAt": null },
     "audience": "Pessoas interessadas em conhecer a Carteira de Identidade Nacional.",
     "steps": ["Consulte o portal oficial da Carteira de Identidade Nacional.", "Localize as informações do órgão de identificação do seu estado.", "Confirme documentos, agendamento e atendimento no canal estadual."],
     "preparation": ["Identificar o órgão emissor do meu estado", "Conferir os documentos solicitados", "Consultar a necessidade de agendamento"],
@@ -29,7 +29,7 @@
   {
     "id": "passport", "topic": "documents", "title": "Passaporte brasileiro", "summary": "Localize o serviço oficial da Polícia Federal e consulte as etapas para solicitar um passaporte.",
     "keywords": ["passaporte", "viagem", "viajar", "exterior", "policia federal"], "agency": "Polícia Federal", "channel": "mixed",
-    "source": { "title": "Polícia Federal · Passaporte", "url": "https://www.gov.br/pf/pt-br/assuntos/passaporte", "reviewedAt": null },
+    "source": { "title": "Polícia Federal · Passaporte", "url": "https://www.gov.br/pt-br/servicos/obter-passaporte-comum-para-brasileiro", "reviewedAt": null },
     "audience": "Pessoas que precisam consultar os requisitos para um passaporte brasileiro.",
     "steps": ["Acesse a área de passaporte da Polícia Federal.", "Confira os requisitos e as etapas para o seu caso.", "Realize preenchimento e agendamento somente nos canais oficiais."],
     "preparation": ["Ler os requisitos da Polícia Federal", "Conferir documentação e custos atualizados", "Consultar as etapas de atendimento"],
@@ -65,7 +65,7 @@
   {
     "id": "salary-bonus", "topic": "work", "title": "Abono salarial", "summary": "Encontre informações oficiais sobre a consulta do abono salarial e seu calendário.",
     "keywords": ["abono", "salarial", "pis", "pasep", "calendario", "trabalho"], "agency": "Ministério do Trabalho e Emprego", "channel": "digital",
-    "source": { "title": "Ministério do Trabalho · Abono Salarial", "url": "https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/trabalhador/abono-salarial", "reviewedAt": null },
+    "source": { "title": "GOV.BR · Receber o Abono Salarial", "url": "https://www.gov.br/pt-br/servicos/receber-o-abono-salarial", "reviewedAt": null },
     "audience": "Trabalhadores que desejam consultar informações sobre o abono salarial.",
     "steps": ["Leia as informações do Ministério do Trabalho e Emprego.", "Consulte os critérios e o calendário do exercício correspondente.", "Use os canais oficiais de consulta individual indicados pelo órgão."],
     "preparation": ["Identificar o ano de referência", "Consultar o calendário oficial", "Conferir os canais de consulta"],
@@ -74,7 +74,7 @@
   {
     "id": "fgts", "topic": "work", "title": "Informações sobre o FGTS", "summary": "Acesse a referência oficial do FGTS para conhecer os canais de consulta e atendimento.",
     "keywords": ["fgts", "fundo", "garantia", "saque", "saldo", "trabalho"], "agency": "CAIXA", "channel": "mixed",
-    "source": { "title": "CAIXA · FGTS", "url": "https://www.caixa.gov.br/beneficios-trabalhador/fgts/Paginas/default.aspx", "reviewedAt": null },
+    "source": { "title": "GOV.BR · Sacar o FGTS", "url": "https://www.gov.br/pt-br/servicos/sacar-o-fgts", "reviewedAt": null },
     "audience": "Trabalhadores que buscam informações sobre o Fundo de Garantia do Tempo de Serviço.",
     "steps": ["Acesse a página de FGTS da CAIXA.", "Identifique o assunto desejado e as orientações correspondentes.", "Confira os canais oficiais antes de informar dados ou solicitar atendimento."],
     "preparation": ["Identificar qual informação preciso consultar", "Conferir o canal oficial da CAIXA", "Ler as condições da operação pretendida"],
@@ -110,7 +110,7 @@
   {
     "id": "bpc", "topic": "social", "title": "Benefício de Prestação Continuada", "summary": "Encontre referências oficiais sobre o BPC e os canais para consultar os requisitos do benefício.",
     "keywords": ["bpc", "loas", "idoso", "deficiencia", "beneficio", "social"], "agency": "Ministério do Desenvolvimento e Assistência Social", "channel": "mixed",
-    "source": { "title": "MDS · Benefício de Prestação Continuada", "url": "https://www.gov.br/mds/pt-br/acoes-e-programas/suas/beneficios-assistenciais/beneficio-assistencial-ao-idoso-e-a-pessoa-com-deficiencia-bpc", "reviewedAt": null },
+    "source": { "title": "MDS · Benefício de Prestação Continuada", "url": "https://www.gov.br/mds/pt-br/acoes-e-programas/SUAS/beneficios-assistenciais/beneficio-assistencial-ao-idoso-e-a-pessoa-com-deficiencia-bpc", "reviewedAt": null },
     "audience": "Pessoas interessadas em conhecer as condições e os canais de orientação do BPC.",
     "steps": ["Leia a explicação do BPC na fonte oficial.", "Confira os requisitos e as orientações de solicitação.", "Procure os canais responsáveis para dúvidas e análise individual."],
     "preparation": ["Consultar os requisitos atualizados", "Ler as orientações de solicitação", "Identificar os canais responsáveis"],
@@ -119,7 +119,7 @@
   {
     "id": "cras", "topic": "social", "title": "Atendimento no CRAS", "summary": "Conheça o papel do Centro de Referência de Assistência Social e como buscar informações locais.",
     "keywords": ["cras", "assistencia", "social", "centro", "atendimento", "familia"], "agency": "Gestão municipal de assistência social", "channel": "in-person",
-    "source": { "title": "MDS · CRAS", "url": "https://www.gov.br/mds/pt-br/acoes-e-programas/suas/unidades-de-atendimento/centro-de-referencia-de-assistencia-social-cras", "reviewedAt": null },
+    "source": { "title": "MDS · CRAS", "url": "https://www.gov.br/mds/pt-br/acoes-e-programas/SUAS/unidades-de-atendimento/centro-de-referencia-de-assistencia-social-cras", "reviewedAt": null },
     "audience": "Pessoas e famílias que precisam conhecer os serviços socioassistenciais do território.",
     "steps": ["Consulte a explicação oficial sobre o CRAS.", "Procure a assistência social da prefeitura do seu município.", "Confirme a unidade de referência, o horário e a forma de atendimento."],
     "preparation": ["Identificar a gestão municipal responsável", "Confirmar a unidade de referência", "Conferir horário e orientações de atendimento"],
@@ -128,7 +128,7 @@
   {
     "id": "youth-id", "topic": "social", "title": "Identidade Jovem", "summary": "Consulte o programa ID Jovem e conheça as orientações oficiais para verificar suas condições de acesso.",
     "keywords": ["id", "jovem", "juventude", "identidade jovem", "social", "cultura"], "agency": "Secretaria Nacional de Juventude", "channel": "digital",
-    "source": { "title": "GOV.BR · Identidade Jovem", "url": "https://www.gov.br/pt-br/servicos/obter-a-identidade-jovem", "reviewedAt": null },
+    "source": { "title": "GOV.BR · Gerar carteira do ID JOVEM", "url": "https://www.gov.br/pt-br/servicos/obter-a-carteira-de-identidade-jovem", "reviewedAt": null },
     "audience": "Jovens que desejam conhecer os requisitos e os canais do programa ID Jovem.",
     "steps": ["Abra a página oficial da Identidade Jovem.", "Confira os requisitos e os dados necessários ao acesso.", "Utilize somente o canal oficial indicado para a emissão ou consulta."],
     "preparation": ["Consultar os critérios do programa", "Conferir as orientações de acesso", "Localizar o canal oficial de emissão"],
