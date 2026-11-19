@@ -67,7 +67,9 @@ Entrada por terminal, reutilizando os mesmos módulos:
 
 Sem configuração, a interface usa o adaptador de demonstração. Para conectar o backend, copie `frontend/.env.example` para `frontend/.env.local`, configure `VITE_API_BASE_URL` e reinicie o Vite.
 
-Os endpoints consumidos e seus formatos estão no [contrato de integração](docs/api-contract.md). A [divisão de trabalho](docs/team-work-packages.md) separa quatro entregas: base e conteúdo; busca e navegação; respostas e integração HTTP; avaliação e evidências.
+Os endpoints consumidos e seus formatos estão no [contrato de integração](docs/api-contract.md). A [divisão de trabalho](docs/team-work-packages.md) separa quatro entregas: base e conteúdo; busca e navegação; respostas; avaliação e evidências. O transporte HTTP permanece com o coordenador.
+
+O [mapa de conteúdo e entregas](docs/content-and-handoff.md) explica como transformar os registros provisórios em orientações úteis dentro do portal, quais arquivos cada módulo deve entregar e como avaliar respostas além da seleção do serviço correto.
 
 ## Organização
 

@@ -4,6 +4,8 @@ O projeto está na branch `feat/citizen-portal-frontend`. Escolham entre vocês 
 
 **O assistente não usa IA externa.** Ele consulta a base verificada e aplica dois modelos de instrução de resposta. FastAPI conecta as funções ao React; a execução por terminal reutiliza as mesmas funções.
 
+Antes de implementar, leiam [o mapa de conteúdo e entregas](content-and-handoff.md): as orientações finais precisam responder dentro do portal, e não apenas mandar o usuário pesquisar em outro site. As telas e o formato dos dados já comportam esse conteúdo.
+
 ## Instalar
 
 Requer Python 3.11 ou superior; a estrutura foi testada em Python 3.13.9. Na raiz do repositório, usando PowerShell:
