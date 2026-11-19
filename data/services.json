@@ -1,0 +1,595 @@
+[
+  {
+    "id": "cpf",
+    "topic": "documents",
+    "title": "Inscrição no CPF",
+    "summary": "Encontre o canal da Receita Federal para consultar como fazer a inscrição no Cadastro de Pessoas Físicas.",
+    "keywords": [
+      "cpf",
+      "cadastro de pessoas fisicas",
+      "documento",
+      "inscricao",
+      "tirar cpf"
+    ],
+    "agency": "Receita Federal",
+    "channel": "mixed",
+    "source": {
+      "title": "GOV.BR · Inscrever no CPF",
+      "url": "https://www.gov.br/pt-br/servicos/inscrever-no-cpf",
+      "reviewedAt": "2026-11-19"
+    },
+    "audience": "Pessoas que precisam conhecer o processo de inscrição no CPF.",
+    "steps": [
+      "Abra a página oficial da Receita Federal indicada nesta orientação.",
+      "Confira a documentação e o canal de atendimento para o seu caso.",
+      "Siga as instruções do órgão e guarde o comprovante disponibilizado."
+    ],
+    "preparation": [
+      "Consultar a documentação na fonte oficial",
+      "Identificar o canal adequado ao meu caso",
+      "Conferir os dados antes de enviar"
+    ],
+    "limitations": "Esta orientação não consulta, emite ou regulariza CPF. Os requisitos devem ser confirmados na Receita Federal.",
+    "relatedIds": [
+      "cpf-status",
+      "identity",
+      "work-card"
+    ]
+  },
+  {
+    "id": "cpf-status",
+    "topic": "documents",
+    "title": "Situação cadastral do CPF",
+    "summary": "Saiba onde encontrar a consulta oficial da situação cadastral do seu CPF.",
+    "keywords": [
+      "cpf",
+      "situacao",
+      "regularizar",
+      "consulta",
+      "comprovante",
+      "pendente"
+    ],
+    "agency": "Receita Federal",
+    "channel": "digital",
+    "source": {
+      "title": "Receita Federal · Meu CPF",
+      "url": "https://www.gov.br/receitafederal/pt-br/assuntos/meu-cpf",
+      "reviewedAt": "2026-11-19"
+    },
+    "audience": "Pessoas que desejam consultar informações cadastrais do CPF.",
+    "steps": [
+      "Acesse a área Meu CPF no site da Receita Federal.",
+      "Escolha o serviço correspondente à consulta desejada.",
+      "Consulte o significado da situação exibida e as instruções oficiais."
+    ],
+    "preparation": [
+      "Abrir a página oficial da Receita",
+      "Encontrar a opção de consulta",
+      "Ler as instruções para a situação apresentada"
+    ],
+    "limitations": "O portal acadêmico não recebe números de CPF. Situação cadastral e situação fiscal não devem ser tratadas como equivalentes.",
+    "relatedIds": [
+      "cpf",
+      "identity",
+      "social-registry"
+    ]
+  },
+  {
+    "id": "identity",
+    "topic": "documents",
+    "title": "Carteira de Identidade Nacional",
+    "summary": "Entenda por onde começar a consulta sobre a CIN e como localizar o órgão emissor do seu estado.",
+    "keywords": [
+      "cin",
+      "rg",
+      "identidade",
+      "documento",
+      "carteira de identidade"
+    ],
+    "agency": "Governo Federal e órgãos estaduais",
+    "channel": "in-person",
+    "source": {
+      "title": "Governo Digital · Carteira de Identidade Nacional",
+      "url": "https://www.gov.br/governodigital/pt-br/identidade/cin",
+      "reviewedAt": "2026-11-19"
+    },
+    "audience": "Pessoas interessadas em conhecer a Carteira de Identidade Nacional.",
+    "steps": [
+      "Consulte o portal oficial da Carteira de Identidade Nacional.",
+      "Localize as informações do órgão de identificação do seu estado.",
+      "Confirme documentos, agendamento e atendimento no canal estadual."
+    ],
+    "preparation": [
+      "Identificar o órgão emissor do meu estado",
+      "Conferir os documentos solicitados",
+      "Consultar a necessidade de agendamento"
+    ],
+    "limitations": "Agendamento, canais e condições de emissão variam por estado. Não há emissão ou agendamento neste portal.",
+    "relatedIds": [
+      "cpf",
+      "passport",
+      "voter"
+    ]
+  },
+  {
+    "id": "passport",
+    "topic": "documents",
+    "title": "Passaporte brasileiro",
+    "summary": "Localize o serviço oficial da Polícia Federal e consulte as etapas para solicitar um passaporte.",
+    "keywords": [
+      "passaporte",
+      "viagem",
+      "viajar",
+      "exterior",
+      "policia federal"
+    ],
+    "agency": "Polícia Federal",
+    "channel": "mixed",
+    "source": {
+      "title": "Polícia Federal · Passaporte",
+      "url": "https://www.gov.br/pt-br/servicos/obter-passaporte-comum-para-brasileiro",
+      "reviewedAt": "2026-11-19"
+    },
+    "audience": "Pessoas que precisam consultar os requisitos para um passaporte brasileiro.",
+    "steps": [
+      "Acesse a área de passaporte da Polícia Federal.",
+      "Confira os requisitos e as etapas para o seu caso.",
+      "Realize preenchimento e agendamento somente nos canais oficiais."
+    ],
+    "preparation": [
+      "Ler os requisitos da Polícia Federal",
+      "Conferir documentação e custos atualizados",
+      "Consultar as etapas de atendimento"
+    ],
+    "limitations": "Documentação, taxas e prazos devem ser conferidos diretamente com a Polícia Federal.",
+    "relatedIds": [
+      "identity",
+      "cpf-status",
+      "voter"
+    ]
+  },
+  {
+    "id": "voter",
+    "topic": "documents",
+    "title": "Título e situação eleitoral",
+    "summary": "Encontre o autoatendimento da Justiça Eleitoral para consultar os serviços disponíveis ao eleitor.",
+    "keywords": [
+      "titulo",
+      "eleitor",
+      "eleitoral",
+      "voto",
+      "votar",
+      "documento"
+    ],
+    "agency": "Justiça Eleitoral",
+    "channel": "mixed",
+    "source": {
+      "title": "TSE · Autoatendimento eleitoral",
+      "url": "https://www.tse.jus.br/servicos-eleitorais/autoatendimento-eleitoral",
+      "reviewedAt": "2026-11-19"
+    },
+    "audience": "Pessoas interessadas em orientações sobre cadastro e situação eleitoral.",
+    "steps": [
+      "Acesse o autoatendimento eleitoral do TSE.",
+      "Selecione o serviço correspondente à sua necessidade.",
+      "Confira os períodos de atendimento e eventuais orientações do TRE."
+    ],
+    "preparation": [
+      "Identificar o serviço eleitoral desejado",
+      "Conferir o calendário oficial",
+      "Consultar documentos e canais de atendimento"
+    ],
+    "limitations": "Os serviços podem estar sujeitos ao calendário eleitoral. Este portal não consulta sua situação individual.",
+    "relatedIds": [
+      "identity",
+      "cpf",
+      "passport"
+    ]
+  },
+  {
+    "id": "work-card",
+    "topic": "work",
+    "title": "Carteira de Trabalho Digital",
+    "summary": "A Carteira de Trabalho e Previdência Social (CTPS) registra a vida profissional e garante o acesso aos direitos trabalhistas. Ela é emitida de forma prioritária no formato digital, pelo aplicativo Carteira de Trabalho Digital ou pela web; o formato físico é exceção, para anotações de vínculos anteriores ao modelo digital. O serviço é gratuito e o atendimento é imediato.",
+    "keywords": [
+      "ctps",
+      "carteira de trabalho",
+      "carteira de trabalho digital",
+      "carteira",
+      "trabalho",
+      "digital",
+      "emprego",
+      "vinculo",
+      "aplicativo",
+      "obter carteira de trabalho"
+    ],
+    "agency": "Ministério do Trabalho e Emprego",
+    "channel": "digital",
+    "source": {
+      "title": "GOV.BR · Obter a Carteira de Trabalho",
+      "url": "https://www.gov.br/pt-br/servicos/obter-a-carteira-de-trabalho",
+      "reviewedAt": "2026-11-19"
+    },
+    "audience": "Qualquer pessoa inscrita no CPF. É preciso ter conta gov.br de nível Bronze, Prata ou Ouro.",
+    "steps": [
+      "Abra o aplicativo Carteira de Trabalho Digital (Android ou iOS) ou o acesso web indicado na página oficial do serviço.",
+      "Informe o CPF e autentique-se com a sua conta gov.br.",
+      "Obtenha a carteira digital: segundo a fonte, o atendimento é imediato e o serviço é gratuito.",
+      "Se precisar de atendimento, use o formulário de contato do Ministério do Trabalho e Emprego ou a Central 158."
+    ],
+    "preparation": [
+      "Ter o número do CPF em mãos.",
+      "Criar uma conta autenticada no gov.br, caso ainda não tenha (nível Bronze, Prata ou Ouro).",
+      "Escolher o canal: aplicativo Carteira de Trabalho Digital ou acesso pela web."
+    ],
+    "limitations": "Este portal não autentica contas gov.br nem consulta seus vínculos de trabalho. A página oficial não detalha como pedir o formato físico, que é emitido apenas em caráter excepcional. Confirme as condições de acesso na página oficial.",
+    "relatedIds": [
+      "unemployment",
+      "jobs",
+      "salary-bonus"
+    ]
+  },
+  {
+    "id": "unemployment",
+    "topic": "work",
+    "title": "Seguro-desemprego",
+    "summary": "O Seguro-Desemprego é um benefício da Seguridade Social que garante assistência financeira temporária ao trabalhador dispensado involuntariamente (sem justa causa). O pedido pode ser feito pelo Portal de Serviços, pelo aplicativo da Carteira de Trabalho Digital, pelo telefone 158 ou pela Plataforma FACILITA. Se os critérios legais forem atendidos, o trabalhador recebe uma parcela a cada trinta dias. O serviço é gratuito.",
+    "keywords": [
+      "seguro",
+      "desemprego",
+      "seguro-desemprego",
+      "demissao",
+      "demitido",
+      "desempregado",
+      "trabalhador",
+      "sem justa causa",
+      "requerimento",
+      "parcelas"
+    ],
+    "agency": "Ministério do Trabalho e Emprego",
+    "channel": "mixed",
+    "source": {
+      "title": "GOV.BR · Solicitar o Seguro-Desemprego",
+      "url": "https://www.gov.br/pt-br/servicos/solicitar-o-seguro-desemprego",
+      "reviewedAt": "2026-11-19"
+    },
+    "audience": "Trabalhadores formais demitidos sem justa causa que, segundo a fonte: (a) não têm renda própria suficiente para o sustento próprio e da família; (b) receberam salários por pelo menos 12 dos 18 meses anteriores à dispensa na primeira solicitação, 9 dos 12 meses anteriores na segunda, ou em cada um dos 6 meses anteriores nas demais; e (c) não recebem benefício previdenciário de prestação continuada, exceto auxílio-acidente, auxílio suplementar e abono de permanência em serviço. O empregado doméstico usa um serviço próprio no gov.br.",
+    "steps": [
+      "Peça o benefício pelo Portal de Serviços, pelo aplicativo da Carteira de Trabalho Digital, pelo telefone 158 ou pela Plataforma FACILITA (atendimento.trabalho.gov.br). Segundo a fonte, o pedido leva até 5 minutos.",
+      "Acompanhe a liberação pelo gov.br ou pelo aplicativo da Carteira de Trabalho Digital: dá para ver o valor, o número de parcelas e as datas de liberação.",
+      "Receba uma parcela a cada trinta dias, se os critérios legais continuarem atendidos. O pagamento vai para a conta informada pelo trabalhador; sem dados bancários válidos, a CAIXA segue a ordem prevista na página oficial (poupança, poupança social digital, terminais e lotéricas com cartão cidadão ou agência com documento e CPF).",
+      "Se o pedido for indeferido, o gov.br oferece um serviço próprio para cadastrar recurso."
+    ],
+    "preparation": [
+      "Ter o Documento do Requerimento do Seguro-Desemprego, entregue pelo empregador no momento da dispensa sem justa causa.",
+      "Ter o número do CPF.",
+      "Ter conta gov.br de nível Bronze, Prata ou Ouro.",
+      "Se for informar conta bancária, usar conta de sua titularidade, com banco, agência e conta corretos; não é aceita conta salário nem conta conjunta."
+    ],
+    "limitations": "Este portal não verifica se você tem direito ao benefício nem calcula valor ou número de parcelas; isso é decidido pelo Ministério do Trabalho e Emprego. A página oficial estima de 31 a 60 dias corridos para a prestação do serviço e não informa aqui o prazo máximo para pedir após a demissão; confirme esse prazo com o órgão (telefone 158).",
+    "relatedIds": [
+      "work-card",
+      "jobs",
+      "fgts",
+      "salary-bonus"
+    ]
+  },
+  {
+    "id": "salary-bonus",
+    "topic": "work",
+    "title": "Abono salarial",
+    "summary": "O Abono Salarial é um benefício anual, previsto no art. 239 da Constituição, pago a quem recebe de empregadores contribuintes do PIS ou do Pasep até 2 salários mínimos de remuneração mensal. O valor é proporcional aos meses trabalhados no ano-base: no calendário de 2026 (salário mínimo de R$ 1.621,00), vai de R$ 136,00 (1 mês) a R$ 1.621,00 (12 meses). O pagamento segue um calendário por mês de nascimento.",
+    "keywords": [
+      "abono",
+      "salarial",
+      "abono salarial",
+      "pis",
+      "pasep",
+      "calendario",
+      "pagamento",
+      "trabalho"
+    ],
+    "agency": "Ministério do Trabalho e Emprego",
+    "channel": "digital",
+    "source": {
+      "title": "GOV.BR · Receber o Abono Salarial",
+      "url": "https://www.gov.br/pt-br/servicos/receber-o-abono-salarial",
+      "reviewedAt": "2026-11-19"
+    },
+    "audience": "Trabalhador que, no ano-base, trabalhou para empregador contribuinte do PIS ou do Pasep por pelo menos 30 dias (consecutivos ou não), está cadastrado há pelo menos 5 anos no Fundo de Participação PIS-Pasep, teve os dados informados corretamente pelo empregador no eSocial e recebeu remuneração dentro do limite. No pagamento de 2026 (ano-base 2024), o limite é remuneração média de até R$ 2.766,00.",
+    "steps": [
+      "Consulte o calendário e as informações do abono na Carteira de Trabalho Digital ou no portal gov.br. Em 2026, quem nasceu em janeiro recebe a partir de 16 de fevereiro e os demais meses seguem o calendário da página oficial; os valores ficam disponíveis até 30/12/2026.",
+      "Veja quem paga: a CAIXA paga quem teve vínculo com empregador contribuinte do PIS; o Banco do Brasil paga quem teve vínculo com empregador contribuinte do Pasep.",
+      "Receba pelo canal do banco pagador. Na CAIXA: crédito em conta, CAIXA Tem, caixas eletrônicos ou lotéricas com Cartão Social e senha, ou agência com documento oficial. No Banco do Brasil: crédito em conta, TED, Pix ou recebimento no caixa.",
+      "Para dúvidas ou recurso, use a Plataforma Facilita (atendimento.trabalho.gov.br) ou ligue 158 (gratuito, das 7h às 22h, de segunda a sábado, exceto feriados nacionais)."
+    ],
+    "preparation": [
+      "Ter conta gov.br de nível Bronze, Prata ou Ouro.",
+      "Consultar a Carteira de Trabalho Digital ou o portal gov.br para ver se há abono a receber.",
+      "Saber o mês de nascimento, que define a data no calendário.",
+      "Para receber em agência da CAIXA, levar documento oficial de identificação."
+    ],
+    "limitations": "Valores, limites e calendário citados valem para o pagamento de 2026 (ano-base 2024) e mudam a cada ano; confirme na página oficial. Este portal não informa se você tem direito nem o seu valor individual.",
+    "relatedIds": [
+      "work-card",
+      "fgts",
+      "unemployment"
+    ]
+  },
+  {
+    "id": "fgts",
+    "topic": "work",
+    "title": "Informações sobre o FGTS",
+    "summary": "O FGTS é uma reserva financeira do trabalhador com carteira assinada (CLT) para os casos de demissão sem justa causa e outras situações, como aposentadoria, término de contrato por prazo determinado e falecimento do trabalhador ou do empregador individual. Pelo APP FGTS, da CAIXA, é possível consultar o saldo, alterar dados cadastrais e pedir o saque sem ir à agência. Havendo direito e documentação regular, o valor é creditado em até 5 dias úteis.",
+    "keywords": [
+      "fgts",
+      "fundo",
+      "garantia",
+      "fundo de garantia",
+      "saque",
+      "sacar",
+      "saldo",
+      "demissao",
+      "trabalho"
+    ],
+    "agency": "Caixa Econômica Federal",
+    "channel": "mixed",
+    "source": {
+      "title": "GOV.BR · Sacar o FGTS",
+      "url": "https://www.gov.br/pt-br/servicos/sacar-o-fgts",
+      "reviewedAt": "2026-11-19"
+    },
+    "audience": "Trabalhadores com contrato formal pela CLT, domésticos, rurais, temporários, intermitentes, avulsos, safreiros, atletas profissionais e diretores não empregados (critério do empregador). O saque só é liberado para quem tiver direito a ele nas situações previstas.",
+    "steps": [
+      "Abra o APP FGTS, da CAIXA, e consulte o saldo; no aplicativo também é possível alterar dados cadastrais.",
+      "Peça o saque pelo aplicativo: indique uma conta da CAIXA ou de outra instituição financeira (sem custo), envie os documentos necessários e acompanhe a solicitação.",
+      "Se a documentação estiver regular e você tiver direito ao saque, o valor é creditado na conta indicada em até 5 dias úteis.",
+      "Se houver divergência nos dados ou precisar de atendimento pontual, procure a Rede de Atendimento CAIXA com seus documentos; a espera estimada é de até 2 horas."
+    ],
+    "preparation": [
+      "Documento oficial de identificação com foto.",
+      "Carteira de Trabalho e Previdência Social.",
+      "Número de inscrição no PIS/PASEP.",
+      "Conta bancária (da CAIXA ou de outra instituição) para receber o valor.",
+      "Para regularizar dados na agência: RG ou outro documento com foto, comprovante de residência atual e Carteira de Trabalho."
+    ],
+    "limitations": "Este portal não informa quanto você tem nem se o seu caso permite saque; isso depende da situação e é confirmado no APP FGTS ou na CAIXA. A lista completa de hipóteses de saque e de documentos específicos está no Portal do FGTS e no site da CAIXA e não é detalhada aqui.",
+    "relatedIds": [
+      "work-card",
+      "unemployment",
+      "salary-bonus"
+    ]
+  },
+  {
+    "id": "jobs",
+    "topic": "work",
+    "title": "Vagas e serviços do SINE",
+    "summary": "O Sistema Nacional de Emprego (Sine) ajuda trabalhadores e empregadores na intermediação de mão de obra, de forma presencial ou on-line. O trabalhador registra dados cadastrais, formação e experiências e busca vagas ofertadas no seu município de residência que combinem com o seu perfil. As vagas aparecem no cadastro, que pode ser consultado no Portal Emprega Brasil, no aplicativo Carteira de Trabalho Digital ou em um posto da Rede Sine. O serviço é gratuito.",
+    "keywords": [
+      "sine",
+      "vaga",
+      "vagas",
+      "emprego",
+      "procurar",
+      "trabalho",
+      "emprega brasil",
+      "buscar emprego",
+      "intermediacao"
+    ],
+    "agency": "Ministério do Trabalho e Emprego",
+    "channel": "mixed",
+    "source": {
+      "title": "GOV.BR · Buscar Emprego no Sistema Nacional de Emprego (Sine)",
+      "url": "https://www.gov.br/pt-br/servicos/buscar-emprego-no-sistema-nacional-de-emprego-sine",
+      "reviewedAt": "2026-11-19"
+    },
+    "audience": "Cidadãos em geral que buscam uma vaga de emprego; o serviço também atende empregadores, pessoas físicas ou jurídicas, que queiram contratar. É preciso ter conta gov.br de nível Bronze, Prata ou Ouro.",
+    "steps": [
+      "Cadastre-se no Portal Emprega Brasil (web) ou em um posto de atendimento do Sine (presencial). Segundo a fonte, o cadastro leva em média 15 minutos.",
+      "Mantenha atualizados os dados cadastrais, as pretensões profissionais, a região de interesse e outras áreas de qualificação: o cruzamento do seu perfil com as vagas depende dessas informações.",
+      "Consulte as vagas disponíveis a partir do seu cadastro, na web ou em um posto do Sine.",
+      "Candidate-se às vagas e agende entrevista com possíveis empregadores pela web, pelo aplicativo Carteira de Trabalho Digital ou presencialmente."
+    ],
+    "preparation": [
+      "Ter conta gov.br de nível Bronze, Prata ou Ouro.",
+      "Reunir a documentação pessoal do titular para o cadastro.",
+      "Ter à mão formação, experiências de trabalho e áreas de interesse para preencher o perfil.",
+      "Escolher o canal: Portal Emprega Brasil, aplicativo Carteira de Trabalho Digital ou posto da Rede Sine."
+    ],
+    "limitations": "Este portal não mostra vagas reais nem garante entrevista ou contratação: as vagas e a seleção dependem do seu cadastro, do município e dos empregadores. A página oficial cita apenas 'documentação pessoal do titular' para o cadastro, sem listar os documentos; confirme no Portal Emprega Brasil ou em um posto do Sine.",
+    "relatedIds": [
+      "work-card",
+      "unemployment",
+      "social-registry"
+    ]
+  },
+  {
+    "id": "social-registry",
+    "topic": "social",
+    "title": "Cadastro Único",
+    "summary": "Entenda onde consultar as orientações para inscrição no Cadastro Único para Programas Sociais.",
+    "keywords": [
+      "cadunico",
+      "cadastro",
+      "unico",
+      "social",
+      "inscricao",
+      "familia"
+    ],
+    "agency": "Ministério do Desenvolvimento e Assistência Social",
+    "channel": "in-person",
+    "source": {
+      "title": "GOV.BR · Inscrever-se no Cadastro Único",
+      "url": "https://www.gov.br/pt-br/servicos/inscrever-se-no-cadastro-unico-para-programas-sociais-do-governo-federal",
+      "reviewedAt": "2026-11-19"
+    },
+    "audience": "Famílias que precisam conhecer os critérios e o atendimento do Cadastro Único.",
+    "steps": [
+      "Leia a página oficial de inscrição no Cadastro Único.",
+      "Confira quem pode se cadastrar e os documentos necessários.",
+      "Consulte a gestão municipal para localizar o atendimento responsável."
+    ],
+    "preparation": [
+      "Consultar os critérios oficiais",
+      "Conferir a documentação da família",
+      "Localizar o atendimento municipal"
+    ],
+    "limitations": "A inscrição não significa concessão automática de benefícios. Não há cadastro de famílias neste portal.",
+    "relatedIds": [
+      "cras",
+      "family-benefit",
+      "bpc"
+    ]
+  },
+  {
+    "id": "family-benefit",
+    "topic": "social",
+    "title": "Programa Bolsa Família",
+    "summary": "Localize informações do programa e os canais oficiais para esclarecer dúvidas sobre atendimento.",
+    "keywords": [
+      "bolsa",
+      "familia",
+      "beneficio",
+      "social",
+      "renda"
+    ],
+    "agency": "Ministério do Desenvolvimento e Assistência Social",
+    "channel": "mixed",
+    "source": {
+      "title": "MDS · Bolsa Família",
+      "url": "https://www.gov.br/mds/pt-br/acoes-e-programas/bolsa-familia",
+      "reviewedAt": "2026-11-19"
+    },
+    "audience": "Pessoas que buscam informações oficiais sobre o Programa Bolsa Família.",
+    "steps": [
+      "Consulte a página institucional do Bolsa Família.",
+      "Leia as condições e as orientações para famílias.",
+      "Procure os canais oficiais de atendimento para dúvidas sobre seu caso."
+    ],
+    "preparation": [
+      "Consultar a página oficial do programa",
+      "Ler os critérios atualizados",
+      "Identificar o atendimento adequado"
+    ],
+    "limitations": "Não avaliamos elegibilidade, valores, calendário individual ou inclusão no programa.",
+    "relatedIds": [
+      "social-registry",
+      "cras",
+      "bpc"
+    ]
+  },
+  {
+    "id": "bpc",
+    "topic": "social",
+    "title": "Benefício de Prestação Continuada",
+    "summary": "Encontre referências oficiais sobre o BPC e os canais para consultar os requisitos do benefício.",
+    "keywords": [
+      "bpc",
+      "loas",
+      "idoso",
+      "deficiencia",
+      "beneficio",
+      "social"
+    ],
+    "agency": "Ministério do Desenvolvimento e Assistência Social",
+    "channel": "mixed",
+    "source": {
+      "title": "MDS · Benefício de Prestação Continuada (BPC)",
+      "url": "https://www.gov.br/mds/pt-br/acoes-e-programas/beneficio-de-prestacao-continuada-bpc/conheca-todos-os-detalhes-do-bpc",
+      "reviewedAt": "2026-11-19"
+    },
+    "audience": "Pessoas interessadas em conhecer as condições e os canais de orientação do BPC.",
+    "steps": [
+      "Leia a explicação do BPC na fonte oficial.",
+      "Confira os requisitos e as orientações de solicitação.",
+      "Procure os canais responsáveis para dúvidas e análise individual."
+    ],
+    "preparation": [
+      "Consultar os requisitos atualizados",
+      "Ler as orientações de solicitação",
+      "Identificar os canais responsáveis"
+    ],
+    "limitations": "A orientação não substitui análise do órgão responsável e não garante concessão do benefício.",
+    "relatedIds": [
+      "social-registry",
+      "cras",
+      "family-benefit"
+    ]
+  },
+  {
+    "id": "cras",
+    "topic": "social",
+    "title": "Atendimento no CRAS",
+    "summary": "Conheça o papel do Centro de Referência de Assistência Social e como buscar informações locais.",
+    "keywords": [
+      "cras",
+      "assistencia",
+      "social",
+      "centro",
+      "atendimento",
+      "familia"
+    ],
+    "agency": "Gestão municipal de assistência social",
+    "channel": "in-person",
+    "source": {
+      "title": "MDS · CRAS",
+      "url": "https://www.gov.br/mds/pt-br/acoes-e-programas/SUAS/unidades-de-atendimento/centro-de-referencia-de-assistencia-social-cras",
+      "reviewedAt": "2026-11-19"
+    },
+    "audience": "Pessoas e famílias que precisam conhecer os serviços socioassistenciais do território.",
+    "steps": [
+      "Consulte a explicação oficial sobre o CRAS.",
+      "Procure a assistência social da prefeitura do seu município.",
+      "Confirme a unidade de referência, o horário e a forma de atendimento."
+    ],
+    "preparation": [
+      "Identificar a gestão municipal responsável",
+      "Confirmar a unidade de referência",
+      "Conferir horário e orientações de atendimento"
+    ],
+    "limitations": "Endereços, horários e agendamentos são locais. Este portal não usa geolocalização e não agenda atendimento.",
+    "relatedIds": [
+      "social-registry",
+      "family-benefit",
+      "youth-id"
+    ]
+  },
+  {
+    "id": "youth-id",
+    "topic": "social",
+    "title": "Identidade Jovem",
+    "summary": "Consulte o programa ID Jovem e conheça as orientações oficiais para verificar suas condições de acesso.",
+    "keywords": [
+      "id",
+      "jovem",
+      "juventude",
+      "identidade jovem",
+      "social",
+      "cultura"
+    ],
+    "agency": "Secretaria Nacional de Juventude",
+    "channel": "digital",
+    "source": {
+      "title": "GOV.BR · Gerar carteira do ID JOVEM",
+      "url": "https://www.gov.br/pt-br/servicos/obter-a-carteira-de-identidade-jovem",
+      "reviewedAt": "2026-11-19"
+    },
+    "audience": "Jovens que desejam conhecer os requisitos e os canais do programa ID Jovem.",
+    "steps": [
+      "Abra a página oficial da Identidade Jovem.",
+      "Confira os requisitos e os dados necessários ao acesso.",
+      "Utilize somente o canal oficial indicado para a emissão ou consulta."
+    ],
+    "preparation": [
+      "Consultar os critérios do programa",
+      "Conferir as orientações de acesso",
+      "Localizar o canal oficial de emissão"
+    ],
+    "limitations": "Não emitimos documentos nem verificamos a elegibilidade de usuários.",
+    "relatedIds": [
+      "social-registry",
+      "cras",
+      "identity"
+    ]
+  }
+]
