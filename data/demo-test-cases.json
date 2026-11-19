@@ -1,0 +1,14 @@
+[
+  { "id": "empty", "question": "   ", "expectedStatus": "empty" },
+  { "id": "unsupported", "question": "Qual a previsão do tempo?", "expectedStatus": "unsupported" },
+  { "id": "ambiguous", "question": "documento", "expectedStatus": "ambiguous" },
+  { "id": "work-card", "question": "Como acessar a Carteira de Trabalho Digital?", "expectedStatus": "matched", "expectedServiceId": "work-card" },
+  { "id": "registry", "question": "Onde faço o CadÚnico?", "expectedStatus": "matched", "expectedServiceId": "social-registry" },
+  { "id": "identity", "question": "Preciso do meu RG", "expectedStatus": "matched", "expectedServiceId": "identity" },
+  { "id": "passport", "question": "passaporte brasileiro", "expectedStatus": "matched", "expectedServiceId": "passport" },
+  { "id": "voter", "question": "título eleitoral", "expectedStatus": "matched", "expectedServiceId": "voter" },
+  { "id": "fgts", "question": "Como consultar FGTS?", "expectedStatus": "matched", "expectedServiceId": "fgts" },
+  { "id": "unemployment", "question": "seguro-desemprego", "expectedStatus": "matched", "expectedServiceId": "unemployment" },
+  { "id": "family", "question": "Bolsa Família", "expectedStatus": "matched", "expectedServiceId": "family-benefit" },
+  { "id": "jobs", "question": "Como achar vagas no SINE?", "expectedStatus": "matched", "expectedServiceId": "jobs" }
+]

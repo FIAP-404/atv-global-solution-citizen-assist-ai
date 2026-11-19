@@ -8,3 +8,7 @@ venv/
 !.env.example
 .DS_Store
 Thumbs.db
+node_modules/
+dist/
+*.tsbuildinfo
+.superpowers/
