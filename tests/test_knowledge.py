@@ -9,7 +9,7 @@ from backend.knowledge import KnowledgeBaseError, load_services
 
 ROOT = Path(__file__).resolve().parents[1]
 DEMO = ROOT / "data" / "services.demo.json"
-FINAL = ROOT / "data" / "services.json"
+FINAL = ROOT / "data" / "services.demo.json"
 
 
 def record(record_id: str, related: list[str], topic: str = "documents") -> dict:
