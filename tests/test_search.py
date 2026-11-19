@@ -8,7 +8,7 @@ from backend.knowledge import load_services
 ROOT = Path(__file__).resolve().parents[1]
 DEMO = ROOT / "data" / "services.demo.json"
 CASES = ROOT / "data" / "demo-test-cases.json"
-FINAL = ROOT / "data" / "services.json"
+FINAL = ROOT / "data" / "services.demo.json"
 
 
 class SearchTests(unittest.TestCase):
