@@ -378,8 +378,7 @@
     "question": "carteirinha de estudante jovem baixa renda",
     "category": "reformulation",
     "expectedStatus": "matched",
-    "expectedServiceId": "youth-id",
-    "knownLimitation": true
+    "expectedServiceId": "youth-id"
   },
   {
     "id": "reform-registry-long",

@@ -3,7 +3,7 @@
     "id": "cpf",
     "topic": "documents",
     "title": "Inscrição no CPF",
-    "summary": "Encontre o canal da Receita Federal para consultar como fazer a inscrição no Cadastro de Pessoas Físicas.",
+    "summary": "O CPF (Cadastro de Pessoas Físicas) é pedido pelo formulário eletrônico \"Inscrever no CPF (1ª via)\" na internet ou em atendimento da Receita Federal, inclusive Pontos de Atendimento Virtual, e-mail e rede conveniada. O serviço é gratuito na Receita Federal; nas unidades conveniadas (cartórios, Banco do Brasil, CAIXA e Correios) há tarifa de R$ 7,00, segundo a página oficial.",
     "keywords": [
       "cpf",
       "cadastro de pessoas fisicas",
@@ -18,16 +18,17 @@
       "url": "https://www.gov.br/pt-br/servicos/inscrever-no-cpf",
       "reviewedAt": "2026-11-19"
     },
-    "audience": "Pessoas que precisam conhecer o processo de inscrição no CPF.",
+    "audience": "Pessoas físicas brasileiras e estrangeiras, residentes ou não no Brasil. Há regras próprias para menores de 16 anos, pessoas com deficiência e pessoas falecidas, descritas na página oficial.",
     "steps": [
-      "Abra a página oficial da Receita Federal indicada nesta orientação.",
-      "Confira a documentação e o canal de atendimento para o seu caso.",
-      "Siga as instruções do órgão e guarde o comprovante disponibilizado."
+      "Preencha o formulário eletrônico \"Inscrever no CPF (1ª via)\" na página oficial, ou procure uma unidade da Receita Federal, um Ponto de Atendimento Virtual, o atendimento por e-mail ou uma unidade conveniada (cartório, Banco do Brasil, CAIXA ou Correios).",
+      "Se o pedido gerar um protocolo, apresente esse protocolo com os documentos à Receita Federal, pelo canal indicado. Segundo a fonte, essa etapa leva em média 2 dias úteis; pelo e-mail, a resposta leva em média 48 horas.",
+      "Guarde o comprovante de inscrição emitido ao final."
     ],
     "preparation": [
-      "Consultar a documentação na fonte oficial",
-      "Identificar o canal adequado ao meu caso",
-      "Conferir os dados antes de enviar"
+      "Documento oficial com foto.",
+      "Certidão de nascimento ou de casamento, se o documento com foto não trouxer naturalidade, filiação e data de nascimento.",
+      "Para o atendimento por e-mail, uma foto sua segurando o documento, conforme as instruções da página oficial.",
+      "Se for a uma unidade conveniada, saber que lá há tarifa de R$ 7,00."
     ],
     "limitations": "Esta orientação não consulta, emite ou regulariza CPF. Os requisitos devem ser confirmados na Receita Federal.",
     "relatedIds": [
@@ -407,7 +408,7 @@
     "id": "social-registry",
     "topic": "social",
     "title": "Cadastro Único",
-    "summary": "Entenda onde consultar as orientações para inscrição no Cadastro Único para Programas Sociais.",
+    "summary": "O Cadastro Único reúne informações das famílias de baixa renda e é a porta de entrada para vários programas sociais do governo federal. A inscrição é feita presencialmente, em um posto de atendimento do município (CRAS ou setor responsável pelo Bolsa Família), com uma entrevista de cerca de 1 hora. O serviço é gratuito, e o cadastro deve ser atualizado a cada dois anos ou quando houver mudança na família.",
     "keywords": [
       "cadunico",
       "cadastro",
@@ -423,16 +424,18 @@
       "url": "https://www.gov.br/pt-br/servicos/inscrever-se-no-cadastro-unico-para-programas-sociais-do-governo-federal",
       "reviewedAt": "2026-11-19"
     },
-    "audience": "Famílias que precisam conhecer os critérios e o atendimento do Cadastro Único.",
+    "audience": "Famílias com renda de até meio salário mínimo por pessoa. Segundo a fonte, famílias com renda maior também podem ser cadastradas quando forem participar de programas específicos.",
     "steps": [
-      "Leia a página oficial de inscrição no Cadastro Único.",
-      "Confira quem pode se cadastrar e os documentos necessários.",
-      "Consulte a gestão municipal para localizar o atendimento responsável."
+      "Localize o posto de atendimento do Cadastro Único na sua cidade (CRAS ou setor responsável pelo Bolsa Família), usando a busca por município da página oficial.",
+      "Vá ao posto com os documentos do responsável familiar e das demais pessoas da família.",
+      "Faça a entrevista com o entrevistador do município; segundo a fonte, ela dura cerca de 1 hora.",
+      "Mantenha o cadastro atualizado a cada dois anos ou sempre que mudar a renda, o endereço ou a composição da família."
     ],
     "preparation": [
-      "Consultar os critérios oficiais",
-      "Conferir a documentação da família",
-      "Localizar o atendimento municipal"
+      "Do responsável familiar: CPF (preferencial) ou Título de Eleitor.",
+      "Do responsável familiar: documento com foto e comprovante de endereço (ou declaração de residência).",
+      "Das demais pessoas da família: CPF, Título de Eleitor, certidão de nascimento ou casamento, RG ou Carteira de Trabalho.",
+      "Informações sobre a renda e a composição da família para a entrevista."
     ],
     "limitations": "A inscrição não significa concessão automática de benefícios. Não há cadastro de famílias neste portal.",
     "relatedIds": [
@@ -558,7 +561,7 @@
     "id": "youth-id",
     "topic": "social",
     "title": "Identidade Jovem",
-    "summary": "Consulte o programa ID Jovem e conheça as orientações oficiais para verificar suas condições de acesso.",
+    "summary": "O ID Jovem é um documento gratuito, emitido pelo site idjovem.juventude.gov.br ou pelo aplicativo ID Jovem, para jovens de baixa renda de 15 a 29 anos. Para emitir, é preciso estar inscrito no Cadastro Único com cadastro atualizado nos últimos 24 meses. O documento vale por 365 dias.",
     "keywords": [
       "id",
       "jovem",
@@ -574,16 +577,18 @@
       "url": "https://www.gov.br/pt-br/servicos/obter-a-carteira-de-identidade-jovem",
       "reviewedAt": "2026-11-19"
     },
-    "audience": "Jovens que desejam conhecer os requisitos e os canais do programa ID Jovem.",
+    "audience": "Jovens de 15 a 29 anos com renda familiar mensal de até dois salários mínimos e inscrição no Cadastro Único atualizada nos últimos 24 meses (condições cumulativas). Segundo a fonte, não é necessário estar estudando.",
     "steps": [
-      "Abra a página oficial da Identidade Jovem.",
-      "Confira os requisitos e os dados necessários ao acesso.",
-      "Utilize somente o canal oficial indicado para a emissão ou consulta."
+      "Se ainda não tiver Cadastro Único ou se ele tiver mais de 24 meses sem atualização, procure o CRAS do seu município para se cadastrar ou atualizar (o cadastro leva em média 2 dias corridos para ser processado).",
+      "Acesse o site idjovem.juventude.gov.br ou o aplicativo ID Jovem.",
+      "Informe o NIS ou o CPF, o nome completo e a data de nascimento para gerar a carteira.",
+      "Renove a emissão quando necessário: o documento vale por 365 dias."
     ],
     "preparation": [
-      "Consultar os critérios do programa",
-      "Conferir as orientações de acesso",
-      "Localizar o canal oficial de emissão"
+      "Número do NIS ou do CPF.",
+      "Documento com foto.",
+      "Cadastro Único atualizado nos últimos 24 meses.",
+      "O CRAS pode pedir comprovantes de renda e de endereço no cadastro."
     ],
     "limitations": "Não emitimos documentos nem verificamos a elegibilidade de usuários.",
     "relatedIds": [

@@ -120,15 +120,15 @@ Uma resposta é considerada correta quando o status e a orientação são os esp
 | Indicador | `direct` | `steps` |
 |---|---|---|
 | Perguntas testadas | 56 | 56 |
-| Acertos | 53 | 53 |
-| Taxa de acerto | 94,6% | 94,6% |
-| Tempo médio de consulta | 0,88 ms | 0,88 ms |
+| Acertos | 54 | 54 |
+| Taxa de acerto | 96,4% | 96,4% |
+| Tempo médio de consulta | 1,54 ms | 1,49 ms |
 
-Os 3 erros são os mesmos nos dois modelos: erro de digitação (`cadunco`), uma reformulação com palavras que não estão na base e uma pergunta longa. Nos três, o assistente recusou em vez de indicar uma orientação errada.
+Os 2 erros são os mesmos nos dois modelos: erro de digitação (`cadunco`) e uma pergunta longa. Nos dois, o assistente recusou em vez de indicar uma orientação errada.
 
 **Teste de usabilidade:** o roteiro de tarefas está em [`docs/teste-usabilidade.md`](docs/teste-usabilidade.md). [PREENCHER após a sessão: quem testou, dificuldades e resultados.]
 
-**Interpretação e limitações da avaliação:** em [`docs/avaliacao.md`](docs/avaliacao.md). Em resumo, as perguntas diretas, fora da base e de limite acertam 100%; o ponto fraco são as reformulações (84%). Os casos foram escritos pela equipe, e a verificação de fatos é literal e baseada na própria base, então não mede a utilidade percebida.
+**Interpretação e limitações da avaliação:** em [`docs/avaliacao.md`](docs/avaliacao.md). Em resumo, as perguntas diretas, fora da base e de limite acertam 100%; o ponto fraco são as reformulações (89%). Os casos foram escritos pela equipe, e a verificação de fatos é literal e baseada na própria base, então não mede a utilidade percebida.
 
 ## 6. Como executar
 
@@ -140,7 +140,15 @@ python -m venv .venv
 .\.venv\Scripts\python.exe -m unittest discover -s tests -v
 ```
 
-**Terminal:**
+**Menu interativo (comando do enunciado):**
+
+```powershell
+.\.venv\Scripts\python.exe src/sistema.py
+```
+
+O menu permite escolher um tema, abrir uma orientação (resumo, passos, fonte, data de verificação e aviso), seguir para assuntos relacionados, fazer uma pergunta em texto e alternar entre os modos direto e passo a passo. Entrada vazia, opção inexistente, pergunta ambígua e pergunta sem correspondência recebem mensagens explicativas.
+
+**Pergunta única (JSON, usado nos exemplos e na avaliação):**
 
 ```powershell
 .\.venv\Scripts\python.exe -m src.main --question "CPF" --mode direct
@@ -192,13 +200,13 @@ Na API e no terminal, a resposta `matched` também inclui o registro completo em
 
 ## 9. Uso de inteligência artificial
 
-O uso de IA e a validação crítica feita pela equipe estão registrados em [`docs/ai-usage.md`](docs/ai-usage.md). O protótipo não chama nenhum modelo externo.
+O uso de IA e a validação crítica feita pela equipe estão registrados em [`docs/uso_ia.md`](docs/uso_ia.md). O protótipo não chama nenhum modelo externo.
 
 ## 10. Organização do repositório
 
 | Caminho | Conteúdo |
 |---|---|
-| `src/` | Entrada por terminal |
+| `src/` | Entrada por terminal: `sistema.py` (menu interativo) e `main.py` (pergunta única e avaliação) |
 | `backend/` | Base de conhecimento, busca, assistente, avaliação e API |
 | `data/` | Base de orientações e casos de teste |
 | `tests/` | Testes Python |
@@ -207,7 +215,7 @@ O uso de IA e a validação crítica feita pela equipe estão registrados em [`d
 
 ## 11. Conclusões, limitações e melhorias
 
-O assistente responde com fonte e aviso em todas as orientações encontradas e não respondeu nenhuma pergunta fora da base (94,6% de acerto nos dois modelos). O modelo `direct` foi mantido como padrão, por ser mais curto e responder primeiro ao que foi perguntado.
+O assistente responde com fonte e aviso em todas as orientações encontradas e não respondeu nenhuma pergunta fora da base (96,4% de acerto nos dois modelos). O modelo `direct` foi mantido como padrão, por ser mais curto e responder primeiro ao que foi perguntado.
 
 Limitações já conhecidas da busca:
 

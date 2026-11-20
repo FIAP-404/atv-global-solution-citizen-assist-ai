@@ -12,7 +12,7 @@ from backend.errors import ModuleNotReadyError
 app = FastAPI(
     title="Citizen Assist AI",
     version="0.1.0",
-    description="Coordinator transport scaffold. Core modules are pending. No external AI is used.",
+    description="API do Citizen Assist AI: consulta a base verificada sem IA externa.",
 )
 app.add_middleware(
     CORSMiddleware,

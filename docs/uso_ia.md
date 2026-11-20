@@ -20,7 +20,7 @@ The FIAP logo and reference images were supplied by the user. They were preserve
 
 The team must understand and review the generated code, verify source content and URLs, implement the Python modules, compare the response instructions and record actual evaluation and usability results. No final accuracy, timing or user-study outcome is claimed here.
 
-The assignment explicitly mentions `docs/uso_ia.md`. This project currently uses English names under the user's global coding instructions. The coordinator must reconcile the required submission path before delivery without silently claiming this document satisfies an exact filename requirement.
+This file is at `docs/uso_ia.md`, the path required by the assignment.
 
 ## Packages 3 and 4 (responses and evaluation), 2026-11-19/20
 
@@ -36,3 +36,9 @@ Critical validation:
 - The team must still read and understand the generated code and review the wording of the answers before delivery.
 
 Note: the service records now have review dates (package 1). The earlier statement in this file that all records are drafts with null dates refers to the previous phase.
+
+## Final assembly, 2026-11-19
+
+Claude Code (Anthropic) assisted Caetano de Medeiros Bona in adding `src/sistema.py` (the text menu run with `python src/sistema.py`, reusing `backend.knowledge`, `backend.search` and `backend.assistant` without new response logic), renaming this file to the required path and updating the API description. The menu was checked manually in the terminal for theme navigation, related subjects, matched, empty, ambiguous and unsupported questions, invalid options and both response modes; the existing test suite still passes.
+
+Later the same day, Claude Code helped replace the redirect-only guidance in the `cpf`, `social-registry` and `youth-id` records. The new text uses only facts read from each record's official gov.br page (audience, steps, documents, cost and time frames). The assistant also aligned `frontend/tests/catalog.test.ts` with the reviewed base: it now requires review dates and limits the browser fallback search to its 12 starter scenarios. The evaluation was rerun at 54/56 (96.4%), and `docs/avaliacao.md` and the README were updated with the new numbers. The team should still reread the three rewritten records against their sources before delivery.

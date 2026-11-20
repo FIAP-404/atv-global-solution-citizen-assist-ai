@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-20T00:23:16+00:00",
+  "generatedAt": "2026-11-20T00:44:29+00:00",
   "externalAi": false,
   "records": 15,
   "criteria": {
@@ -10,15 +10,14 @@
   "summary": {
     "direct": {
       "total": 56,
-      "correct": 53,
-      "accuracy": 0.9464,
-      "retrievalCorrect": 53,
-      "retrievalAccuracy": 0.9464,
-      "meanDurationMs": 0.8781,
-      "maxDurationMs": 1.6193,
+      "correct": 54,
+      "accuracy": 0.9643,
+      "retrievalCorrect": 54,
+      "retrievalAccuracy": 0.9643,
+      "meanDurationMs": 1.5425,
+      "maxDurationMs": 3.4783,
       "failedCases": [
         "reform-registry-typo",
-        "reform-youth-id",
         "reform-registry-long"
       ],
       "byCategory": {
@@ -44,8 +43,8 @@
         },
         "reformulation": {
           "total": 19,
-          "correct": 16,
-          "accuracy": 0.8421
+          "correct": 17,
+          "accuracy": 0.8947
         },
         "intent": {
           "total": 8,
@@ -56,15 +55,14 @@
     },
     "steps": {
       "total": 56,
-      "correct": 53,
-      "accuracy": 0.9464,
-      "retrievalCorrect": 53,
-      "retrievalAccuracy": 0.9464,
-      "meanDurationMs": 0.875,
-      "maxDurationMs": 1.5461,
+      "correct": 54,
+      "accuracy": 0.9643,
+      "retrievalCorrect": 54,
+      "retrievalAccuracy": 0.9643,
+      "meanDurationMs": 1.4938,
+      "maxDurationMs": 2.6908,
       "failedCases": [
         "reform-registry-typo",
-        "reform-youth-id",
         "reform-registry-long"
       ],
       "byCategory": {
@@ -90,8 +88,8 @@
         },
         "reformulation": {
           "total": 19,
-          "correct": 16,
-          "accuracy": 0.8421
+          "correct": 17,
+          "accuracy": 0.8947
         },
         "intent": {
           "total": 8,
@@ -122,7 +120,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.0952
+      "durationMs": 0.0768
     },
     {
       "caseId": "empty-punctuation",
@@ -144,7 +142,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.0086
+      "durationMs": 0.0092
     },
     {
       "caseId": "ambiguous",
@@ -174,7 +172,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7943
+      "durationMs": 1.5034
     },
     {
       "caseId": "ambiguous-carteira",
@@ -202,7 +200,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7828
+      "durationMs": 1.274
     },
     {
       "caseId": "stop-words-only",
@@ -224,7 +222,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.0475
+      "durationMs": 0.0645
     },
     {
       "caseId": "too-long",
@@ -246,7 +244,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.0044
+      "durationMs": 0.0043
     },
     {
       "caseId": "invalid-mode",
@@ -268,7 +266,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.0044
+      "durationMs": 0.004
     },
     {
       "caseId": "nonexistent-option",
@@ -290,7 +288,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 1.3816
+      "durationMs": 2.7118
     },
     {
       "caseId": "unsupported",
@@ -312,7 +310,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 1.3662
+      "durationMs": 3.4783
     },
     {
       "caseId": "out-driver-license",
@@ -334,7 +332,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 1.4525
+      "durationMs": 3.232
     },
     {
       "caseId": "out-cnpj",
@@ -356,7 +354,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 1.3937
+      "durationMs": 2.6254
     },
     {
       "caseId": "out-income-tax",
@@ -378,7 +376,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 1.3737
+      "durationMs": 2.3462
     },
     {
       "caseId": "out-sus",
@@ -400,7 +398,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 1.3586
+      "durationMs": 2.633
     },
     {
       "caseId": "out-football",
@@ -422,7 +420,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 1.3607
+      "durationMs": 2.3561
     },
     {
       "caseId": "out-recipe",
@@ -444,7 +442,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 1.4225
+      "durationMs": 2.3125
     },
     {
       "caseId": "work-card",
@@ -470,7 +468,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.8667
+      "durationMs": 1.3406
     },
     {
       "caseId": "registry",
@@ -492,12 +490,12 @@
         "serviceIds": [
           "social-registry"
         ],
-        "message": "Cadastro Único: O atendimento é feito presencialmente. Órgão responsável: Ministério do Desenvolvimento e Assistência Social. Para começar: Leia a página oficial de inscrição no Cadastro Único. Fonte: GOV.BR · Inscrever-se no Cadastro Único (https://www.gov.br/pt-br/servicos/inscrever-se-no-cadastro-unico-para-programas-sociais-do-governo-federal), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+        "message": "Cadastro Único: O atendimento é feito presencialmente. Órgão responsável: Ministério do Desenvolvimento e Assistência Social. Para começar: Localize o posto de atendimento do Cadastro Único na sua cidade (CRAS ou setor responsável pelo Bolsa Família), usando a busca por município da página oficial. Fonte: GOV.BR · Inscrever-se no Cadastro Único (https://www.gov.br/pt-br/servicos/inscrever-se-no-cadastro-unico-para-programas-sociais-do-governo-federal), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
       },
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7265
+      "durationMs": 1.1561
     },
     {
       "caseId": "identity",
@@ -523,7 +521,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7173
+      "durationMs": 1.1772
     },
     {
       "caseId": "passport",
@@ -549,7 +547,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.711
+      "durationMs": 1.1627
     },
     {
       "caseId": "voter",
@@ -575,7 +573,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.71
+      "durationMs": 1.1812
     },
     {
       "caseId": "fgts",
@@ -602,7 +600,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7625
+      "durationMs": 1.2285
     },
     {
       "caseId": "unemployment",
@@ -628,7 +626,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7059
+      "durationMs": 1.1841
     },
     {
       "caseId": "family",
@@ -654,7 +652,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.71
+      "durationMs": 1.2378
     },
     {
       "caseId": "jobs",
@@ -680,7 +678,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7165
+      "durationMs": 1.2053
     },
     {
       "caseId": "cpf",
@@ -701,12 +699,12 @@
         "serviceIds": [
           "cpf"
         ],
-        "message": "Inscrição no CPF: Para começar: Abra a página oficial da Receita Federal indicada nesta orientação. O atendimento é feito por canais digitais e presenciais. Órgão responsável: Receita Federal. Fonte: GOV.BR · Inscrever no CPF (https://www.gov.br/pt-br/servicos/inscrever-no-cpf), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+        "message": "Inscrição no CPF: Para começar: Preencha o formulário eletrônico \"Inscrever no CPF (1ª via)\" na página oficial, ou procure uma unidade da Receita Federal, um Ponto de Atendimento Virtual, o atendimento por e-mail ou uma unidade conveniada (cartório, Banco do Brasil, CAIXA ou Correios). O atendimento é feito por canais digitais e presenciais. Órgão responsável: Receita Federal. Fonte: GOV.BR · Inscrever no CPF (https://www.gov.br/pt-br/servicos/inscrever-no-cpf), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
       },
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.71
+      "durationMs": 1.1824
     },
     {
       "caseId": "salary-bonus",
@@ -732,7 +730,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7014
+      "durationMs": 1.4031
     },
     {
       "caseId": "bpc",
@@ -758,7 +756,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.716
+      "durationMs": 1.2186
     },
     {
       "caseId": "cras",
@@ -784,7 +782,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7423
+      "durationMs": 1.1921
     },
     {
       "caseId": "youth-id",
@@ -805,12 +803,12 @@
         "serviceIds": [
           "youth-id"
         ],
-        "message": "Identidade Jovem: Para começar: Abra a página oficial da Identidade Jovem. O atendimento é feito pelos canais digitais. Órgão responsável: Secretaria Nacional de Juventude. Fonte: GOV.BR · Gerar carteira do ID JOVEM (https://www.gov.br/pt-br/servicos/obter-a-carteira-de-identidade-jovem), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+        "message": "Identidade Jovem: Para começar: Se ainda não tiver Cadastro Único ou se ele tiver mais de 24 meses sem atualização, procure o CRAS do seu município para se cadastrar ou atualizar (o cadastro leva em média 2 dias corridos para ser processado). O atendimento é feito pelos canais digitais. Órgão responsável: Secretaria Nacional de Juventude. Fonte: GOV.BR · Gerar carteira do ID JOVEM (https://www.gov.br/pt-br/servicos/obter-a-carteira-de-identidade-jovem), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
       },
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7451
+      "durationMs": 1.4366
     },
     {
       "caseId": "reform-cpf",
@@ -831,12 +829,12 @@
         "serviceIds": [
           "cpf"
         ],
-        "message": "Inscrição no CPF: Para começar: Abra a página oficial da Receita Federal indicada nesta orientação. O atendimento é feito por canais digitais e presenciais. Órgão responsável: Receita Federal. Fonte: GOV.BR · Inscrever no CPF (https://www.gov.br/pt-br/servicos/inscrever-no-cpf), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+        "message": "Inscrição no CPF: Para começar: Preencha o formulário eletrônico \"Inscrever no CPF (1ª via)\" na página oficial, ou procure uma unidade da Receita Federal, um Ponto de Atendimento Virtual, o atendimento por e-mail ou uma unidade conveniada (cartório, Banco do Brasil, CAIXA ou Correios). O atendimento é feito por canais digitais e presenciais. Órgão responsável: Receita Federal. Fonte: GOV.BR · Inscrever no CPF (https://www.gov.br/pt-br/servicos/inscrever-no-cpf), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
       },
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7168
+      "durationMs": 1.1613
     },
     {
       "caseId": "reform-cpf-status",
@@ -862,7 +860,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7294
+      "durationMs": 1.1941
     },
     {
       "caseId": "reform-unemployment-1",
@@ -886,7 +884,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.713
+      "durationMs": 1.181
     },
     {
       "caseId": "reform-unemployment-2",
@@ -910,7 +908,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7574
+      "durationMs": 1.2891
     },
     {
       "caseId": "reform-unemployment-3",
@@ -934,7 +932,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7203
+      "durationMs": 1.2191
     },
     {
       "caseId": "reform-fgts",
@@ -960,7 +958,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.6925
+      "durationMs": 1.2767
     },
     {
       "caseId": "reform-salary-bonus",
@@ -984,7 +982,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.6788
+      "durationMs": 1.2374
     },
     {
       "caseId": "reform-registry-1",
@@ -1003,12 +1001,12 @@
         "serviceIds": [
           "social-registry"
         ],
-        "message": "Cadastro Único: Para começar: Leia a página oficial de inscrição no Cadastro Único. O atendimento é feito presencialmente. Órgão responsável: Ministério do Desenvolvimento e Assistência Social. Fonte: GOV.BR · Inscrever-se no Cadastro Único (https://www.gov.br/pt-br/servicos/inscrever-se-no-cadastro-unico-para-programas-sociais-do-governo-federal), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+        "message": "Cadastro Único: Para começar: Localize o posto de atendimento do Cadastro Único na sua cidade (CRAS ou setor responsável pelo Bolsa Família), usando a busca por município da página oficial. O atendimento é feito presencialmente. Órgão responsável: Ministério do Desenvolvimento e Assistência Social. Fonte: GOV.BR · Inscrever-se no Cadastro Único (https://www.gov.br/pt-br/servicos/inscrever-se-no-cadastro-unico-para-programas-sociais-do-governo-federal), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
       },
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.6955
+      "durationMs": 1.1965
     },
     {
       "caseId": "reform-registry-2",
@@ -1027,12 +1025,12 @@
         "serviceIds": [
           "social-registry"
         ],
-        "message": "Cadastro Único: Para começar: Leia a página oficial de inscrição no Cadastro Único. O atendimento é feito presencialmente. Órgão responsável: Ministério do Desenvolvimento e Assistência Social. Fonte: GOV.BR · Inscrever-se no Cadastro Único (https://www.gov.br/pt-br/servicos/inscrever-se-no-cadastro-unico-para-programas-sociais-do-governo-federal), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+        "message": "Cadastro Único: Para começar: Localize o posto de atendimento do Cadastro Único na sua cidade (CRAS ou setor responsável pelo Bolsa Família), usando a busca por município da página oficial. O atendimento é feito presencialmente. Órgão responsável: Ministério do Desenvolvimento e Assistência Social. Fonte: GOV.BR · Inscrever-se no Cadastro Único (https://www.gov.br/pt-br/servicos/inscrever-se-no-cadastro-unico-para-programas-sociais-do-governo-federal), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
       },
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7084
+      "durationMs": 1.2316
     },
     {
       "caseId": "reform-work-card-1",
@@ -1056,7 +1054,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.6929
+      "durationMs": 1.2492
     },
     {
       "caseId": "reform-work-card-2",
@@ -1080,7 +1078,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.769
+      "durationMs": 1.3097
     },
     {
       "caseId": "reform-jobs",
@@ -1104,7 +1102,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7455
+      "durationMs": 1.2925
     },
     {
       "caseId": "reform-passport",
@@ -1130,7 +1128,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7047
+      "durationMs": 1.216
     },
     {
       "caseId": "reform-voter",
@@ -1154,7 +1152,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7389
+      "durationMs": 1.2238
     },
     {
       "caseId": "reform-family",
@@ -1178,7 +1176,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7223
+      "durationMs": 1.2088
     },
     {
       "caseId": "reform-bpc",
@@ -1202,7 +1200,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7003
+      "durationMs": 1.2106
     },
     {
       "caseId": "reform-registry-typo",
@@ -1226,7 +1224,7 @@
       "problems": [
         "status unsupported (esperado matched)"
       ],
-      "durationMs": 1.3359
+      "durationMs": 2.2251
     },
     {
       "caseId": "reform-youth-id",
@@ -1241,16 +1239,16 @@
         "facts": []
       },
       "actual": {
-        "status": "unsupported",
-        "serviceIds": [],
-        "message": "Não encontrei informação suficiente na base para orientar sobre essa dúvida e não vou inventar instruções. Posso ajudar com: Documentos (Inscrição no CPF, Situação cadastral do CPF); Trabalho (Carteira de Trabalho Digital, Seguro-desemprego); Assistência social (Cadastro Único, Programa Bolsa Família). Tente reformular citando o serviço que procura."
+        "status": "matched",
+        "serviceIds": [
+          "youth-id"
+        ],
+        "message": "Identidade Jovem: Para começar: Se ainda não tiver Cadastro Único ou se ele tiver mais de 24 meses sem atualização, procure o CRAS do seu município para se cadastrar ou atualizar (o cadastro leva em média 2 dias corridos para ser processado). O atendimento é feito pelos canais digitais. Órgão responsável: Secretaria Nacional de Juventude. Fonte: GOV.BR · Gerar carteira do ID JOVEM (https://www.gov.br/pt-br/servicos/obter-a-carteira-de-identidade-jovem), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
       },
-      "retrievalCorrect": false,
-      "responseCorrect": false,
-      "problems": [
-        "status unsupported (esperado matched)"
-      ],
-      "durationMs": 1.4189
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 1.3468
     },
     {
       "caseId": "reform-registry-long",
@@ -1274,7 +1272,7 @@
       "problems": [
         "status unsupported (esperado matched)"
       ],
-      "durationMs": 1.5549
+      "durationMs": 2.6774
     },
     {
       "caseId": "intent-documents-unemployment",
@@ -1301,7 +1299,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 1.6193
+      "durationMs": 2.7137
     },
     {
       "caseId": "intent-documents-fgts",
@@ -1328,7 +1326,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 1.4917
+      "durationMs": 2.3794
     },
     {
       "caseId": "intent-cost-passport",
@@ -1355,7 +1353,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 1.4064
+      "durationMs": 3.0098
     },
     {
       "caseId": "intent-cost-family",
@@ -1381,7 +1379,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 1.4506
+      "durationMs": 3.2808
     },
     {
       "caseId": "intent-deadline-fgts",
@@ -1407,7 +1405,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7231
+      "durationMs": 1.2617
     },
     {
       "caseId": "intent-eligibility-bpc",
@@ -1433,7 +1431,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 1.4104
+      "durationMs": 2.3908
     },
     {
       "caseId": "intent-eligibility-bonus",
@@ -1459,7 +1457,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.733
+      "durationMs": 1.1918
     },
     {
       "caseId": "intent-where-cras",
@@ -1486,7 +1484,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 1.4557
+      "durationMs": 2.2697
     },
     {
       "caseId": "empty",
@@ -1508,7 +1506,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.0123
+      "durationMs": 0.0137
     },
     {
       "caseId": "empty-punctuation",
@@ -1530,7 +1528,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.007
+      "durationMs": 0.0083
     },
     {
       "caseId": "ambiguous",
@@ -1560,7 +1558,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7236
+      "durationMs": 1.3757
     },
     {
       "caseId": "ambiguous-carteira",
@@ -1588,7 +1586,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7147
+      "durationMs": 1.2242
     },
     {
       "caseId": "stop-words-only",
@@ -1610,7 +1608,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.0451
+      "durationMs": 0.0573
     },
     {
       "caseId": "too-long",
@@ -1632,7 +1630,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.0051
+      "durationMs": 0.0049
     },
     {
       "caseId": "invalid-mode",
@@ -1654,7 +1652,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.0043
+      "durationMs": 0.0042
     },
     {
       "caseId": "nonexistent-option",
@@ -1676,7 +1674,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 1.3647
+      "durationMs": 2.2507
     },
     {
       "caseId": "unsupported",
@@ -1698,7 +1696,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 1.3672
+      "durationMs": 2.324
     },
     {
       "caseId": "out-driver-license",
@@ -1720,7 +1718,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 1.481
+      "durationMs": 2.4788
     },
     {
       "caseId": "out-cnpj",
@@ -1742,7 +1740,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 1.41
+      "durationMs": 2.6163
     },
     {
       "caseId": "out-income-tax",
@@ -1764,7 +1762,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 1.4058
+      "durationMs": 2.2991
     },
     {
       "caseId": "out-sus",
@@ -1786,7 +1784,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 1.3981
+      "durationMs": 2.3002
     },
     {
       "caseId": "out-football",
@@ -1808,7 +1806,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 1.3583
+      "durationMs": 2.27
     },
     {
       "caseId": "out-recipe",
@@ -1830,7 +1828,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 1.417
+      "durationMs": 2.3459
     },
     {
       "caseId": "work-card",
@@ -1856,7 +1854,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.8233
+      "durationMs": 1.3203
     },
     {
       "caseId": "registry",
@@ -1878,12 +1876,12 @@
         "serviceIds": [
           "social-registry"
         ],
-        "message": "Cadastro Único, em etapas: 1) Separe antes: Consultar os critérios oficiais; Conferir a documentação da família; Localizar o atendimento municipal. 2) O atendimento é feito presencialmente. Órgão responsável: Ministério do Desenvolvimento e Assistência Social. 3) Siga os 3 passos da orientação, começando por: Leia a página oficial de inscrição no Cadastro Único. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: GOV.BR · Inscrever-se no Cadastro Único (https://www.gov.br/pt-br/servicos/inscrever-se-no-cadastro-unico-para-programas-sociais-do-governo-federal), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+        "message": "Cadastro Único, em etapas: 1) Separe antes: Do responsável familiar: CPF (preferencial) ou Título de Eleitor; Do responsável familiar: documento com foto e comprovante de endereço (ou declaração de residência); Das demais pessoas da família: CPF, Título de Eleitor, certidão de nascimento ou casamento, RG ou Carteira de Trabalho; Informações sobre a renda e a composição da família para a entrevista. 2) O atendimento é feito presencialmente. Órgão responsável: Ministério do Desenvolvimento e Assistência Social. 3) Siga os 4 passos da orientação, começando por: Localize o posto de atendimento do Cadastro Único na sua cidade (CRAS ou setor responsável pelo Bolsa Família), usando a busca por município da página oficial. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: GOV.BR · Inscrever-se no Cadastro Único (https://www.gov.br/pt-br/servicos/inscrever-se-no-cadastro-unico-para-programas-sociais-do-governo-federal), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
       },
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7145
+      "durationMs": 1.1921
     },
     {
       "caseId": "identity",
@@ -1909,7 +1907,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7245
+      "durationMs": 1.2176
     },
     {
       "caseId": "passport",
@@ -1935,7 +1933,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7535
+      "durationMs": 1.1895
     },
     {
       "caseId": "voter",
@@ -1961,7 +1959,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7021
+      "durationMs": 1.5523
     },
     {
       "caseId": "fgts",
@@ -1988,7 +1986,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.721
+      "durationMs": 1.5643
     },
     {
       "caseId": "unemployment",
@@ -2014,7 +2012,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7221
+      "durationMs": 1.2106
     },
     {
       "caseId": "family",
@@ -2040,7 +2038,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7175
+      "durationMs": 1.2045
     },
     {
       "caseId": "jobs",
@@ -2066,7 +2064,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7229
+      "durationMs": 1.1654
     },
     {
       "caseId": "cpf",
@@ -2087,12 +2085,12 @@
         "serviceIds": [
           "cpf"
         ],
-        "message": "Inscrição no CPF, em etapas: 1) Separe antes: Consultar a documentação na fonte oficial; Identificar o canal adequado ao meu caso; Conferir os dados antes de enviar. 2) O atendimento é feito por canais digitais e presenciais. Órgão responsável: Receita Federal. 3) Siga os 3 passos da orientação, começando por: Abra a página oficial da Receita Federal indicada nesta orientação. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: GOV.BR · Inscrever no CPF (https://www.gov.br/pt-br/servicos/inscrever-no-cpf), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+        "message": "Inscrição no CPF, em etapas: 1) Separe antes: Documento oficial com foto; Certidão de nascimento ou de casamento, se o documento com foto não trouxer naturalidade, filiação e data de nascimento; Para o atendimento por e-mail, uma foto sua segurando o documento, conforme as instruções da página oficial; Se for a uma unidade conveniada, saber que lá há tarifa de R$ 7,00. 2) O atendimento é feito por canais digitais e presenciais. Órgão responsável: Receita Federal. 3) Siga os 3 passos da orientação, começando por: Preencha o formulário eletrônico \"Inscrever no CPF (1ª via)\" na página oficial, ou procure uma unidade da Receita Federal, um Ponto de Atendimento Virtual, o atendimento por e-mail ou uma unidade conveniada (cartório, Banco do Brasil, CAIXA ou Correios). 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: GOV.BR · Inscrever no CPF (https://www.gov.br/pt-br/servicos/inscrever-no-cpf), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
       },
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7345
+      "durationMs": 1.2069
     },
     {
       "caseId": "salary-bonus",
@@ -2118,7 +2116,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7039
+      "durationMs": 1.1603
     },
     {
       "caseId": "bpc",
@@ -2144,7 +2142,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7241
+      "durationMs": 1.8464
     },
     {
       "caseId": "cras",
@@ -2170,7 +2168,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.6937
+      "durationMs": 1.3993
     },
     {
       "caseId": "youth-id",
@@ -2191,12 +2189,12 @@
         "serviceIds": [
           "youth-id"
         ],
-        "message": "Identidade Jovem, em etapas: 1) Separe antes: Consultar os critérios do programa; Conferir as orientações de acesso; Localizar o canal oficial de emissão. 2) O atendimento é feito pelos canais digitais. Órgão responsável: Secretaria Nacional de Juventude. 3) Siga os 3 passos da orientação, começando por: Abra a página oficial da Identidade Jovem. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: GOV.BR · Gerar carteira do ID JOVEM (https://www.gov.br/pt-br/servicos/obter-a-carteira-de-identidade-jovem), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+        "message": "Identidade Jovem, em etapas: 1) Separe antes: Número do NIS ou do CPF; Documento com foto; Cadastro Único atualizado nos últimos 24 meses; O CRAS pode pedir comprovantes de renda e de endereço no cadastro. 2) O atendimento é feito pelos canais digitais. Órgão responsável: Secretaria Nacional de Juventude. 3) Siga os 4 passos da orientação, começando por: Se ainda não tiver Cadastro Único ou se ele tiver mais de 24 meses sem atualização, procure o CRAS do seu município para se cadastrar ou atualizar (o cadastro leva em média 2 dias corridos para ser processado). 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: GOV.BR · Gerar carteira do ID JOVEM (https://www.gov.br/pt-br/servicos/obter-a-carteira-de-identidade-jovem), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
       },
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7181
+      "durationMs": 1.2592
     },
     {
       "caseId": "reform-cpf",
@@ -2217,12 +2215,12 @@
         "serviceIds": [
           "cpf"
         ],
-        "message": "Inscrição no CPF, em etapas: 1) Separe antes: Consultar a documentação na fonte oficial; Identificar o canal adequado ao meu caso; Conferir os dados antes de enviar. 2) O atendimento é feito por canais digitais e presenciais. Órgão responsável: Receita Federal. 3) Siga os 3 passos da orientação, começando por: Abra a página oficial da Receita Federal indicada nesta orientação. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: GOV.BR · Inscrever no CPF (https://www.gov.br/pt-br/servicos/inscrever-no-cpf), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+        "message": "Inscrição no CPF, em etapas: 1) Separe antes: Documento oficial com foto; Certidão de nascimento ou de casamento, se o documento com foto não trouxer naturalidade, filiação e data de nascimento; Para o atendimento por e-mail, uma foto sua segurando o documento, conforme as instruções da página oficial; Se for a uma unidade conveniada, saber que lá há tarifa de R$ 7,00. 2) O atendimento é feito por canais digitais e presenciais. Órgão responsável: Receita Federal. 3) Siga os 3 passos da orientação, começando por: Preencha o formulário eletrônico \"Inscrever no CPF (1ª via)\" na página oficial, ou procure uma unidade da Receita Federal, um Ponto de Atendimento Virtual, o atendimento por e-mail ou uma unidade conveniada (cartório, Banco do Brasil, CAIXA ou Correios). 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: GOV.BR · Inscrever no CPF (https://www.gov.br/pt-br/servicos/inscrever-no-cpf), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
       },
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7103
+      "durationMs": 1.2983
     },
     {
       "caseId": "reform-cpf-status",
@@ -2248,7 +2246,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7303
+      "durationMs": 1.311
     },
     {
       "caseId": "reform-unemployment-1",
@@ -2272,7 +2270,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7393
+      "durationMs": 1.2125
     },
     {
       "caseId": "reform-unemployment-2",
@@ -2296,7 +2294,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7539
+      "durationMs": 1.2533
     },
     {
       "caseId": "reform-unemployment-3",
@@ -2320,7 +2318,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7223
+      "durationMs": 1.214
     },
     {
       "caseId": "reform-fgts",
@@ -2346,7 +2344,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7011
+      "durationMs": 1.2002
     },
     {
       "caseId": "reform-salary-bonus",
@@ -2370,7 +2368,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7063
+      "durationMs": 1.2156
     },
     {
       "caseId": "reform-registry-1",
@@ -2389,12 +2387,12 @@
         "serviceIds": [
           "social-registry"
         ],
-        "message": "Cadastro Único, em etapas: 1) Separe antes: Consultar os critérios oficiais; Conferir a documentação da família; Localizar o atendimento municipal. 2) O atendimento é feito presencialmente. Órgão responsável: Ministério do Desenvolvimento e Assistência Social. 3) Siga os 3 passos da orientação, começando por: Leia a página oficial de inscrição no Cadastro Único. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: GOV.BR · Inscrever-se no Cadastro Único (https://www.gov.br/pt-br/servicos/inscrever-se-no-cadastro-unico-para-programas-sociais-do-governo-federal), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+        "message": "Cadastro Único, em etapas: 1) Separe antes: Do responsável familiar: CPF (preferencial) ou Título de Eleitor; Do responsável familiar: documento com foto e comprovante de endereço (ou declaração de residência); Das demais pessoas da família: CPF, Título de Eleitor, certidão de nascimento ou casamento, RG ou Carteira de Trabalho; Informações sobre a renda e a composição da família para a entrevista. 2) O atendimento é feito presencialmente. Órgão responsável: Ministério do Desenvolvimento e Assistência Social. 3) Siga os 4 passos da orientação, começando por: Localize o posto de atendimento do Cadastro Único na sua cidade (CRAS ou setor responsável pelo Bolsa Família), usando a busca por município da página oficial. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: GOV.BR · Inscrever-se no Cadastro Único (https://www.gov.br/pt-br/servicos/inscrever-se-no-cadastro-unico-para-programas-sociais-do-governo-federal), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
       },
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7252
+      "durationMs": 1.171
     },
     {
       "caseId": "reform-registry-2",
@@ -2413,12 +2411,12 @@
         "serviceIds": [
           "social-registry"
         ],
-        "message": "Cadastro Único, em etapas: 1) Separe antes: Consultar os critérios oficiais; Conferir a documentação da família; Localizar o atendimento municipal. 2) O atendimento é feito presencialmente. Órgão responsável: Ministério do Desenvolvimento e Assistência Social. 3) Siga os 3 passos da orientação, começando por: Leia a página oficial de inscrição no Cadastro Único. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: GOV.BR · Inscrever-se no Cadastro Único (https://www.gov.br/pt-br/servicos/inscrever-se-no-cadastro-unico-para-programas-sociais-do-governo-federal), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+        "message": "Cadastro Único, em etapas: 1) Separe antes: Do responsável familiar: CPF (preferencial) ou Título de Eleitor; Do responsável familiar: documento com foto e comprovante de endereço (ou declaração de residência); Das demais pessoas da família: CPF, Título de Eleitor, certidão de nascimento ou casamento, RG ou Carteira de Trabalho; Informações sobre a renda e a composição da família para a entrevista. 2) O atendimento é feito presencialmente. Órgão responsável: Ministério do Desenvolvimento e Assistência Social. 3) Siga os 4 passos da orientação, começando por: Localize o posto de atendimento do Cadastro Único na sua cidade (CRAS ou setor responsável pelo Bolsa Família), usando a busca por município da página oficial. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: GOV.BR · Inscrever-se no Cadastro Único (https://www.gov.br/pt-br/servicos/inscrever-se-no-cadastro-unico-para-programas-sociais-do-governo-federal), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
       },
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7492
+      "durationMs": 1.1884
     },
     {
       "caseId": "reform-work-card-1",
@@ -2442,7 +2440,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7188
+      "durationMs": 1.236
     },
     {
       "caseId": "reform-work-card-2",
@@ -2466,7 +2464,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.8515
+      "durationMs": 1.337
     },
     {
       "caseId": "reform-jobs",
@@ -2490,7 +2488,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7661
+      "durationMs": 1.2642
     },
     {
       "caseId": "reform-passport",
@@ -2516,7 +2514,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7053
+      "durationMs": 1.3166
     },
     {
       "caseId": "reform-voter",
@@ -2540,7 +2538,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7086
+      "durationMs": 1.2776
     },
     {
       "caseId": "reform-family",
@@ -2564,7 +2562,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7332
+      "durationMs": 1.6009
     },
     {
       "caseId": "reform-bpc",
@@ -2588,7 +2586,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7
+      "durationMs": 1.2249
     },
     {
       "caseId": "reform-registry-typo",
@@ -2612,7 +2610,7 @@
       "problems": [
         "status unsupported (esperado matched)"
       ],
-      "durationMs": 1.321
+      "durationMs": 2.2505
     },
     {
       "caseId": "reform-youth-id",
@@ -2627,16 +2625,16 @@
         "facts": []
       },
       "actual": {
-        "status": "unsupported",
-        "serviceIds": [],
-        "message": "Não encontrei informação suficiente na base para orientar sobre essa dúvida e não vou inventar instruções. Para continuar: 1) reformule citando o nome do serviço (por exemplo, CPF ou FGTS); 2) ou escolha um tema: Documentos (Inscrição no CPF, Situação cadastral do CPF); Trabalho (Carteira de Trabalho Digital, Seguro-desemprego); Assistência social (Cadastro Único, Programa Bolsa Família); 3) para outros assuntos, procure o canal oficial do órgão responsável."
+        "status": "matched",
+        "serviceIds": [
+          "youth-id"
+        ],
+        "message": "Identidade Jovem, em etapas: 1) Separe antes: Número do NIS ou do CPF; Documento com foto; Cadastro Único atualizado nos últimos 24 meses; O CRAS pode pedir comprovantes de renda e de endereço no cadastro. 2) O atendimento é feito pelos canais digitais. Órgão responsável: Secretaria Nacional de Juventude. 3) Siga os 4 passos da orientação, começando por: Se ainda não tiver Cadastro Único ou se ele tiver mais de 24 meses sem atualização, procure o CRAS do seu município para se cadastrar ou atualizar (o cadastro leva em média 2 dias corridos para ser processado). 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: GOV.BR · Gerar carteira do ID JOVEM (https://www.gov.br/pt-br/servicos/obter-a-carteira-de-identidade-jovem), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
       },
-      "retrievalCorrect": false,
-      "responseCorrect": false,
-      "problems": [
-        "status unsupported (esperado matched)"
-      ],
-      "durationMs": 1.4278
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 1.2194
     },
     {
       "caseId": "reform-registry-long",
@@ -2660,7 +2658,7 @@
       "problems": [
         "status unsupported (esperado matched)"
       ],
-      "durationMs": 1.5461
+      "durationMs": 2.6308
     },
     {
       "caseId": "intent-documents-unemployment",
@@ -2687,7 +2685,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 1.4656
+      "durationMs": 2.533
     },
     {
       "caseId": "intent-documents-fgts",
@@ -2714,7 +2712,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 1.4459
+      "durationMs": 2.6908
     },
     {
       "caseId": "intent-cost-passport",
@@ -2741,7 +2739,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 1.4264
+      "durationMs": 2.3225
     },
     {
       "caseId": "intent-cost-family",
@@ -2767,7 +2765,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 1.4495
+      "durationMs": 2.3965
     },
     {
       "caseId": "intent-deadline-fgts",
@@ -2793,7 +2791,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7335
+      "durationMs": 1.3419
     },
     {
       "caseId": "intent-eligibility-bpc",
@@ -2819,7 +2817,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 1.4572
+      "durationMs": 2.318
     },
     {
       "caseId": "intent-eligibility-bonus",
@@ -2845,7 +2843,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 0.7093
+      "durationMs": 1.1728
     },
     {
       "caseId": "intent-where-cras",
@@ -2872,7 +2870,7 @@
       "retrievalCorrect": true,
       "responseCorrect": true,
       "problems": [],
-      "durationMs": 1.406
+      "durationMs": 2.3942
     }
   ]
 }

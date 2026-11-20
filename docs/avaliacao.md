@@ -52,48 +52,49 @@ Cada consulta recebe duas classificações:
 
 **Taxa de acerto** = consultas com `responseCorrect` ÷ total de consultas, por modo. **Tempo médio** = média simples do tempo de `answer_question` (`time.perf_counter`), em milissegundos. Em `results/evaluation.json`, cada consulta registra a pergunta, o esperado, o obtido (status, ids e mensagem), as duas classificações, os problemas encontrados e o tempo.
 
-## Resultados (execução de 20/11/2026, base `services.demo.json` com 15 orientações)
+## Resultados (execução de 19/11/2026, após completar as orientações de CPF, Cadastro Único e ID Jovem; base `services.demo.json` com 15 orientações)
 
 | Indicador | `direct` | `steps` |
 | --- | --- | --- |
 | Perguntas testadas | 56 | 56 |
-| Acertos (resposta) | 53 | 53 |
-| **Taxa de acerto** | **94,6%** | **94,6%** |
-| Taxa de recuperação | 94,6% | 94,6% |
-| **Tempo médio de consulta** | **0,88 ms** | **0,88 ms** |
-| Tempo máximo | 1,63 ms | 1,56 ms |
-| Tamanho médio da mensagem `matched` | 550 caracteres | 878 caracteres |
+| Acertos (resposta) | 54 | 54 |
+| **Taxa de acerto** | **96,4%** | **96,4%** |
+| Taxa de recuperação | 96,4% | 96,4% |
+| **Tempo médio de consulta** | **1,54 ms** | **1,49 ms** |
+| Tempo máximo | 3,48 ms | 2,69 ms |
+| Tamanho médio da mensagem `matched` | 574 caracteres | 933 caracteres |
 
-Por categoria (iguais nos dois modos): diretas 14/14, dúvidas específicas 8/8, fora da base 7/7, limites 5/5, inválidas 3/3, reformulações 16/19.
+Por categoria (iguais nos dois modos): diretas 14/14, dúvidas específicas 8/8, fora da base 7/7, limites 5/5, inválidas 3/3, reformulações 17/19.
 
 Erros (os mesmos nos dois modos):
 
 | Caso | Pergunta | Obtido | Causa |
 | --- | --- | --- | --- |
 | `reform-registry-typo` | `cadunco` | `unsupported` | A busca não tolera erro de digitação |
-| `reform-youth-id` | `carteirinha de estudante jovem baixa renda` | `unsupported` | As palavras não estão nas `keywords` da Identidade Jovem; a cobertura fica abaixo de 60% |
 | `reform-registry-long` | Pergunta longa sobre o cadastro único | `unsupported` | Muitas palavras fora da base derrubam a cobertura mínima |
 
-Os tempos variam um pouco a cada execução e de máquina para máquina; a ordem de grandeza (menos de 2 ms) se mantém.
+Os tempos variam um pouco a cada execução e de máquina para máquina; a ordem de grandeza (poucos milissegundos) se mantém.
+
+Na execução anterior, com as orientações de CPF, Cadastro Único e ID Jovem ainda genéricas, o resultado foi 53/56 (94,6%): `reform-youth-id` (`carteirinha de estudante jovem baixa renda`) era recusada. Com o resumo e o público reais da Identidade Jovem ("jovens de baixa renda"), a busca passou a encontrá-la. O caso mostra que a qualidade do conteúdo da base afeta diretamente a taxa de acerto.
 
 ## Interpretação dos indicadores
 
-- **Nenhuma resposta errada foi dada com confiança.** Os 3 erros são recusas (`unsupported`). O assistente preferiu dizer que não sabia e sugerir temas a apontar uma orientação errada. Para orientação cidadã, esse é o tipo de erro menos grave. As 7 perguntas fora da base também foram recusadas, inclusive `carteira de motorista`, que compartilha a palavra "carteira" com duas orientações.
-- **O ponto fraco é a reformulação (84%)**, não as perguntas diretas (100%). Quem não conhece o nome do serviço ou escreve com erro é exatamente o público com menos familiaridade com portais públicos.
+- **Nenhuma resposta errada foi dada com confiança.** Os 2 erros são recusas (`unsupported`). O assistente preferiu dizer que não sabia e sugerir temas a apontar uma orientação errada. Para orientação cidadã, esse é o tipo de erro menos grave. As 7 perguntas fora da base também foram recusadas, inclusive `carteira de motorista`, que compartilha a palavra "carteira" com duas orientações.
+- **O ponto fraco é a reformulação (89%)**, não as perguntas diretas (100%). Quem não conhece o nome do serviço ou escreve com erro é exatamente o público com menos familiaridade com portais públicos.
 - **A taxa de resposta é igual à de recuperação.** Sempre que a orientação certa foi escolhida, a mensagem trouxe fonte, aviso e os fatos esperados. Isso mostra que as regras dos modelos são cumpridas, mas também que a verificação automática de fatos é pouco exigente (veja as limitações).
 - **Os dois modelos acertam o mesmo.** Eles usam a mesma busca e as mesmas regras, então a escolha entre eles depende de clareza, não de acerto.
-- **O tempo não é um problema:** menos de 1 ms em média, porque a base tem 15 registros e a busca é linear em memória.
+- **O tempo não é um problema:** cerca de 1,5 ms em média, porque a base tem 15 registros e a busca é linear em memória.
 
 ## Comparação dos modelos de resposta
 
 | Critério | `direct` | `steps` |
 | --- | --- | --- |
-| Acerto | 94,6% | 94,6% |
-| Fonte e aviso nas respostas `matched` | 38/38 | 38/38 |
-| Tamanho médio | 550 caracteres | 878 caracteres (+60%) |
+| Acerto | 96,4% | 96,4% |
+| Fonte e aviso nas respostas `matched` | 39/39 | 39/39 |
+| Tamanho médio | 574 caracteres | 933 caracteres (+63%) |
 | Estrutura | Varia conforme a dúvida (documentos, local, custo...) | Sempre as mesmas etapas: separar → canal → passos → confirmar |
 
-- **Mais claro: `direct`.** A informação pedida aparece na primeira frase. No `steps`, uma pergunta de custo recebe também a preparação, o canal e os passos, que a pessoa não pediu. O texto é 60% maior e chega a quase 1.600 caracteres.
+- **Mais claro: `direct`.** A informação pedida aparece na primeira frase. No `steps`, uma pergunta de custo recebe também a preparação, o canal e os passos, que a pessoa não pediu. O texto é 63% maior e chega a quase 1.600 caracteres.
 - **Mais consistente: `steps`.** A ordem das etapas nunca muda, o que ajuda quem quer se preparar para ir ao atendimento e facilita comparar duas orientações.
 - **Decisão:** `direct` continua como padrão e `steps` como opção. A escolha deve ser confirmada no teste de usabilidade (`docs/teste-usabilidade.md`).
 
@@ -101,7 +102,7 @@ Os tempos variam um pouco a cada execução e de máquina para máquina; a ordem
 
 1. **Tolerância a erros de digitação:** comparar termos com distância de edição 1 (`cadunco` → `cadunico`) só quando a busca exata não encontra nada. Resolveria `reform-registry-typo` sem afrouxar a recusa de perguntas fora da base.
 2. **Cobertura calculada sobre o vocabulário da base:** em perguntas longas, ignorar no cálculo dos 60% as palavras que não aparecem em nenhum registro, mas exigir pelo menos dois termos fortes. Resolveria `reform-registry-long`. Precisa ser testada contra os 7 casos fora da base para não gerar respostas arbitrárias.
-3. **Enriquecer `keywords` (pacote 1):** incluir termos populares como `carteirinha`, `meia-entrada` e `estudante` na Identidade Jovem e `cadunico` com variações. É a correção mais barata para `reform-youth-id`.
+3. **Enriquecer `keywords` (pacote 1):** incluir termos populares como `carteirinha` e `meia-entrada` na Identidade Jovem e `cadunico` com variações. Completar o conteúdo da Identidade Jovem já resolveu `reform-youth-id`.
 4. **Encurtar o modelo `steps`:** omitir a etapa de preparação quando a dúvida é de custo ou prazo, aproximando o tamanho do `direct` sem perder a estrutura.
 
 ## Limitações da avaliação

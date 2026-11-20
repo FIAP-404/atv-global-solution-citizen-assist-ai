@@ -176,7 +176,7 @@ class EvaluationTests(unittest.TestCase):
         for mode in ("direct", "steps"):
             self.assertEqual(
                 report["summary"][mode]["failedCases"],
-                ["reform-registry-typo", "reform-youth-id", "reform-registry-long"],
+                ["reform-registry-typo", "reform-registry-long"],
             )
 
 
