@@ -13,7 +13,7 @@ Assistente digital introdutório de orientação cidadã: consulta uma base de i
 | Joedson da Silva Souza | RM573981 |
 | Mylena Ramalho da Silva Torquato | RM572383 |
 
-- **Vídeo de apresentação (YouTube, não listado):** [PREENCHER: link]
+- **Vídeo de apresentação (YouTube, não listado):** https://youtu.be/6wRLPEqNLwY
 - **Repositório:** [FIAP-404/atv-global-solution-citizen-assist-ai](https://github.com/FIAP-404/atv-global-solution-citizen-assist-ai)
 
 ## 1. Problema, público e temas
