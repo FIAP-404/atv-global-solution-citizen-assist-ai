@@ -1,6 +1,6 @@
 # Python API integration contract
 
-Status: the frontend adapter and coordinator FastAPI transport now share this interface. The four Python algorithm modules are intentionally pending. See `python-quickstart.md` for commands and `team-work-packages.md` for exact function signatures and ownership.
+Status: the frontend adapter and coordinator FastAPI transport share this interface. The four Python modules (knowledge, search, assistant and evaluation) are implemented; response rules are in `modelos-de-resposta.md` and evaluation results in `avaliacao.md`. See `python-quickstart.md` for commands and `team-work-packages.md` for exact function signatures and ownership.
 
 Approved architecture: JSON knowledge base, source-bound deterministic response instructions and **no external AI**. The group chooses who owns each module. The coordinator owns API/terminal integration.
 
@@ -10,7 +10,7 @@ The React application runs against the local JSON fixture when `VITE_API_BASE_UR
 
 The only frontend network boundary is `frontend/src/api/client.ts`. Set CORS on the Python server to allow the actual frontend origin, usually `http://127.0.0.1:5173`. Do not embed secrets in any `VITE_` variable: these values are public in the browser bundle.
 
-Start the prepared server with `python -m uvicorn backend.api:app --host 127.0.0.1 --port 8000 --reload` in the configured virtual environment. `/docs` exposes the interactive schema. `GET /api/v1/health` confirms the HTTP transport only. Consultations return HTTP 503 with `error="module_pending"` until the required core functions are implemented; there is no demo fallback in the Python server. Its final data path is `data/services.json`, which the content owner must create after review.
+Start the prepared server with `python -m uvicorn backend.api:app --host 127.0.0.1 --port 8000 --reload` in the configured virtual environment. `/docs` exposes the interactive schema. `GET /api/v1/health` confirms the HTTP transport only. HTTP 503 with `error="module_pending"` is only returned if a module raises `ModuleNotReadyError`; there is no demo fallback in the Python server. The data path is set in `backend/config.py` (currently `data/services.demo.json`).
 
 ## Service record
 

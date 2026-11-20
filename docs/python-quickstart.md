@@ -42,7 +42,7 @@ Os testes iniciais verificam API e terminal usando funções substitutas nos tes
 - Verificação do transporte: [http://127.0.0.1:8000/api/v1/health](http://127.0.0.1:8000/api/v1/health).
 - Catálogo: [http://127.0.0.1:8000/api/v1/services](http://127.0.0.1:8000/api/v1/services).
 
-Enquanto os módulos estiverem pendentes, consultas retornam **HTTP 503**, com `error="module_pending"` e o módulo que falta implementar. Um retorno positivo de `/health` confirma apenas o servidor HTTP, não a conclusão do trabalho.
+Os quatro módulos (base, busca, respostas e avaliação) estão implementados, e as consultas retornam respostas reais da base. A resposta **HTTP 503** com `error="module_pending"` só aparece se algum módulo voltar a levantar `ModuleNotReadyError`. Um retorno positivo de `/health` confirma apenas o servidor HTTP.
 
 ## Terminal
 
@@ -52,9 +52,9 @@ Enquanto os módulos estiverem pendentes, consultas retornam **HTTP 503**, com `
 .\.venv\Scripts\python.exe -m src.main --evaluate --output results/evaluation.json
 ```
 
-Esses comandos também informam erro explícito enquanto a função necessária estiver pendente. A base final esperada é `data/services.json`. Não renomeiem a base de demonstração como se o conteúdo já tivesse sido verificado.
+A base usada é a definida em `backend/config.py` (`data/services.demo.json`, com as orientações revisadas pelo pacote 1). Erros de entrada, como uma pergunta acima de 500 caracteres, encerram o comando com código 2 e uma mensagem explícita.
 
-Para usar o conjunto final de perguntas, especifiquem `--cases data/test-cases.json` depois de criarem esse arquivo. Sem esse argumento, o comando começa pelos 12 cenários iniciais.
+`--evaluate` usa por padrão o conjunto de avaliação `data/demo-test-cases.json` (56 perguntas) e grava `results/evaluation.json`. Critérios e resultados em [`avaliacao.md`](avaliacao.md).
 
 ## Conectar o front-end
 
@@ -67,7 +67,7 @@ npm run dev
 
 O arquivo de exemplo já aponta para `http://127.0.0.1:8000/api/v1`. Reinicie o Vite quando alterar variáveis de ambiente.
 
-Os modos são separados: sem `.env.local`, a interface usa a demonstração em JavaScript; com o endereço configurado, ela usa Python e exibe erro se uma função estiver pendente. Não ocorre retorno silencioso à demonstração quando o backend falha.
+Os modos são separados: sem `.env.local`, a interface usa a demonstração em JavaScript; com o endereço configurado, ela usa Python e exibe erro se o servidor falhar. Não ocorre retorno silencioso à demonstração quando o backend falha.
 
 ## Entregar a própria parte
 

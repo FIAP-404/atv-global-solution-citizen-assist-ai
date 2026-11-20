@@ -34,7 +34,7 @@ Encontrar o canal oficial certo para um serviço público costuma exigir navegar
 
 ## 2. Base de conhecimento
 
-Arquivo JSON em `data/services.json` (caminho definido em `backend/config.py`). A leitura e a validação ficam em `backend/knowledge.py`, sem depender da camada HTTP.
+Arquivo JSON em `data/services.demo.json` (caminho definido em `backend/config.py`). A leitura e a validação ficam em `backend/knowledge.py`, sem depender da camada HTTP.
 
 | Campo | Descrição |
 |---|---|
@@ -57,7 +57,7 @@ Arquivo JSON em `data/services.json` (caminho definido em `backend/config.py`). 
 **Manutenção:** acrescentar ou corrigir uma orientação exige editar apenas o JSON. Para validar:
 
 ```bash
-python -m backend.knowledge                      # valida data/services.json
+python -m backend.knowledge                      # valida data/services.demo.json
 python -m backend.knowledge --require-verified   # exige data de verificação em todas
 ```
 
@@ -167,15 +167,21 @@ Para conectar ao backend, copie `frontend/.env.example` para `frontend/.env.loca
 
 ## 7. Exemplos
 
-| Entrada | Resultado esperado |
-|---|---|
-| `Onde faço o CadÚnico?` | Orientação do CadÚnico, com fonte (GOV.BR) e aviso para confirmar requisitos |
-| `passaporte brasileiro` | Orientação do passaporte, com fonte |
-| `documento` | Pergunta ambígua: oferece CPF, identidade e título eleitoral |
-| `Qual a previsão do tempo?` | Aviso de que não há orientação na base, com temas disponíveis |
-| `   ` (vazia) | Mensagem pedindo uma pergunta ou a escolha de um tema |
+Respostas reais do terminal (`python -m src.main --question "..." --mode direct`), com a base `data/services.demo.json`. Os links das fontes foram abreviados aqui; a resposta traz o link completo.
 
-[PREENCHER: substituir pelas respostas reais obtidas na execução, com as fontes.]
+| Entrada | Status | Resposta obtida (`message`) |
+|---|---|---|
+| `Onde faço o CadÚnico?` | `matched` (`social-registry`) | Cadastro Único: O atendimento é feito presencialmente. Órgão responsável: Ministério do Desenvolvimento e Assistência Social. Para começar: Leia a página oficial de inscrição no Cadastro Único. Fonte: GOV.BR · Inscrever-se no Cadastro Único (gov.br/pt-br/servicos/inscrever-se-no-cadastro-unico-...), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento. |
+| `quanto custa o passaporte?` | `matched` (`passport`) | Passaporte brasileiro: A base não informa valores ou taxas para Passaporte brasileiro, então não vou estimar; esse dado precisa ser conferido na fonte oficial. O atendimento é feito por canais digitais e presenciais. Órgão responsável: Polícia Federal. Fonte: Polícia Federal · Passaporte (gov.br/pt-br/servicos/obter-passaporte-comum-para-brasileiro), verificada em 19/11/2026. Aviso: (...) |
+| `documento` | `ambiguous` (`cpf`, `identity`, `voter`) | Sua pergunta pode se referir a mais de um assunto: Inscrição no CPF, Carteira de Identidade Nacional ou Título e situação eleitoral. Qual deles você procura? Escolha uma opção para ver a orientação com a fonte. |
+| `Qual a previsão do tempo?` | `unsupported` | Não encontrei informação suficiente na base para orientar sobre essa dúvida e não vou inventar instruções. Posso ajudar com: Documentos (Inscrição no CPF, Situação cadastral do CPF); Trabalho (Carteira de Trabalho Digital, Seguro-desemprego); Assistência social (Cadastro Único, Programa Bolsa Família). Tente reformular citando o serviço que procura. |
+| `   ` (vazia) | `empty` | Digite sua pergunta ou escolha um dos temas (Documentos, Trabalho, Assistência social). |
+
+Mesma consulta no modelo passo a passo (`--mode steps`), para `Quais documentos preciso levar para o seguro-desemprego?`:
+
+> Seguro-desemprego, em etapas: 1) Separe antes: Ter o Documento do Requerimento do Seguro-Desemprego, entregue pelo empregador no momento da dispensa sem justa causa; Ter o número do CPF; Ter conta gov.br de nível Bronze, Prata ou Ouro; (...) 2) O atendimento é feito por canais digitais e presenciais. Órgão responsável: Ministério do Trabalho e Emprego. 3) Siga os 4 passos da orientação, começando por: Peça o benefício pelo Portal de Serviços, pelo aplicativo da Carteira de Trabalho Digital, pelo telefone 158 ou pela Plataforma FACILITA (...). 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: GOV.BR · Solicitar o Seguro-Desemprego (gov.br/pt-br/servicos/solicitar-o-seguro-desemprego), verificada em 19/11/2026. Aviso: (...)
+
+Na API e no terminal, a resposta `matched` também inclui o registro completo em `services` (resumo, passos, preparação e limitações), que a interface web exibe abaixo da mensagem.
 
 ## 8. Clareza, acessibilidade, privacidade e informação não oficial
 
@@ -186,7 +192,7 @@ Para conectar ao backend, copie `frontend/.env.example` para `frontend/.env.loca
 
 ## 9. Uso de inteligência artificial
 
-O uso de IA e a validação crítica feita pela equipe estão registrados em [`docs/uso_ia.md`](docs/uso_ia.md). O protótipo não chama nenhum modelo externo.
+O uso de IA e a validação crítica feita pela equipe estão registrados em [`docs/ai-usage.md`](docs/ai-usage.md). O protótipo não chama nenhum modelo externo.
 
 ## 10. Organização do repositório
 

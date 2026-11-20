@@ -21,3 +21,18 @@ The FIAP logo and reference images were supplied by the user. They were preserve
 The team must understand and review the generated code, verify source content and URLs, implement the Python modules, compare the response instructions and record actual evaluation and usability results. No final accuracy, timing or user-study outcome is claimed here.
 
 The assignment explicitly mentions `docs/uso_ia.md`. This project currently uses English names under the user's global coding instructions. The coordinator must reconcile the required submission path before delivery without silently claiming this document satisfies an exact filename requirement.
+
+## Packages 3 and 4 (responses and evaluation), 2026-11-19/20
+
+Claude Code (Anthropic) assisted Joedson da Silva Souza in implementing `backend/assistant.py` and `backend/evaluation.py`, writing `tests/test_assistant.py` and `tests/test_evaluation.py`, expanding `data/demo-test-cases.json`, and drafting `docs/modelos-de-resposta.md`, `docs/avaliacao.md`, `docs/teste-usabilidade.md` and the README sections on results and examples. It also updated two package 1 tests that depended on outdated base values.
+
+The assistant itself still uses no external AI: answers are built by fixed rules from the knowledge-base fields.
+
+Critical validation:
+
+- Every rule was checked against real outputs in the terminal and through a running API server, and is covered by unit tests.
+- The evaluation results in `results/evaluation.json` come from an actual run, not from estimates. Three expected failures (typo, distant rewording, long question) were kept to show real limits instead of reporting 100%.
+- The usability session was **not** simulated: `docs/teste-usabilidade.md` contains only the task script and blank tables to be filled in by the team after a session with a real participant.
+- The team must still read and understand the generated code and review the wording of the answers before delivery.
+
+Note: the service records now have review dates (package 1). The earlier statement in this file that all records are drafts with null dates refers to the previous phase.

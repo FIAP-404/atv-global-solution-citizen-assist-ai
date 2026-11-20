@@ -30,3 +30,14 @@ The terminal now derives mode choices from `ResponseMode` and validates input th
 The knowledge loader, real search, response instructions and evaluation algorithm have not been implemented. No complete Python consultation, verified final base, measured accuracy/latency, response-model comparison or usability result is claimed. The mock-based coordinator tests are not the assignment's final evaluation.
 
 The group still chooses the four module owners. Final integration, course submission filenames, names/RMs, video and two-link TXT remain coordinator tasks.
+
+## Update: packages 3 and 4 implemented (2026-11-20)
+
+The section above records the scaffold before the team's modules. After packages 1–4 were implemented:
+
+- `python -m unittest discover -s tests -v`: 94 tests passed (Python 3.12.3), including `tests/test_assistant.py` and `tests/test_evaluation.py`.
+- A real Uvicorn process on loopback port 8765: `GET /api/v1/services` returned HTTP 200; `POST /api/v1/assistant/query` returned `matched` (1 service) for `Onde faço o CadÚnico?`, `ambiguous` (3) for `documento` in `steps` mode, `unsupported` (0) for `Qual a previsão do tempo?` and `empty` (0) for a blank question; a 501-character question returned HTTP 422.
+- `python -m src.main --question "..."` returns real source-bound answers; examples are in the README, section 7.
+- `python -m src.main --evaluate` wrote `results/evaluation.json`: 53/56 correct (94.6%) in both response modes, mean 0.88 ms per query. See `avaliacao.md`.
+
+Still not proven: the usability session with a real user (`teste-usabilidade.md`) and the end-to-end check through the React interface connected to this server.
