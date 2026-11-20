@@ -1,0 +1,2878 @@
+{
+  "generatedAt": "2026-11-20T00:23:16+00:00",
+  "externalAi": false,
+  "records": 15,
+  "criteria": {
+    "accuracy": "respostas corretas (responseCorrect) ÷ perguntas, por modo",
+    "retrievalAccuracy": "status e orientação corretos ÷ perguntas, por modo",
+    "meanDurationMs": "média simples do tempo de answer_question, em milissegundos"
+  },
+  "summary": {
+    "direct": {
+      "total": 56,
+      "correct": 53,
+      "accuracy": 0.9464,
+      "retrievalCorrect": 53,
+      "retrievalAccuracy": 0.9464,
+      "meanDurationMs": 0.8781,
+      "maxDurationMs": 1.6193,
+      "failedCases": [
+        "reform-registry-typo",
+        "reform-youth-id",
+        "reform-registry-long"
+      ],
+      "byCategory": {
+        "limit": {
+          "total": 5,
+          "correct": 5,
+          "accuracy": 1.0
+        },
+        "invalid": {
+          "total": 3,
+          "correct": 3,
+          "accuracy": 1.0
+        },
+        "out-of-scope": {
+          "total": 7,
+          "correct": 7,
+          "accuracy": 1.0
+        },
+        "direct": {
+          "total": 14,
+          "correct": 14,
+          "accuracy": 1.0
+        },
+        "reformulation": {
+          "total": 19,
+          "correct": 16,
+          "accuracy": 0.8421
+        },
+        "intent": {
+          "total": 8,
+          "correct": 8,
+          "accuracy": 1.0
+        }
+      }
+    },
+    "steps": {
+      "total": 56,
+      "correct": 53,
+      "accuracy": 0.9464,
+      "retrievalCorrect": 53,
+      "retrievalAccuracy": 0.9464,
+      "meanDurationMs": 0.875,
+      "maxDurationMs": 1.5461,
+      "failedCases": [
+        "reform-registry-typo",
+        "reform-youth-id",
+        "reform-registry-long"
+      ],
+      "byCategory": {
+        "limit": {
+          "total": 5,
+          "correct": 5,
+          "accuracy": 1.0
+        },
+        "invalid": {
+          "total": 3,
+          "correct": 3,
+          "accuracy": 1.0
+        },
+        "out-of-scope": {
+          "total": 7,
+          "correct": 7,
+          "accuracy": 1.0
+        },
+        "direct": {
+          "total": 14,
+          "correct": 14,
+          "accuracy": 1.0
+        },
+        "reformulation": {
+          "total": 19,
+          "correct": 16,
+          "accuracy": 0.8421
+        },
+        "intent": {
+          "total": 8,
+          "correct": 8,
+          "accuracy": 1.0
+        }
+      }
+    }
+  },
+  "cases": [
+    {
+      "caseId": "empty",
+      "category": "limit",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "   ",
+      "expected": {
+        "status": "empty",
+        "serviceId": null,
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "empty",
+        "serviceIds": [],
+        "message": "Digite sua pergunta ou escolha um dos temas (Documentos, Trabalho, Assistência social)."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.0952
+    },
+    {
+      "caseId": "empty-punctuation",
+      "category": "limit",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "?!",
+      "expected": {
+        "status": "empty",
+        "serviceId": null,
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "empty",
+        "serviceIds": [],
+        "message": "Digite sua pergunta ou escolha um dos temas (Documentos, Trabalho, Assistência social)."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.0086
+    },
+    {
+      "caseId": "ambiguous",
+      "category": "limit",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "documento",
+      "expected": {
+        "status": "ambiguous",
+        "serviceId": null,
+        "serviceIds": [
+          "cpf",
+          "identity",
+          "voter"
+        ],
+        "facts": []
+      },
+      "actual": {
+        "status": "ambiguous",
+        "serviceIds": [
+          "cpf",
+          "identity",
+          "voter"
+        ],
+        "message": "Sua pergunta pode se referir a mais de um assunto: Inscrição no CPF, Carteira de Identidade Nacional ou Título e situação eleitoral. Qual deles você procura? Escolha uma opção para ver a orientação com a fonte."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7943
+    },
+    {
+      "caseId": "ambiguous-carteira",
+      "category": "limit",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "carteira",
+      "expected": {
+        "status": "ambiguous",
+        "serviceId": null,
+        "serviceIds": [
+          "identity",
+          "work-card"
+        ],
+        "facts": []
+      },
+      "actual": {
+        "status": "ambiguous",
+        "serviceIds": [
+          "identity",
+          "work-card"
+        ],
+        "message": "Sua pergunta pode se referir a mais de um assunto: Carteira de Identidade Nacional ou Carteira de Trabalho Digital. Qual deles você procura? Escolha uma opção para ver a orientação com a fonte."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7828
+    },
+    {
+      "caseId": "stop-words-only",
+      "category": "limit",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "como",
+      "expected": {
+        "status": "unsupported",
+        "serviceId": null,
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "unsupported",
+        "serviceIds": [],
+        "message": "Não encontrei informação suficiente na base para orientar sobre essa dúvida e não vou inventar instruções. Posso ajudar com: Documentos (Inscrição no CPF, Situação cadastral do CPF); Trabalho (Carteira de Trabalho Digital, Seguro-desemprego); Assistência social (Cadastro Único, Programa Bolsa Família). Tente reformular citando o serviço que procura."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.0475
+    },
+    {
+      "caseId": "too-long",
+      "category": "invalid",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "Bom dia, eu queria entender uma situação bem complicada que está acontecendo comigo e com a minha família desde o começo do ano, porque eu trabalhei muitos anos numa empresa pequena aqui do bairro, depois fui dispensado, minha esposa também ficou sem renda, temos três filhos pequenos em casa, um deles com problema de saúde, e eu não sei direito por onde começar, se preciso ir em algum lugar, se dá para fazer pela internet, quais papéis tenho que juntar, quanto tempo isso tudo demora e se a gente tem direito a algum tipo de ajuda do governo enquanto não arrumo outro emprego, então gostaria de uma explicação completa, por favor.",
+      "expected": {
+        "status": "error",
+        "serviceId": null,
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "error",
+        "serviceIds": [],
+        "message": "A pergunta tem 634 caracteres; o limite é 500."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.0044
+    },
+    {
+      "caseId": "invalid-mode",
+      "category": "invalid",
+      "mode": "direct",
+      "requestMode": "audio",
+      "question": "CPF",
+      "expected": {
+        "status": "error",
+        "serviceId": null,
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "error",
+        "serviceIds": [],
+        "message": "Modo de resposta inválido: 'audio'. Use ['direct', 'steps']."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.0044
+    },
+    {
+      "caseId": "nonexistent-option",
+      "category": "invalid",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "opção 4",
+      "expected": {
+        "status": "unsupported",
+        "serviceId": null,
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "unsupported",
+        "serviceIds": [],
+        "message": "Não encontrei informação suficiente na base para orientar sobre essa dúvida e não vou inventar instruções. Posso ajudar com: Documentos (Inscrição no CPF, Situação cadastral do CPF); Trabalho (Carteira de Trabalho Digital, Seguro-desemprego); Assistência social (Cadastro Único, Programa Bolsa Família). Tente reformular citando o serviço que procura."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 1.3816
+    },
+    {
+      "caseId": "unsupported",
+      "category": "out-of-scope",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "Qual a previsão do tempo?",
+      "expected": {
+        "status": "unsupported",
+        "serviceId": null,
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "unsupported",
+        "serviceIds": [],
+        "message": "Não encontrei informação suficiente na base para orientar sobre essa dúvida e não vou inventar instruções. Posso ajudar com: Documentos (Inscrição no CPF, Situação cadastral do CPF); Trabalho (Carteira de Trabalho Digital, Seguro-desemprego); Assistência social (Cadastro Único, Programa Bolsa Família). Tente reformular citando o serviço que procura."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 1.3662
+    },
+    {
+      "caseId": "out-driver-license",
+      "category": "out-of-scope",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "Como tirar carteira de motorista?",
+      "expected": {
+        "status": "unsupported",
+        "serviceId": null,
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "unsupported",
+        "serviceIds": [],
+        "message": "Não encontrei informação suficiente na base para orientar sobre essa dúvida e não vou inventar instruções. Posso ajudar com: Documentos (Inscrição no CPF, Situação cadastral do CPF); Trabalho (Carteira de Trabalho Digital, Seguro-desemprego); Assistência social (Cadastro Único, Programa Bolsa Família). Tente reformular citando o serviço que procura."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 1.4525
+    },
+    {
+      "caseId": "out-cnpj",
+      "category": "out-of-scope",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "Quero abrir uma empresa e tirar o CNPJ",
+      "expected": {
+        "status": "unsupported",
+        "serviceId": null,
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "unsupported",
+        "serviceIds": [],
+        "message": "Não encontrei informação suficiente na base para orientar sobre essa dúvida e não vou inventar instruções. Posso ajudar com: Documentos (Inscrição no CPF, Situação cadastral do CPF); Trabalho (Carteira de Trabalho Digital, Seguro-desemprego); Assistência social (Cadastro Único, Programa Bolsa Família). Tente reformular citando o serviço que procura."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 1.3937
+    },
+    {
+      "caseId": "out-income-tax",
+      "category": "out-of-scope",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "Como declarar imposto de renda?",
+      "expected": {
+        "status": "unsupported",
+        "serviceId": null,
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "unsupported",
+        "serviceIds": [],
+        "message": "Não encontrei informação suficiente na base para orientar sobre essa dúvida e não vou inventar instruções. Posso ajudar com: Documentos (Inscrição no CPF, Situação cadastral do CPF); Trabalho (Carteira de Trabalho Digital, Seguro-desemprego); Assistência social (Cadastro Único, Programa Bolsa Família). Tente reformular citando o serviço que procura."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 1.3737
+    },
+    {
+      "caseId": "out-sus",
+      "category": "out-of-scope",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "Como marcar consulta no SUS?",
+      "expected": {
+        "status": "unsupported",
+        "serviceId": null,
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "unsupported",
+        "serviceIds": [],
+        "message": "Não encontrei informação suficiente na base para orientar sobre essa dúvida e não vou inventar instruções. Posso ajudar com: Documentos (Inscrição no CPF, Situação cadastral do CPF); Trabalho (Carteira de Trabalho Digital, Seguro-desemprego); Assistência social (Cadastro Único, Programa Bolsa Família). Tente reformular citando o serviço que procura."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 1.3586
+    },
+    {
+      "caseId": "out-football",
+      "category": "out-of-scope",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "Qual o melhor time de futebol?",
+      "expected": {
+        "status": "unsupported",
+        "serviceId": null,
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "unsupported",
+        "serviceIds": [],
+        "message": "Não encontrei informação suficiente na base para orientar sobre essa dúvida e não vou inventar instruções. Posso ajudar com: Documentos (Inscrição no CPF, Situação cadastral do CPF); Trabalho (Carteira de Trabalho Digital, Seguro-desemprego); Assistência social (Cadastro Único, Programa Bolsa Família). Tente reformular citando o serviço que procura."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 1.3607
+    },
+    {
+      "caseId": "out-recipe",
+      "category": "out-of-scope",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "receita de bolo de cenoura",
+      "expected": {
+        "status": "unsupported",
+        "serviceId": null,
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "unsupported",
+        "serviceIds": [],
+        "message": "Não encontrei informação suficiente na base para orientar sobre essa dúvida e não vou inventar instruções. Posso ajudar com: Documentos (Inscrição no CPF, Situação cadastral do CPF); Trabalho (Carteira de Trabalho Digital, Seguro-desemprego); Assistência social (Cadastro Único, Programa Bolsa Família). Tente reformular citando o serviço que procura."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 1.4225
+    },
+    {
+      "caseId": "work-card",
+      "category": "direct",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "Como acessar a Carteira de Trabalho Digital?",
+      "expected": {
+        "status": "matched",
+        "serviceId": "work-card",
+        "serviceIds": null,
+        "facts": [
+          "Ministério do Trabalho e Emprego"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "work-card"
+        ],
+        "message": "Carteira de Trabalho Digital: Para começar: Abra o aplicativo Carteira de Trabalho Digital (Android ou iOS) ou o acesso web indicado na página oficial do serviço. O atendimento é feito pelos canais digitais. Órgão responsável: Ministério do Trabalho e Emprego. Fonte: GOV.BR · Obter a Carteira de Trabalho (https://www.gov.br/pt-br/servicos/obter-a-carteira-de-trabalho), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.8667
+    },
+    {
+      "caseId": "registry",
+      "category": "direct",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "Onde faço o CadÚnico?",
+      "expected": {
+        "status": "matched",
+        "serviceId": "social-registry",
+        "serviceIds": null,
+        "facts": [
+          "presencialmente",
+          "Ministério do Desenvolvimento e Assistência Social"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "social-registry"
+        ],
+        "message": "Cadastro Único: O atendimento é feito presencialmente. Órgão responsável: Ministério do Desenvolvimento e Assistência Social. Para começar: Leia a página oficial de inscrição no Cadastro Único. Fonte: GOV.BR · Inscrever-se no Cadastro Único (https://www.gov.br/pt-br/servicos/inscrever-se-no-cadastro-unico-para-programas-sociais-do-governo-federal), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7265
+    },
+    {
+      "caseId": "identity",
+      "category": "direct",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "Preciso do meu RG",
+      "expected": {
+        "status": "matched",
+        "serviceId": "identity",
+        "serviceIds": null,
+        "facts": [
+          "órgãos estaduais"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "identity"
+        ],
+        "message": "Carteira de Identidade Nacional: Para começar: Consulte o portal oficial da Carteira de Identidade Nacional. O atendimento é feito presencialmente. Órgão responsável: Governo Federal e órgãos estaduais. Fonte: Governo Digital · Carteira de Identidade Nacional (https://www.gov.br/governodigital/pt-br/identidade/cin), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7173
+    },
+    {
+      "caseId": "passport",
+      "category": "direct",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "passaporte brasileiro",
+      "expected": {
+        "status": "matched",
+        "serviceId": "passport",
+        "serviceIds": null,
+        "facts": [
+          "Polícia Federal"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "passport"
+        ],
+        "message": "Passaporte brasileiro: Para começar: Acesse a área de passaporte da Polícia Federal. O atendimento é feito por canais digitais e presenciais. Órgão responsável: Polícia Federal. Fonte: Polícia Federal · Passaporte (https://www.gov.br/pt-br/servicos/obter-passaporte-comum-para-brasileiro), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.711
+    },
+    {
+      "caseId": "voter",
+      "category": "direct",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "título eleitoral",
+      "expected": {
+        "status": "matched",
+        "serviceId": "voter",
+        "serviceIds": null,
+        "facts": [
+          "Justiça Eleitoral"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "voter"
+        ],
+        "message": "Título e situação eleitoral: Para começar: Acesse o autoatendimento eleitoral do TSE. O atendimento é feito por canais digitais e presenciais. Órgão responsável: Justiça Eleitoral. Fonte: TSE · Autoatendimento eleitoral (https://www.tse.jus.br/servicos-eleitorais/autoatendimento-eleitoral), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.71
+    },
+    {
+      "caseId": "fgts",
+      "category": "direct",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "Como consultar FGTS?",
+      "expected": {
+        "status": "matched",
+        "serviceId": "fgts",
+        "serviceIds": null,
+        "facts": [
+          "Caixa Econômica Federal",
+          "APP FGTS"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "fgts"
+        ],
+        "message": "Informações sobre o FGTS: Para começar: Abra o APP FGTS, da CAIXA, e consulte o saldo; no aplicativo também é possível alterar dados cadastrais. O atendimento é feito por canais digitais e presenciais. Órgão responsável: Caixa Econômica Federal. Fonte: GOV.BR · Sacar o FGTS (https://www.gov.br/pt-br/servicos/sacar-o-fgts), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7625
+    },
+    {
+      "caseId": "unemployment",
+      "category": "direct",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "seguro-desemprego",
+      "expected": {
+        "status": "matched",
+        "serviceId": "unemployment",
+        "serviceIds": null,
+        "facts": [
+          "Ministério do Trabalho e Emprego"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "unemployment"
+        ],
+        "message": "Seguro-desemprego: Para começar: Peça o benefício pelo Portal de Serviços, pelo aplicativo da Carteira de Trabalho Digital, pelo telefone 158 ou pela Plataforma FACILITA (atendimento.trabalho.gov.br). Segundo a fonte, o pedido leva até 5 minutos. O atendimento é feito por canais digitais e presenciais. Órgão responsável: Ministério do Trabalho e Emprego. Fonte: GOV.BR · Solicitar o Seguro-Desemprego (https://www.gov.br/pt-br/servicos/solicitar-o-seguro-desemprego), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7059
+    },
+    {
+      "caseId": "family",
+      "category": "direct",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "Bolsa Família",
+      "expected": {
+        "status": "matched",
+        "serviceId": "family-benefit",
+        "serviceIds": null,
+        "facts": [
+          "Ministério do Desenvolvimento e Assistência Social"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "family-benefit"
+        ],
+        "message": "Programa Bolsa Família: Para começar: Consulte a página institucional do Bolsa Família. O atendimento é feito por canais digitais e presenciais. Órgão responsável: Ministério do Desenvolvimento e Assistência Social. Fonte: MDS · Bolsa Família (https://www.gov.br/mds/pt-br/acoes-e-programas/bolsa-familia), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.71
+    },
+    {
+      "caseId": "jobs",
+      "category": "direct",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "Como achar vagas no SINE?",
+      "expected": {
+        "status": "matched",
+        "serviceId": "jobs",
+        "serviceIds": null,
+        "facts": [
+          "Ministério do Trabalho e Emprego"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "jobs"
+        ],
+        "message": "Vagas e serviços do SINE: Para começar: Cadastre-se no Portal Emprega Brasil (web) ou em um posto de atendimento do Sine (presencial). Segundo a fonte, o cadastro leva em média 15 minutos. O atendimento é feito por canais digitais e presenciais. Órgão responsável: Ministério do Trabalho e Emprego. Fonte: GOV.BR · Buscar Emprego no Sistema Nacional de Emprego (Sine) (https://www.gov.br/pt-br/servicos/buscar-emprego-no-sistema-nacional-de-emprego-sine), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7165
+    },
+    {
+      "caseId": "cpf",
+      "category": "direct",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "Inscrição no CPF",
+      "expected": {
+        "status": "matched",
+        "serviceId": "cpf",
+        "serviceIds": null,
+        "facts": [
+          "Receita Federal"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "cpf"
+        ],
+        "message": "Inscrição no CPF: Para começar: Abra a página oficial da Receita Federal indicada nesta orientação. O atendimento é feito por canais digitais e presenciais. Órgão responsável: Receita Federal. Fonte: GOV.BR · Inscrever no CPF (https://www.gov.br/pt-br/servicos/inscrever-no-cpf), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.71
+    },
+    {
+      "caseId": "salary-bonus",
+      "category": "direct",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "Abono salarial",
+      "expected": {
+        "status": "matched",
+        "serviceId": "salary-bonus",
+        "serviceIds": null,
+        "facts": [
+          "Ministério do Trabalho e Emprego"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "salary-bonus"
+        ],
+        "message": "Abono salarial: Para começar: Consulte o calendário e as informações do abono na Carteira de Trabalho Digital ou no portal gov.br. Em 2026, quem nasceu em janeiro recebe a partir de 16 de fevereiro e os demais meses seguem o calendário da página oficial; os valores ficam disponíveis até 30/12/2026. O atendimento é feito pelos canais digitais. Órgão responsável: Ministério do Trabalho e Emprego. Fonte: GOV.BR · Receber o Abono Salarial (https://www.gov.br/pt-br/servicos/receber-o-abono-salarial), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7014
+    },
+    {
+      "caseId": "bpc",
+      "category": "direct",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "Benefício de Prestação Continuada",
+      "expected": {
+        "status": "matched",
+        "serviceId": "bpc",
+        "serviceIds": null,
+        "facts": [
+          "Ministério do Desenvolvimento e Assistência Social"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "bpc"
+        ],
+        "message": "Benefício de Prestação Continuada: Para começar: Leia a explicação do BPC na fonte oficial. O atendimento é feito por canais digitais e presenciais. Órgão responsável: Ministério do Desenvolvimento e Assistência Social. Fonte: MDS · Benefício de Prestação Continuada (BPC) (https://www.gov.br/mds/pt-br/acoes-e-programas/beneficio-de-prestacao-continuada-bpc/conheca-todos-os-detalhes-do-bpc), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.716
+    },
+    {
+      "caseId": "cras",
+      "category": "direct",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "Atendimento no CRAS",
+      "expected": {
+        "status": "matched",
+        "serviceId": "cras",
+        "serviceIds": null,
+        "facts": [
+          "Gestão municipal de assistência social"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "cras"
+        ],
+        "message": "Atendimento no CRAS: Para começar: Consulte a explicação oficial sobre o CRAS. O atendimento é feito presencialmente. Órgão responsável: Gestão municipal de assistência social. Fonte: MDS · CRAS (https://www.gov.br/mds/pt-br/acoes-e-programas/SUAS/unidades-de-atendimento/centro-de-referencia-de-assistencia-social-cras), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7423
+    },
+    {
+      "caseId": "youth-id",
+      "category": "direct",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "Identidade Jovem",
+      "expected": {
+        "status": "matched",
+        "serviceId": "youth-id",
+        "serviceIds": null,
+        "facts": [
+          "Secretaria Nacional de Juventude"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "youth-id"
+        ],
+        "message": "Identidade Jovem: Para começar: Abra a página oficial da Identidade Jovem. O atendimento é feito pelos canais digitais. Órgão responsável: Secretaria Nacional de Juventude. Fonte: GOV.BR · Gerar carteira do ID JOVEM (https://www.gov.br/pt-br/servicos/obter-a-carteira-de-identidade-jovem), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7451
+    },
+    {
+      "caseId": "reform-cpf",
+      "category": "reformulation",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "Como tirar o CPF?",
+      "expected": {
+        "status": "matched",
+        "serviceId": "cpf",
+        "serviceIds": null,
+        "facts": [
+          "Receita Federal"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "cpf"
+        ],
+        "message": "Inscrição no CPF: Para começar: Abra a página oficial da Receita Federal indicada nesta orientação. O atendimento é feito por canais digitais e presenciais. Órgão responsável: Receita Federal. Fonte: GOV.BR · Inscrever no CPF (https://www.gov.br/pt-br/servicos/inscrever-no-cpf), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7168
+    },
+    {
+      "caseId": "reform-cpf-status",
+      "category": "reformulation",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "Meu CPF está pendente, o que faço?",
+      "expected": {
+        "status": "matched",
+        "serviceId": "cpf-status",
+        "serviceIds": null,
+        "facts": [
+          "Receita Federal"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "cpf-status"
+        ],
+        "message": "Situação cadastral do CPF: Para começar: Acesse a área Meu CPF no site da Receita Federal. O atendimento é feito pelos canais digitais. Órgão responsável: Receita Federal. Fonte: Receita Federal · Meu CPF (https://www.gov.br/receitafederal/pt-br/assuntos/meu-cpf), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7294
+    },
+    {
+      "caseId": "reform-unemployment-1",
+      "category": "reformulation",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "fui demitido",
+      "expected": {
+        "status": "matched",
+        "serviceId": "unemployment",
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "unemployment"
+        ],
+        "message": "Seguro-desemprego: Para começar: Peça o benefício pelo Portal de Serviços, pelo aplicativo da Carteira de Trabalho Digital, pelo telefone 158 ou pela Plataforma FACILITA (atendimento.trabalho.gov.br). Segundo a fonte, o pedido leva até 5 minutos. O atendimento é feito por canais digitais e presenciais. Órgão responsável: Ministério do Trabalho e Emprego. Fonte: GOV.BR · Solicitar o Seguro-Desemprego (https://www.gov.br/pt-br/servicos/solicitar-o-seguro-desemprego), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.713
+    },
+    {
+      "caseId": "reform-unemployment-2",
+      "category": "reformulation",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "perdi o emprego",
+      "expected": {
+        "status": "matched",
+        "serviceId": "unemployment",
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "unemployment"
+        ],
+        "message": "Seguro-desemprego: Para começar: Peça o benefício pelo Portal de Serviços, pelo aplicativo da Carteira de Trabalho Digital, pelo telefone 158 ou pela Plataforma FACILITA (atendimento.trabalho.gov.br). Segundo a fonte, o pedido leva até 5 minutos. O atendimento é feito por canais digitais e presenciais. Órgão responsável: Ministério do Trabalho e Emprego. Fonte: GOV.BR · Solicitar o Seguro-Desemprego (https://www.gov.br/pt-br/servicos/solicitar-o-seguro-desemprego), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7574
+    },
+    {
+      "caseId": "reform-unemployment-3",
+      "category": "reformulation",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "fui mandado embora",
+      "expected": {
+        "status": "matched",
+        "serviceId": "unemployment",
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "unemployment"
+        ],
+        "message": "Seguro-desemprego: Para começar: Peça o benefício pelo Portal de Serviços, pelo aplicativo da Carteira de Trabalho Digital, pelo telefone 158 ou pela Plataforma FACILITA (atendimento.trabalho.gov.br). Segundo a fonte, o pedido leva até 5 minutos. O atendimento é feito por canais digitais e presenciais. Órgão responsável: Ministério do Trabalho e Emprego. Fonte: GOV.BR · Solicitar o Seguro-Desemprego (https://www.gov.br/pt-br/servicos/solicitar-o-seguro-desemprego), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7203
+    },
+    {
+      "caseId": "reform-fgts",
+      "category": "reformulation",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "fundo de garantia",
+      "expected": {
+        "status": "matched",
+        "serviceId": "fgts",
+        "serviceIds": null,
+        "facts": [
+          "Caixa Econômica Federal"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "fgts"
+        ],
+        "message": "Informações sobre o FGTS: Para começar: Abra o APP FGTS, da CAIXA, e consulte o saldo; no aplicativo também é possível alterar dados cadastrais. O atendimento é feito por canais digitais e presenciais. Órgão responsável: Caixa Econômica Federal. Fonte: GOV.BR · Sacar o FGTS (https://www.gov.br/pt-br/servicos/sacar-o-fgts), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.6925
+    },
+    {
+      "caseId": "reform-salary-bonus",
+      "category": "reformulation",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "abono PIS",
+      "expected": {
+        "status": "matched",
+        "serviceId": "salary-bonus",
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "salary-bonus"
+        ],
+        "message": "Abono salarial: Para começar: Consulte o calendário e as informações do abono na Carteira de Trabalho Digital ou no portal gov.br. Em 2026, quem nasceu em janeiro recebe a partir de 16 de fevereiro e os demais meses seguem o calendário da página oficial; os valores ficam disponíveis até 30/12/2026. O atendimento é feito pelos canais digitais. Órgão responsável: Ministério do Trabalho e Emprego. Fonte: GOV.BR · Receber o Abono Salarial (https://www.gov.br/pt-br/servicos/receber-o-abono-salarial), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.6788
+    },
+    {
+      "caseId": "reform-registry-1",
+      "category": "reformulation",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "cad unico",
+      "expected": {
+        "status": "matched",
+        "serviceId": "social-registry",
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "social-registry"
+        ],
+        "message": "Cadastro Único: Para começar: Leia a página oficial de inscrição no Cadastro Único. O atendimento é feito presencialmente. Órgão responsável: Ministério do Desenvolvimento e Assistência Social. Fonte: GOV.BR · Inscrever-se no Cadastro Único (https://www.gov.br/pt-br/servicos/inscrever-se-no-cadastro-unico-para-programas-sociais-do-governo-federal), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.6955
+    },
+    {
+      "caseId": "reform-registry-2",
+      "category": "reformulation",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "Cadastro Único",
+      "expected": {
+        "status": "matched",
+        "serviceId": "social-registry",
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "social-registry"
+        ],
+        "message": "Cadastro Único: Para começar: Leia a página oficial de inscrição no Cadastro Único. O atendimento é feito presencialmente. Órgão responsável: Ministério do Desenvolvimento e Assistência Social. Fonte: GOV.BR · Inscrever-se no Cadastro Único (https://www.gov.br/pt-br/servicos/inscrever-se-no-cadastro-unico-para-programas-sociais-do-governo-federal), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7084
+    },
+    {
+      "caseId": "reform-work-card-1",
+      "category": "reformulation",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "CTPS",
+      "expected": {
+        "status": "matched",
+        "serviceId": "work-card",
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "work-card"
+        ],
+        "message": "Carteira de Trabalho Digital: Para começar: Abra o aplicativo Carteira de Trabalho Digital (Android ou iOS) ou o acesso web indicado na página oficial do serviço. O atendimento é feito pelos canais digitais. Órgão responsável: Ministério do Trabalho e Emprego. Fonte: GOV.BR · Obter a Carteira de Trabalho (https://www.gov.br/pt-br/servicos/obter-a-carteira-de-trabalho), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.6929
+    },
+    {
+      "caseId": "reform-work-card-2",
+      "category": "reformulation",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "carteira de trabalho",
+      "expected": {
+        "status": "matched",
+        "serviceId": "work-card",
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "work-card"
+        ],
+        "message": "Carteira de Trabalho Digital: Para começar: Abra o aplicativo Carteira de Trabalho Digital (Android ou iOS) ou o acesso web indicado na página oficial do serviço. O atendimento é feito pelos canais digitais. Órgão responsável: Ministério do Trabalho e Emprego. Fonte: GOV.BR · Obter a Carteira de Trabalho (https://www.gov.br/pt-br/servicos/obter-a-carteira-de-trabalho), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.769
+    },
+    {
+      "caseId": "reform-jobs",
+      "category": "reformulation",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "quero procurar emprego",
+      "expected": {
+        "status": "matched",
+        "serviceId": "jobs",
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "jobs"
+        ],
+        "message": "Vagas e serviços do SINE: Para começar: Cadastre-se no Portal Emprega Brasil (web) ou em um posto de atendimento do Sine (presencial). Segundo a fonte, o cadastro leva em média 15 minutos. O atendimento é feito por canais digitais e presenciais. Órgão responsável: Ministério do Trabalho e Emprego. Fonte: GOV.BR · Buscar Emprego no Sistema Nacional de Emprego (Sine) (https://www.gov.br/pt-br/servicos/buscar-emprego-no-sistema-nacional-de-emprego-sine), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7455
+    },
+    {
+      "caseId": "reform-passport",
+      "category": "reformulation",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "vou viajar para o exterior",
+      "expected": {
+        "status": "matched",
+        "serviceId": "passport",
+        "serviceIds": null,
+        "facts": [
+          "Polícia Federal"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "passport"
+        ],
+        "message": "Passaporte brasileiro: Para começar: Acesse a área de passaporte da Polícia Federal. O atendimento é feito por canais digitais e presenciais. Órgão responsável: Polícia Federal. Fonte: Polícia Federal · Passaporte (https://www.gov.br/pt-br/servicos/obter-passaporte-comum-para-brasileiro), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7047
+    },
+    {
+      "caseId": "reform-voter",
+      "category": "reformulation",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "título de eleitor",
+      "expected": {
+        "status": "matched",
+        "serviceId": "voter",
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "voter"
+        ],
+        "message": "Título e situação eleitoral: Para começar: Acesse o autoatendimento eleitoral do TSE. O atendimento é feito por canais digitais e presenciais. Órgão responsável: Justiça Eleitoral. Fonte: TSE · Autoatendimento eleitoral (https://www.tse.jus.br/servicos-eleitorais/autoatendimento-eleitoral), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7389
+    },
+    {
+      "caseId": "reform-family",
+      "category": "reformulation",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "preciso de ajuda com bolsa família",
+      "expected": {
+        "status": "matched",
+        "serviceId": "family-benefit",
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "family-benefit"
+        ],
+        "message": "Programa Bolsa Família: Para começar: Consulte a página institucional do Bolsa Família. O atendimento é feito por canais digitais e presenciais. Órgão responsável: Ministério do Desenvolvimento e Assistência Social. Fonte: MDS · Bolsa Família (https://www.gov.br/mds/pt-br/acoes-e-programas/bolsa-familia), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7223
+    },
+    {
+      "caseId": "reform-bpc",
+      "category": "reformulation",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "benefício idoso",
+      "expected": {
+        "status": "matched",
+        "serviceId": "bpc",
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "bpc"
+        ],
+        "message": "Benefício de Prestação Continuada: Para começar: Leia a explicação do BPC na fonte oficial. O atendimento é feito por canais digitais e presenciais. Órgão responsável: Ministério do Desenvolvimento e Assistência Social. Fonte: MDS · Benefício de Prestação Continuada (BPC) (https://www.gov.br/mds/pt-br/acoes-e-programas/beneficio-de-prestacao-continuada-bpc/conheca-todos-os-detalhes-do-bpc), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7003
+    },
+    {
+      "caseId": "reform-registry-typo",
+      "category": "reformulation",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "cadunco",
+      "expected": {
+        "status": "matched",
+        "serviceId": "social-registry",
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "unsupported",
+        "serviceIds": [],
+        "message": "Não encontrei informação suficiente na base para orientar sobre essa dúvida e não vou inventar instruções. Posso ajudar com: Documentos (Inscrição no CPF, Situação cadastral do CPF); Trabalho (Carteira de Trabalho Digital, Seguro-desemprego); Assistência social (Cadastro Único, Programa Bolsa Família). Tente reformular citando o serviço que procura."
+      },
+      "retrievalCorrect": false,
+      "responseCorrect": false,
+      "problems": [
+        "status unsupported (esperado matched)"
+      ],
+      "durationMs": 1.3359
+    },
+    {
+      "caseId": "reform-youth-id",
+      "category": "reformulation",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "carteirinha de estudante jovem baixa renda",
+      "expected": {
+        "status": "matched",
+        "serviceId": "youth-id",
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "unsupported",
+        "serviceIds": [],
+        "message": "Não encontrei informação suficiente na base para orientar sobre essa dúvida e não vou inventar instruções. Posso ajudar com: Documentos (Inscrição no CPF, Situação cadastral do CPF); Trabalho (Carteira de Trabalho Digital, Seguro-desemprego); Assistência social (Cadastro Único, Programa Bolsa Família). Tente reformular citando o serviço que procura."
+      },
+      "retrievalCorrect": false,
+      "responseCorrect": false,
+      "problems": [
+        "status unsupported (esperado matched)"
+      ],
+      "durationMs": 1.4189
+    },
+    {
+      "caseId": "reform-registry-long",
+      "category": "reformulation",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "Moro numa cidade pequena e queria saber como faço para conseguir me inscrever no cadastro único do governo para receber ajuda",
+      "expected": {
+        "status": "matched",
+        "serviceId": "social-registry",
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "unsupported",
+        "serviceIds": [],
+        "message": "Não encontrei informação suficiente na base para orientar sobre essa dúvida e não vou inventar instruções. Posso ajudar com: Documentos (Inscrição no CPF, Situação cadastral do CPF); Trabalho (Carteira de Trabalho Digital, Seguro-desemprego); Assistência social (Cadastro Único, Programa Bolsa Família). Tente reformular citando o serviço que procura."
+      },
+      "retrievalCorrect": false,
+      "responseCorrect": false,
+      "problems": [
+        "status unsupported (esperado matched)"
+      ],
+      "durationMs": 1.5549
+    },
+    {
+      "caseId": "intent-documents-unemployment",
+      "category": "intent",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "Quais documentos preciso levar para o seguro-desemprego?",
+      "expected": {
+        "status": "matched",
+        "serviceId": "unemployment",
+        "serviceIds": null,
+        "facts": [
+          "Documento do Requerimento do Seguro-Desemprego",
+          "número do CPF"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "unemployment"
+        ],
+        "message": "Seguro-desemprego: Separe antes: Ter o Documento do Requerimento do Seguro-Desemprego, entregue pelo empregador no momento da dispensa sem justa causa; Ter o número do CPF; Ter conta gov.br de nível Bronze, Prata ou Ouro; Se for informar conta bancária, usar conta de sua titularidade, com banco, agência e conta corretos; não é aceita conta salário nem conta conjunta. Para começar: Peça o benefício pelo Portal de Serviços, pelo aplicativo da Carteira de Trabalho Digital, pelo telefone 158 ou pela Plataforma FACILITA (atendimento.trabalho.gov.br). Segundo a fonte, o pedido leva até 5 minutos. Fonte: GOV.BR · Solicitar o Seguro-Desemprego (https://www.gov.br/pt-br/servicos/solicitar-o-seguro-desemprego), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 1.6193
+    },
+    {
+      "caseId": "intent-documents-fgts",
+      "category": "intent",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "Que documentos levar para sacar o FGTS?",
+      "expected": {
+        "status": "matched",
+        "serviceId": "fgts",
+        "serviceIds": null,
+        "facts": [
+          "Documento oficial de identificação com foto",
+          "Carteira de Trabalho"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "fgts"
+        ],
+        "message": "Informações sobre o FGTS: Separe antes: Documento oficial de identificação com foto; Carteira de Trabalho e Previdência Social; Número de inscrição no PIS/PASEP; Conta bancária (da CAIXA ou de outra instituição) para receber o valor; Para regularizar dados na agência: RG ou outro documento com foto, comprovante de residência atual e Carteira de Trabalho. Para começar: Abra o APP FGTS, da CAIXA, e consulte o saldo; no aplicativo também é possível alterar dados cadastrais. Fonte: GOV.BR · Sacar o FGTS (https://www.gov.br/pt-br/servicos/sacar-o-fgts), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 1.4917
+    },
+    {
+      "caseId": "intent-cost-passport",
+      "category": "intent",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "quanto custa o passaporte?",
+      "expected": {
+        "status": "matched",
+        "serviceId": "passport",
+        "serviceIds": null,
+        "facts": [
+          "não informa valores",
+          "Polícia Federal"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "passport"
+        ],
+        "message": "Passaporte brasileiro: A base não informa valores ou taxas para Passaporte brasileiro, então não vou estimar; esse dado precisa ser conferido na fonte oficial. O atendimento é feito por canais digitais e presenciais. Órgão responsável: Polícia Federal. Fonte: Polícia Federal · Passaporte (https://www.gov.br/pt-br/servicos/obter-passaporte-comum-para-brasileiro), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 1.4064
+    },
+    {
+      "caseId": "intent-cost-family",
+      "category": "intent",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "Bolsa Família quanto recebo?",
+      "expected": {
+        "status": "matched",
+        "serviceId": "family-benefit",
+        "serviceIds": null,
+        "facts": [
+          "não informa valores"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "family-benefit"
+        ],
+        "message": "Programa Bolsa Família: A base não informa valores ou taxas para Programa Bolsa Família, então não vou estimar; esse dado precisa ser conferido na fonte oficial. O atendimento é feito por canais digitais e presenciais. Órgão responsável: Ministério do Desenvolvimento e Assistência Social. Fonte: MDS · Bolsa Família (https://www.gov.br/mds/pt-br/acoes-e-programas/bolsa-familia), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 1.4506
+    },
+    {
+      "caseId": "intent-deadline-fgts",
+      "category": "intent",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "Qual o prazo do FGTS?",
+      "expected": {
+        "status": "matched",
+        "serviceId": "fgts",
+        "serviceIds": null,
+        "facts": [
+          "não informa prazos"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "fgts"
+        ],
+        "message": "Informações sobre o FGTS: A base não informa prazos para Informações sobre o FGTS, então não vou estimar; esse dado precisa ser conferido na fonte oficial. O atendimento é feito por canais digitais e presenciais. Órgão responsável: Caixa Econômica Federal. Fonte: GOV.BR · Sacar o FGTS (https://www.gov.br/pt-br/servicos/sacar-o-fgts), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7231
+    },
+    {
+      "caseId": "intent-eligibility-bpc",
+      "category": "intent",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "Quem tem direito ao BPC?",
+      "expected": {
+        "status": "matched",
+        "serviceId": "bpc",
+        "serviceIds": null,
+        "facts": [
+          "não decide se você tem direito"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "bpc"
+        ],
+        "message": "Benefício de Prestação Continuada: Pela base, esta orientação é para: pessoas interessadas em conhecer as condições e os canais de orientação do BPC. O assistente não decide se você tem direito; isso depende da análise do órgão. Fonte: MDS · Benefício de Prestação Continuada (BPC) (https://www.gov.br/mds/pt-br/acoes-e-programas/beneficio-de-prestacao-continuada-bpc/conheca-todos-os-detalhes-do-bpc), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 1.4104
+    },
+    {
+      "caseId": "intent-eligibility-bonus",
+      "category": "intent",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "tenho direito ao abono salarial?",
+      "expected": {
+        "status": "matched",
+        "serviceId": "salary-bonus",
+        "serviceIds": null,
+        "facts": [
+          "não decide se você tem direito"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "salary-bonus"
+        ],
+        "message": "Abono salarial: Pela base, esta orientação é para: trabalhador que, no ano-base, trabalhou para empregador contribuinte do PIS ou do Pasep por pelo menos 30 dias (consecutivos ou não), está cadastrado há pelo menos 5 anos no Fundo de Participação PIS-Pasep, teve os dados informados corretamente pelo empregador no eSocial e recebeu remuneração dentro do limite. No pagamento de 2026 (ano-base 2024), o limite é remuneração média de até R$ 2.766,00. O assistente não decide se você tem direito; isso depende da análise do órgão. Fonte: GOV.BR · Receber o Abono Salarial (https://www.gov.br/pt-br/servicos/receber-o-abono-salarial), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.733
+    },
+    {
+      "caseId": "intent-where-cras",
+      "category": "intent",
+      "mode": "direct",
+      "requestMode": "direct",
+      "question": "onde fica o CRAS?",
+      "expected": {
+        "status": "matched",
+        "serviceId": "cras",
+        "serviceIds": null,
+        "facts": [
+          "presencialmente",
+          "Gestão municipal de assistência social"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "cras"
+        ],
+        "message": "Atendimento no CRAS: O atendimento é feito presencialmente. Órgão responsável: Gestão municipal de assistência social. Para começar: Consulte a explicação oficial sobre o CRAS. Fonte: MDS · CRAS (https://www.gov.br/mds/pt-br/acoes-e-programas/SUAS/unidades-de-atendimento/centro-de-referencia-de-assistencia-social-cras), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 1.4557
+    },
+    {
+      "caseId": "empty",
+      "category": "limit",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "   ",
+      "expected": {
+        "status": "empty",
+        "serviceId": null,
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "empty",
+        "serviceIds": [],
+        "message": "Para começar: 1) digite sua dúvida em poucas palavras (por exemplo, como tirar o CPF); 2) ou escolha um dos temas (Documentos, Trabalho, Assistência social)."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.0123
+    },
+    {
+      "caseId": "empty-punctuation",
+      "category": "limit",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "?!",
+      "expected": {
+        "status": "empty",
+        "serviceId": null,
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "empty",
+        "serviceIds": [],
+        "message": "Para começar: 1) digite sua dúvida em poucas palavras (por exemplo, como tirar o CPF); 2) ou escolha um dos temas (Documentos, Trabalho, Assistência social)."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.007
+    },
+    {
+      "caseId": "ambiguous",
+      "category": "limit",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "documento",
+      "expected": {
+        "status": "ambiguous",
+        "serviceId": null,
+        "serviceIds": [
+          "cpf",
+          "identity",
+          "voter"
+        ],
+        "facts": []
+      },
+      "actual": {
+        "status": "ambiguous",
+        "serviceIds": [
+          "cpf",
+          "identity",
+          "voter"
+        ],
+        "message": "Sua pergunta combina com mais de um assunto. Para continuar: 1) escolha uma das opções: Inscrição no CPF, Carteira de Identidade Nacional ou Título e situação eleitoral; 2) abra a orientação escolhida ou refaça a pergunta com o nome do assunto; 3) confira a fonte indicada na orientação."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7236
+    },
+    {
+      "caseId": "ambiguous-carteira",
+      "category": "limit",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "carteira",
+      "expected": {
+        "status": "ambiguous",
+        "serviceId": null,
+        "serviceIds": [
+          "identity",
+          "work-card"
+        ],
+        "facts": []
+      },
+      "actual": {
+        "status": "ambiguous",
+        "serviceIds": [
+          "identity",
+          "work-card"
+        ],
+        "message": "Sua pergunta combina com mais de um assunto. Para continuar: 1) escolha uma das opções: Carteira de Identidade Nacional ou Carteira de Trabalho Digital; 2) abra a orientação escolhida ou refaça a pergunta com o nome do assunto; 3) confira a fonte indicada na orientação."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7147
+    },
+    {
+      "caseId": "stop-words-only",
+      "category": "limit",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "como",
+      "expected": {
+        "status": "unsupported",
+        "serviceId": null,
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "unsupported",
+        "serviceIds": [],
+        "message": "Não encontrei informação suficiente na base para orientar sobre essa dúvida e não vou inventar instruções. Para continuar: 1) reformule citando o nome do serviço (por exemplo, CPF ou FGTS); 2) ou escolha um tema: Documentos (Inscrição no CPF, Situação cadastral do CPF); Trabalho (Carteira de Trabalho Digital, Seguro-desemprego); Assistência social (Cadastro Único, Programa Bolsa Família); 3) para outros assuntos, procure o canal oficial do órgão responsável."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.0451
+    },
+    {
+      "caseId": "too-long",
+      "category": "invalid",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "Bom dia, eu queria entender uma situação bem complicada que está acontecendo comigo e com a minha família desde o começo do ano, porque eu trabalhei muitos anos numa empresa pequena aqui do bairro, depois fui dispensado, minha esposa também ficou sem renda, temos três filhos pequenos em casa, um deles com problema de saúde, e eu não sei direito por onde começar, se preciso ir em algum lugar, se dá para fazer pela internet, quais papéis tenho que juntar, quanto tempo isso tudo demora e se a gente tem direito a algum tipo de ajuda do governo enquanto não arrumo outro emprego, então gostaria de uma explicação completa, por favor.",
+      "expected": {
+        "status": "error",
+        "serviceId": null,
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "error",
+        "serviceIds": [],
+        "message": "A pergunta tem 634 caracteres; o limite é 500."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.0051
+    },
+    {
+      "caseId": "invalid-mode",
+      "category": "invalid",
+      "mode": "steps",
+      "requestMode": "audio",
+      "question": "CPF",
+      "expected": {
+        "status": "error",
+        "serviceId": null,
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "error",
+        "serviceIds": [],
+        "message": "Modo de resposta inválido: 'audio'. Use ['direct', 'steps']."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.0043
+    },
+    {
+      "caseId": "nonexistent-option",
+      "category": "invalid",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "opção 4",
+      "expected": {
+        "status": "unsupported",
+        "serviceId": null,
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "unsupported",
+        "serviceIds": [],
+        "message": "Não encontrei informação suficiente na base para orientar sobre essa dúvida e não vou inventar instruções. Para continuar: 1) reformule citando o nome do serviço (por exemplo, CPF ou FGTS); 2) ou escolha um tema: Documentos (Inscrição no CPF, Situação cadastral do CPF); Trabalho (Carteira de Trabalho Digital, Seguro-desemprego); Assistência social (Cadastro Único, Programa Bolsa Família); 3) para outros assuntos, procure o canal oficial do órgão responsável."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 1.3647
+    },
+    {
+      "caseId": "unsupported",
+      "category": "out-of-scope",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "Qual a previsão do tempo?",
+      "expected": {
+        "status": "unsupported",
+        "serviceId": null,
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "unsupported",
+        "serviceIds": [],
+        "message": "Não encontrei informação suficiente na base para orientar sobre essa dúvida e não vou inventar instruções. Para continuar: 1) reformule citando o nome do serviço (por exemplo, CPF ou FGTS); 2) ou escolha um tema: Documentos (Inscrição no CPF, Situação cadastral do CPF); Trabalho (Carteira de Trabalho Digital, Seguro-desemprego); Assistência social (Cadastro Único, Programa Bolsa Família); 3) para outros assuntos, procure o canal oficial do órgão responsável."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 1.3672
+    },
+    {
+      "caseId": "out-driver-license",
+      "category": "out-of-scope",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "Como tirar carteira de motorista?",
+      "expected": {
+        "status": "unsupported",
+        "serviceId": null,
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "unsupported",
+        "serviceIds": [],
+        "message": "Não encontrei informação suficiente na base para orientar sobre essa dúvida e não vou inventar instruções. Para continuar: 1) reformule citando o nome do serviço (por exemplo, CPF ou FGTS); 2) ou escolha um tema: Documentos (Inscrição no CPF, Situação cadastral do CPF); Trabalho (Carteira de Trabalho Digital, Seguro-desemprego); Assistência social (Cadastro Único, Programa Bolsa Família); 3) para outros assuntos, procure o canal oficial do órgão responsável."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 1.481
+    },
+    {
+      "caseId": "out-cnpj",
+      "category": "out-of-scope",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "Quero abrir uma empresa e tirar o CNPJ",
+      "expected": {
+        "status": "unsupported",
+        "serviceId": null,
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "unsupported",
+        "serviceIds": [],
+        "message": "Não encontrei informação suficiente na base para orientar sobre essa dúvida e não vou inventar instruções. Para continuar: 1) reformule citando o nome do serviço (por exemplo, CPF ou FGTS); 2) ou escolha um tema: Documentos (Inscrição no CPF, Situação cadastral do CPF); Trabalho (Carteira de Trabalho Digital, Seguro-desemprego); Assistência social (Cadastro Único, Programa Bolsa Família); 3) para outros assuntos, procure o canal oficial do órgão responsável."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 1.41
+    },
+    {
+      "caseId": "out-income-tax",
+      "category": "out-of-scope",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "Como declarar imposto de renda?",
+      "expected": {
+        "status": "unsupported",
+        "serviceId": null,
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "unsupported",
+        "serviceIds": [],
+        "message": "Não encontrei informação suficiente na base para orientar sobre essa dúvida e não vou inventar instruções. Para continuar: 1) reformule citando o nome do serviço (por exemplo, CPF ou FGTS); 2) ou escolha um tema: Documentos (Inscrição no CPF, Situação cadastral do CPF); Trabalho (Carteira de Trabalho Digital, Seguro-desemprego); Assistência social (Cadastro Único, Programa Bolsa Família); 3) para outros assuntos, procure o canal oficial do órgão responsável."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 1.4058
+    },
+    {
+      "caseId": "out-sus",
+      "category": "out-of-scope",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "Como marcar consulta no SUS?",
+      "expected": {
+        "status": "unsupported",
+        "serviceId": null,
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "unsupported",
+        "serviceIds": [],
+        "message": "Não encontrei informação suficiente na base para orientar sobre essa dúvida e não vou inventar instruções. Para continuar: 1) reformule citando o nome do serviço (por exemplo, CPF ou FGTS); 2) ou escolha um tema: Documentos (Inscrição no CPF, Situação cadastral do CPF); Trabalho (Carteira de Trabalho Digital, Seguro-desemprego); Assistência social (Cadastro Único, Programa Bolsa Família); 3) para outros assuntos, procure o canal oficial do órgão responsável."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 1.3981
+    },
+    {
+      "caseId": "out-football",
+      "category": "out-of-scope",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "Qual o melhor time de futebol?",
+      "expected": {
+        "status": "unsupported",
+        "serviceId": null,
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "unsupported",
+        "serviceIds": [],
+        "message": "Não encontrei informação suficiente na base para orientar sobre essa dúvida e não vou inventar instruções. Para continuar: 1) reformule citando o nome do serviço (por exemplo, CPF ou FGTS); 2) ou escolha um tema: Documentos (Inscrição no CPF, Situação cadastral do CPF); Trabalho (Carteira de Trabalho Digital, Seguro-desemprego); Assistência social (Cadastro Único, Programa Bolsa Família); 3) para outros assuntos, procure o canal oficial do órgão responsável."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 1.3583
+    },
+    {
+      "caseId": "out-recipe",
+      "category": "out-of-scope",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "receita de bolo de cenoura",
+      "expected": {
+        "status": "unsupported",
+        "serviceId": null,
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "unsupported",
+        "serviceIds": [],
+        "message": "Não encontrei informação suficiente na base para orientar sobre essa dúvida e não vou inventar instruções. Para continuar: 1) reformule citando o nome do serviço (por exemplo, CPF ou FGTS); 2) ou escolha um tema: Documentos (Inscrição no CPF, Situação cadastral do CPF); Trabalho (Carteira de Trabalho Digital, Seguro-desemprego); Assistência social (Cadastro Único, Programa Bolsa Família); 3) para outros assuntos, procure o canal oficial do órgão responsável."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 1.417
+    },
+    {
+      "caseId": "work-card",
+      "category": "direct",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "Como acessar a Carteira de Trabalho Digital?",
+      "expected": {
+        "status": "matched",
+        "serviceId": "work-card",
+        "serviceIds": null,
+        "facts": [
+          "Ministério do Trabalho e Emprego"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "work-card"
+        ],
+        "message": "Carteira de Trabalho Digital, em etapas: 1) Separe antes: Ter o número do CPF em mãos; Criar uma conta autenticada no gov.br, caso ainda não tenha (nível Bronze, Prata ou Ouro); Escolher o canal: aplicativo Carteira de Trabalho Digital ou acesso pela web. 2) O atendimento é feito pelos canais digitais. Órgão responsável: Ministério do Trabalho e Emprego. 3) Siga os 4 passos da orientação, começando por: Abra o aplicativo Carteira de Trabalho Digital (Android ou iOS) ou o acesso web indicado na página oficial do serviço. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: GOV.BR · Obter a Carteira de Trabalho (https://www.gov.br/pt-br/servicos/obter-a-carteira-de-trabalho), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.8233
+    },
+    {
+      "caseId": "registry",
+      "category": "direct",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "Onde faço o CadÚnico?",
+      "expected": {
+        "status": "matched",
+        "serviceId": "social-registry",
+        "serviceIds": null,
+        "facts": [
+          "presencialmente",
+          "Ministério do Desenvolvimento e Assistência Social"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "social-registry"
+        ],
+        "message": "Cadastro Único, em etapas: 1) Separe antes: Consultar os critérios oficiais; Conferir a documentação da família; Localizar o atendimento municipal. 2) O atendimento é feito presencialmente. Órgão responsável: Ministério do Desenvolvimento e Assistência Social. 3) Siga os 3 passos da orientação, começando por: Leia a página oficial de inscrição no Cadastro Único. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: GOV.BR · Inscrever-se no Cadastro Único (https://www.gov.br/pt-br/servicos/inscrever-se-no-cadastro-unico-para-programas-sociais-do-governo-federal), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7145
+    },
+    {
+      "caseId": "identity",
+      "category": "direct",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "Preciso do meu RG",
+      "expected": {
+        "status": "matched",
+        "serviceId": "identity",
+        "serviceIds": null,
+        "facts": [
+          "órgãos estaduais"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "identity"
+        ],
+        "message": "Carteira de Identidade Nacional, em etapas: 1) Separe antes: Identificar o órgão emissor do meu estado; Conferir os documentos solicitados; Consultar a necessidade de agendamento. 2) O atendimento é feito presencialmente. Órgão responsável: Governo Federal e órgãos estaduais. 3) Siga os 3 passos da orientação, começando por: Consulte o portal oficial da Carteira de Identidade Nacional. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: Governo Digital · Carteira de Identidade Nacional (https://www.gov.br/governodigital/pt-br/identidade/cin), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7245
+    },
+    {
+      "caseId": "passport",
+      "category": "direct",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "passaporte brasileiro",
+      "expected": {
+        "status": "matched",
+        "serviceId": "passport",
+        "serviceIds": null,
+        "facts": [
+          "Polícia Federal"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "passport"
+        ],
+        "message": "Passaporte brasileiro, em etapas: 1) Separe antes: Ler os requisitos da Polícia Federal; Conferir documentação e custos atualizados; Consultar as etapas de atendimento. 2) O atendimento é feito por canais digitais e presenciais. Órgão responsável: Polícia Federal. 3) Siga os 3 passos da orientação, começando por: Acesse a área de passaporte da Polícia Federal. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: Polícia Federal · Passaporte (https://www.gov.br/pt-br/servicos/obter-passaporte-comum-para-brasileiro), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7535
+    },
+    {
+      "caseId": "voter",
+      "category": "direct",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "título eleitoral",
+      "expected": {
+        "status": "matched",
+        "serviceId": "voter",
+        "serviceIds": null,
+        "facts": [
+          "Justiça Eleitoral"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "voter"
+        ],
+        "message": "Título e situação eleitoral, em etapas: 1) Separe antes: Identificar o serviço eleitoral desejado; Conferir o calendário oficial; Consultar documentos e canais de atendimento. 2) O atendimento é feito por canais digitais e presenciais. Órgão responsável: Justiça Eleitoral. 3) Siga os 3 passos da orientação, começando por: Acesse o autoatendimento eleitoral do TSE. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: TSE · Autoatendimento eleitoral (https://www.tse.jus.br/servicos-eleitorais/autoatendimento-eleitoral), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7021
+    },
+    {
+      "caseId": "fgts",
+      "category": "direct",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "Como consultar FGTS?",
+      "expected": {
+        "status": "matched",
+        "serviceId": "fgts",
+        "serviceIds": null,
+        "facts": [
+          "Caixa Econômica Federal",
+          "APP FGTS"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "fgts"
+        ],
+        "message": "Informações sobre o FGTS, em etapas: 1) Separe antes: Documento oficial de identificação com foto; Carteira de Trabalho e Previdência Social; Número de inscrição no PIS/PASEP; Conta bancária (da CAIXA ou de outra instituição) para receber o valor; Para regularizar dados na agência: RG ou outro documento com foto, comprovante de residência atual e Carteira de Trabalho. 2) O atendimento é feito por canais digitais e presenciais. Órgão responsável: Caixa Econômica Federal. 3) Siga os 4 passos da orientação, começando por: Abra o APP FGTS, da CAIXA, e consulte o saldo; no aplicativo também é possível alterar dados cadastrais. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: GOV.BR · Sacar o FGTS (https://www.gov.br/pt-br/servicos/sacar-o-fgts), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.721
+    },
+    {
+      "caseId": "unemployment",
+      "category": "direct",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "seguro-desemprego",
+      "expected": {
+        "status": "matched",
+        "serviceId": "unemployment",
+        "serviceIds": null,
+        "facts": [
+          "Ministério do Trabalho e Emprego"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "unemployment"
+        ],
+        "message": "Seguro-desemprego, em etapas: 1) Separe antes: Ter o Documento do Requerimento do Seguro-Desemprego, entregue pelo empregador no momento da dispensa sem justa causa; Ter o número do CPF; Ter conta gov.br de nível Bronze, Prata ou Ouro; Se for informar conta bancária, usar conta de sua titularidade, com banco, agência e conta corretos; não é aceita conta salário nem conta conjunta. 2) O atendimento é feito por canais digitais e presenciais. Órgão responsável: Ministério do Trabalho e Emprego. 3) Siga os 4 passos da orientação, começando por: Peça o benefício pelo Portal de Serviços, pelo aplicativo da Carteira de Trabalho Digital, pelo telefone 158 ou pela Plataforma FACILITA (atendimento.trabalho.gov.br). Segundo a fonte, o pedido leva até 5 minutos. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: GOV.BR · Solicitar o Seguro-Desemprego (https://www.gov.br/pt-br/servicos/solicitar-o-seguro-desemprego), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7221
+    },
+    {
+      "caseId": "family",
+      "category": "direct",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "Bolsa Família",
+      "expected": {
+        "status": "matched",
+        "serviceId": "family-benefit",
+        "serviceIds": null,
+        "facts": [
+          "Ministério do Desenvolvimento e Assistência Social"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "family-benefit"
+        ],
+        "message": "Programa Bolsa Família, em etapas: 1) Separe antes: Consultar a página oficial do programa; Ler os critérios atualizados; Identificar o atendimento adequado. 2) O atendimento é feito por canais digitais e presenciais. Órgão responsável: Ministério do Desenvolvimento e Assistência Social. 3) Siga os 3 passos da orientação, começando por: Consulte a página institucional do Bolsa Família. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: MDS · Bolsa Família (https://www.gov.br/mds/pt-br/acoes-e-programas/bolsa-familia), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7175
+    },
+    {
+      "caseId": "jobs",
+      "category": "direct",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "Como achar vagas no SINE?",
+      "expected": {
+        "status": "matched",
+        "serviceId": "jobs",
+        "serviceIds": null,
+        "facts": [
+          "Ministério do Trabalho e Emprego"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "jobs"
+        ],
+        "message": "Vagas e serviços do SINE, em etapas: 1) Separe antes: Ter conta gov.br de nível Bronze, Prata ou Ouro; Reunir a documentação pessoal do titular para o cadastro; Ter à mão formação, experiências de trabalho e áreas de interesse para preencher o perfil; Escolher o canal: Portal Emprega Brasil, aplicativo Carteira de Trabalho Digital ou posto da Rede Sine. 2) O atendimento é feito por canais digitais e presenciais. Órgão responsável: Ministério do Trabalho e Emprego. 3) Siga os 4 passos da orientação, começando por: Cadastre-se no Portal Emprega Brasil (web) ou em um posto de atendimento do Sine (presencial). Segundo a fonte, o cadastro leva em média 15 minutos. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: GOV.BR · Buscar Emprego no Sistema Nacional de Emprego (Sine) (https://www.gov.br/pt-br/servicos/buscar-emprego-no-sistema-nacional-de-emprego-sine), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7229
+    },
+    {
+      "caseId": "cpf",
+      "category": "direct",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "Inscrição no CPF",
+      "expected": {
+        "status": "matched",
+        "serviceId": "cpf",
+        "serviceIds": null,
+        "facts": [
+          "Receita Federal"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "cpf"
+        ],
+        "message": "Inscrição no CPF, em etapas: 1) Separe antes: Consultar a documentação na fonte oficial; Identificar o canal adequado ao meu caso; Conferir os dados antes de enviar. 2) O atendimento é feito por canais digitais e presenciais. Órgão responsável: Receita Federal. 3) Siga os 3 passos da orientação, começando por: Abra a página oficial da Receita Federal indicada nesta orientação. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: GOV.BR · Inscrever no CPF (https://www.gov.br/pt-br/servicos/inscrever-no-cpf), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7345
+    },
+    {
+      "caseId": "salary-bonus",
+      "category": "direct",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "Abono salarial",
+      "expected": {
+        "status": "matched",
+        "serviceId": "salary-bonus",
+        "serviceIds": null,
+        "facts": [
+          "Ministério do Trabalho e Emprego"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "salary-bonus"
+        ],
+        "message": "Abono salarial, em etapas: 1) Separe antes: Ter conta gov.br de nível Bronze, Prata ou Ouro; Consultar a Carteira de Trabalho Digital ou o portal gov.br para ver se há abono a receber; Saber o mês de nascimento, que define a data no calendário; Para receber em agência da CAIXA, levar documento oficial de identificação. 2) O atendimento é feito pelos canais digitais. Órgão responsável: Ministério do Trabalho e Emprego. 3) Siga os 4 passos da orientação, começando por: Consulte o calendário e as informações do abono na Carteira de Trabalho Digital ou no portal gov.br. Em 2026, quem nasceu em janeiro recebe a partir de 16 de fevereiro e os demais meses seguem o calendário da página oficial; os valores ficam disponíveis até 30/12/2026. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: GOV.BR · Receber o Abono Salarial (https://www.gov.br/pt-br/servicos/receber-o-abono-salarial), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7039
+    },
+    {
+      "caseId": "bpc",
+      "category": "direct",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "Benefício de Prestação Continuada",
+      "expected": {
+        "status": "matched",
+        "serviceId": "bpc",
+        "serviceIds": null,
+        "facts": [
+          "Ministério do Desenvolvimento e Assistência Social"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "bpc"
+        ],
+        "message": "Benefício de Prestação Continuada, em etapas: 1) Separe antes: Consultar os requisitos atualizados; Ler as orientações de solicitação; Identificar os canais responsáveis. 2) O atendimento é feito por canais digitais e presenciais. Órgão responsável: Ministério do Desenvolvimento e Assistência Social. 3) Siga os 3 passos da orientação, começando por: Leia a explicação do BPC na fonte oficial. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: MDS · Benefício de Prestação Continuada (BPC) (https://www.gov.br/mds/pt-br/acoes-e-programas/beneficio-de-prestacao-continuada-bpc/conheca-todos-os-detalhes-do-bpc), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7241
+    },
+    {
+      "caseId": "cras",
+      "category": "direct",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "Atendimento no CRAS",
+      "expected": {
+        "status": "matched",
+        "serviceId": "cras",
+        "serviceIds": null,
+        "facts": [
+          "Gestão municipal de assistência social"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "cras"
+        ],
+        "message": "Atendimento no CRAS, em etapas: 1) Separe antes: Identificar a gestão municipal responsável; Confirmar a unidade de referência; Conferir horário e orientações de atendimento. 2) O atendimento é feito presencialmente. Órgão responsável: Gestão municipal de assistência social. 3) Siga os 3 passos da orientação, começando por: Consulte a explicação oficial sobre o CRAS. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: MDS · CRAS (https://www.gov.br/mds/pt-br/acoes-e-programas/SUAS/unidades-de-atendimento/centro-de-referencia-de-assistencia-social-cras), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.6937
+    },
+    {
+      "caseId": "youth-id",
+      "category": "direct",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "Identidade Jovem",
+      "expected": {
+        "status": "matched",
+        "serviceId": "youth-id",
+        "serviceIds": null,
+        "facts": [
+          "Secretaria Nacional de Juventude"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "youth-id"
+        ],
+        "message": "Identidade Jovem, em etapas: 1) Separe antes: Consultar os critérios do programa; Conferir as orientações de acesso; Localizar o canal oficial de emissão. 2) O atendimento é feito pelos canais digitais. Órgão responsável: Secretaria Nacional de Juventude. 3) Siga os 3 passos da orientação, começando por: Abra a página oficial da Identidade Jovem. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: GOV.BR · Gerar carteira do ID JOVEM (https://www.gov.br/pt-br/servicos/obter-a-carteira-de-identidade-jovem), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7181
+    },
+    {
+      "caseId": "reform-cpf",
+      "category": "reformulation",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "Como tirar o CPF?",
+      "expected": {
+        "status": "matched",
+        "serviceId": "cpf",
+        "serviceIds": null,
+        "facts": [
+          "Receita Federal"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "cpf"
+        ],
+        "message": "Inscrição no CPF, em etapas: 1) Separe antes: Consultar a documentação na fonte oficial; Identificar o canal adequado ao meu caso; Conferir os dados antes de enviar. 2) O atendimento é feito por canais digitais e presenciais. Órgão responsável: Receita Federal. 3) Siga os 3 passos da orientação, começando por: Abra a página oficial da Receita Federal indicada nesta orientação. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: GOV.BR · Inscrever no CPF (https://www.gov.br/pt-br/servicos/inscrever-no-cpf), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7103
+    },
+    {
+      "caseId": "reform-cpf-status",
+      "category": "reformulation",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "Meu CPF está pendente, o que faço?",
+      "expected": {
+        "status": "matched",
+        "serviceId": "cpf-status",
+        "serviceIds": null,
+        "facts": [
+          "Receita Federal"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "cpf-status"
+        ],
+        "message": "Situação cadastral do CPF, em etapas: 1) Separe antes: Abrir a página oficial da Receita; Encontrar a opção de consulta; Ler as instruções para a situação apresentada. 2) O atendimento é feito pelos canais digitais. Órgão responsável: Receita Federal. 3) Siga os 3 passos da orientação, começando por: Acesse a área Meu CPF no site da Receita Federal. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: Receita Federal · Meu CPF (https://www.gov.br/receitafederal/pt-br/assuntos/meu-cpf), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7303
+    },
+    {
+      "caseId": "reform-unemployment-1",
+      "category": "reformulation",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "fui demitido",
+      "expected": {
+        "status": "matched",
+        "serviceId": "unemployment",
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "unemployment"
+        ],
+        "message": "Seguro-desemprego, em etapas: 1) Separe antes: Ter o Documento do Requerimento do Seguro-Desemprego, entregue pelo empregador no momento da dispensa sem justa causa; Ter o número do CPF; Ter conta gov.br de nível Bronze, Prata ou Ouro; Se for informar conta bancária, usar conta de sua titularidade, com banco, agência e conta corretos; não é aceita conta salário nem conta conjunta. 2) O atendimento é feito por canais digitais e presenciais. Órgão responsável: Ministério do Trabalho e Emprego. 3) Siga os 4 passos da orientação, começando por: Peça o benefício pelo Portal de Serviços, pelo aplicativo da Carteira de Trabalho Digital, pelo telefone 158 ou pela Plataforma FACILITA (atendimento.trabalho.gov.br). Segundo a fonte, o pedido leva até 5 minutos. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: GOV.BR · Solicitar o Seguro-Desemprego (https://www.gov.br/pt-br/servicos/solicitar-o-seguro-desemprego), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7393
+    },
+    {
+      "caseId": "reform-unemployment-2",
+      "category": "reformulation",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "perdi o emprego",
+      "expected": {
+        "status": "matched",
+        "serviceId": "unemployment",
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "unemployment"
+        ],
+        "message": "Seguro-desemprego, em etapas: 1) Separe antes: Ter o Documento do Requerimento do Seguro-Desemprego, entregue pelo empregador no momento da dispensa sem justa causa; Ter o número do CPF; Ter conta gov.br de nível Bronze, Prata ou Ouro; Se for informar conta bancária, usar conta de sua titularidade, com banco, agência e conta corretos; não é aceita conta salário nem conta conjunta. 2) O atendimento é feito por canais digitais e presenciais. Órgão responsável: Ministério do Trabalho e Emprego. 3) Siga os 4 passos da orientação, começando por: Peça o benefício pelo Portal de Serviços, pelo aplicativo da Carteira de Trabalho Digital, pelo telefone 158 ou pela Plataforma FACILITA (atendimento.trabalho.gov.br). Segundo a fonte, o pedido leva até 5 minutos. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: GOV.BR · Solicitar o Seguro-Desemprego (https://www.gov.br/pt-br/servicos/solicitar-o-seguro-desemprego), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7539
+    },
+    {
+      "caseId": "reform-unemployment-3",
+      "category": "reformulation",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "fui mandado embora",
+      "expected": {
+        "status": "matched",
+        "serviceId": "unemployment",
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "unemployment"
+        ],
+        "message": "Seguro-desemprego, em etapas: 1) Separe antes: Ter o Documento do Requerimento do Seguro-Desemprego, entregue pelo empregador no momento da dispensa sem justa causa; Ter o número do CPF; Ter conta gov.br de nível Bronze, Prata ou Ouro; Se for informar conta bancária, usar conta de sua titularidade, com banco, agência e conta corretos; não é aceita conta salário nem conta conjunta. 2) O atendimento é feito por canais digitais e presenciais. Órgão responsável: Ministério do Trabalho e Emprego. 3) Siga os 4 passos da orientação, começando por: Peça o benefício pelo Portal de Serviços, pelo aplicativo da Carteira de Trabalho Digital, pelo telefone 158 ou pela Plataforma FACILITA (atendimento.trabalho.gov.br). Segundo a fonte, o pedido leva até 5 minutos. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: GOV.BR · Solicitar o Seguro-Desemprego (https://www.gov.br/pt-br/servicos/solicitar-o-seguro-desemprego), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7223
+    },
+    {
+      "caseId": "reform-fgts",
+      "category": "reformulation",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "fundo de garantia",
+      "expected": {
+        "status": "matched",
+        "serviceId": "fgts",
+        "serviceIds": null,
+        "facts": [
+          "Caixa Econômica Federal"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "fgts"
+        ],
+        "message": "Informações sobre o FGTS, em etapas: 1) Separe antes: Documento oficial de identificação com foto; Carteira de Trabalho e Previdência Social; Número de inscrição no PIS/PASEP; Conta bancária (da CAIXA ou de outra instituição) para receber o valor; Para regularizar dados na agência: RG ou outro documento com foto, comprovante de residência atual e Carteira de Trabalho. 2) O atendimento é feito por canais digitais e presenciais. Órgão responsável: Caixa Econômica Federal. 3) Siga os 4 passos da orientação, começando por: Abra o APP FGTS, da CAIXA, e consulte o saldo; no aplicativo também é possível alterar dados cadastrais. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: GOV.BR · Sacar o FGTS (https://www.gov.br/pt-br/servicos/sacar-o-fgts), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7011
+    },
+    {
+      "caseId": "reform-salary-bonus",
+      "category": "reformulation",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "abono PIS",
+      "expected": {
+        "status": "matched",
+        "serviceId": "salary-bonus",
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "salary-bonus"
+        ],
+        "message": "Abono salarial, em etapas: 1) Separe antes: Ter conta gov.br de nível Bronze, Prata ou Ouro; Consultar a Carteira de Trabalho Digital ou o portal gov.br para ver se há abono a receber; Saber o mês de nascimento, que define a data no calendário; Para receber em agência da CAIXA, levar documento oficial de identificação. 2) O atendimento é feito pelos canais digitais. Órgão responsável: Ministério do Trabalho e Emprego. 3) Siga os 4 passos da orientação, começando por: Consulte o calendário e as informações do abono na Carteira de Trabalho Digital ou no portal gov.br. Em 2026, quem nasceu em janeiro recebe a partir de 16 de fevereiro e os demais meses seguem o calendário da página oficial; os valores ficam disponíveis até 30/12/2026. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: GOV.BR · Receber o Abono Salarial (https://www.gov.br/pt-br/servicos/receber-o-abono-salarial), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7063
+    },
+    {
+      "caseId": "reform-registry-1",
+      "category": "reformulation",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "cad unico",
+      "expected": {
+        "status": "matched",
+        "serviceId": "social-registry",
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "social-registry"
+        ],
+        "message": "Cadastro Único, em etapas: 1) Separe antes: Consultar os critérios oficiais; Conferir a documentação da família; Localizar o atendimento municipal. 2) O atendimento é feito presencialmente. Órgão responsável: Ministério do Desenvolvimento e Assistência Social. 3) Siga os 3 passos da orientação, começando por: Leia a página oficial de inscrição no Cadastro Único. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: GOV.BR · Inscrever-se no Cadastro Único (https://www.gov.br/pt-br/servicos/inscrever-se-no-cadastro-unico-para-programas-sociais-do-governo-federal), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7252
+    },
+    {
+      "caseId": "reform-registry-2",
+      "category": "reformulation",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "Cadastro Único",
+      "expected": {
+        "status": "matched",
+        "serviceId": "social-registry",
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "social-registry"
+        ],
+        "message": "Cadastro Único, em etapas: 1) Separe antes: Consultar os critérios oficiais; Conferir a documentação da família; Localizar o atendimento municipal. 2) O atendimento é feito presencialmente. Órgão responsável: Ministério do Desenvolvimento e Assistência Social. 3) Siga os 3 passos da orientação, começando por: Leia a página oficial de inscrição no Cadastro Único. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: GOV.BR · Inscrever-se no Cadastro Único (https://www.gov.br/pt-br/servicos/inscrever-se-no-cadastro-unico-para-programas-sociais-do-governo-federal), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7492
+    },
+    {
+      "caseId": "reform-work-card-1",
+      "category": "reformulation",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "CTPS",
+      "expected": {
+        "status": "matched",
+        "serviceId": "work-card",
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "work-card"
+        ],
+        "message": "Carteira de Trabalho Digital, em etapas: 1) Separe antes: Ter o número do CPF em mãos; Criar uma conta autenticada no gov.br, caso ainda não tenha (nível Bronze, Prata ou Ouro); Escolher o canal: aplicativo Carteira de Trabalho Digital ou acesso pela web. 2) O atendimento é feito pelos canais digitais. Órgão responsável: Ministério do Trabalho e Emprego. 3) Siga os 4 passos da orientação, começando por: Abra o aplicativo Carteira de Trabalho Digital (Android ou iOS) ou o acesso web indicado na página oficial do serviço. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: GOV.BR · Obter a Carteira de Trabalho (https://www.gov.br/pt-br/servicos/obter-a-carteira-de-trabalho), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7188
+    },
+    {
+      "caseId": "reform-work-card-2",
+      "category": "reformulation",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "carteira de trabalho",
+      "expected": {
+        "status": "matched",
+        "serviceId": "work-card",
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "work-card"
+        ],
+        "message": "Carteira de Trabalho Digital, em etapas: 1) Separe antes: Ter o número do CPF em mãos; Criar uma conta autenticada no gov.br, caso ainda não tenha (nível Bronze, Prata ou Ouro); Escolher o canal: aplicativo Carteira de Trabalho Digital ou acesso pela web. 2) O atendimento é feito pelos canais digitais. Órgão responsável: Ministério do Trabalho e Emprego. 3) Siga os 4 passos da orientação, começando por: Abra o aplicativo Carteira de Trabalho Digital (Android ou iOS) ou o acesso web indicado na página oficial do serviço. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: GOV.BR · Obter a Carteira de Trabalho (https://www.gov.br/pt-br/servicos/obter-a-carteira-de-trabalho), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.8515
+    },
+    {
+      "caseId": "reform-jobs",
+      "category": "reformulation",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "quero procurar emprego",
+      "expected": {
+        "status": "matched",
+        "serviceId": "jobs",
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "jobs"
+        ],
+        "message": "Vagas e serviços do SINE, em etapas: 1) Separe antes: Ter conta gov.br de nível Bronze, Prata ou Ouro; Reunir a documentação pessoal do titular para o cadastro; Ter à mão formação, experiências de trabalho e áreas de interesse para preencher o perfil; Escolher o canal: Portal Emprega Brasil, aplicativo Carteira de Trabalho Digital ou posto da Rede Sine. 2) O atendimento é feito por canais digitais e presenciais. Órgão responsável: Ministério do Trabalho e Emprego. 3) Siga os 4 passos da orientação, começando por: Cadastre-se no Portal Emprega Brasil (web) ou em um posto de atendimento do Sine (presencial). Segundo a fonte, o cadastro leva em média 15 minutos. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: GOV.BR · Buscar Emprego no Sistema Nacional de Emprego (Sine) (https://www.gov.br/pt-br/servicos/buscar-emprego-no-sistema-nacional-de-emprego-sine), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7661
+    },
+    {
+      "caseId": "reform-passport",
+      "category": "reformulation",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "vou viajar para o exterior",
+      "expected": {
+        "status": "matched",
+        "serviceId": "passport",
+        "serviceIds": null,
+        "facts": [
+          "Polícia Federal"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "passport"
+        ],
+        "message": "Passaporte brasileiro, em etapas: 1) Separe antes: Ler os requisitos da Polícia Federal; Conferir documentação e custos atualizados; Consultar as etapas de atendimento. 2) O atendimento é feito por canais digitais e presenciais. Órgão responsável: Polícia Federal. 3) Siga os 3 passos da orientação, começando por: Acesse a área de passaporte da Polícia Federal. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: Polícia Federal · Passaporte (https://www.gov.br/pt-br/servicos/obter-passaporte-comum-para-brasileiro), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7053
+    },
+    {
+      "caseId": "reform-voter",
+      "category": "reformulation",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "título de eleitor",
+      "expected": {
+        "status": "matched",
+        "serviceId": "voter",
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "voter"
+        ],
+        "message": "Título e situação eleitoral, em etapas: 1) Separe antes: Identificar o serviço eleitoral desejado; Conferir o calendário oficial; Consultar documentos e canais de atendimento. 2) O atendimento é feito por canais digitais e presenciais. Órgão responsável: Justiça Eleitoral. 3) Siga os 3 passos da orientação, começando por: Acesse o autoatendimento eleitoral do TSE. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: TSE · Autoatendimento eleitoral (https://www.tse.jus.br/servicos-eleitorais/autoatendimento-eleitoral), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7086
+    },
+    {
+      "caseId": "reform-family",
+      "category": "reformulation",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "preciso de ajuda com bolsa família",
+      "expected": {
+        "status": "matched",
+        "serviceId": "family-benefit",
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "family-benefit"
+        ],
+        "message": "Programa Bolsa Família, em etapas: 1) Separe antes: Consultar a página oficial do programa; Ler os critérios atualizados; Identificar o atendimento adequado. 2) O atendimento é feito por canais digitais e presenciais. Órgão responsável: Ministério do Desenvolvimento e Assistência Social. 3) Siga os 3 passos da orientação, começando por: Consulte a página institucional do Bolsa Família. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: MDS · Bolsa Família (https://www.gov.br/mds/pt-br/acoes-e-programas/bolsa-familia), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7332
+    },
+    {
+      "caseId": "reform-bpc",
+      "category": "reformulation",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "benefício idoso",
+      "expected": {
+        "status": "matched",
+        "serviceId": "bpc",
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "bpc"
+        ],
+        "message": "Benefício de Prestação Continuada, em etapas: 1) Separe antes: Consultar os requisitos atualizados; Ler as orientações de solicitação; Identificar os canais responsáveis. 2) O atendimento é feito por canais digitais e presenciais. Órgão responsável: Ministério do Desenvolvimento e Assistência Social. 3) Siga os 3 passos da orientação, começando por: Leia a explicação do BPC na fonte oficial. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: MDS · Benefício de Prestação Continuada (BPC) (https://www.gov.br/mds/pt-br/acoes-e-programas/beneficio-de-prestacao-continuada-bpc/conheca-todos-os-detalhes-do-bpc), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7
+    },
+    {
+      "caseId": "reform-registry-typo",
+      "category": "reformulation",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "cadunco",
+      "expected": {
+        "status": "matched",
+        "serviceId": "social-registry",
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "unsupported",
+        "serviceIds": [],
+        "message": "Não encontrei informação suficiente na base para orientar sobre essa dúvida e não vou inventar instruções. Para continuar: 1) reformule citando o nome do serviço (por exemplo, CPF ou FGTS); 2) ou escolha um tema: Documentos (Inscrição no CPF, Situação cadastral do CPF); Trabalho (Carteira de Trabalho Digital, Seguro-desemprego); Assistência social (Cadastro Único, Programa Bolsa Família); 3) para outros assuntos, procure o canal oficial do órgão responsável."
+      },
+      "retrievalCorrect": false,
+      "responseCorrect": false,
+      "problems": [
+        "status unsupported (esperado matched)"
+      ],
+      "durationMs": 1.321
+    },
+    {
+      "caseId": "reform-youth-id",
+      "category": "reformulation",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "carteirinha de estudante jovem baixa renda",
+      "expected": {
+        "status": "matched",
+        "serviceId": "youth-id",
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "unsupported",
+        "serviceIds": [],
+        "message": "Não encontrei informação suficiente na base para orientar sobre essa dúvida e não vou inventar instruções. Para continuar: 1) reformule citando o nome do serviço (por exemplo, CPF ou FGTS); 2) ou escolha um tema: Documentos (Inscrição no CPF, Situação cadastral do CPF); Trabalho (Carteira de Trabalho Digital, Seguro-desemprego); Assistência social (Cadastro Único, Programa Bolsa Família); 3) para outros assuntos, procure o canal oficial do órgão responsável."
+      },
+      "retrievalCorrect": false,
+      "responseCorrect": false,
+      "problems": [
+        "status unsupported (esperado matched)"
+      ],
+      "durationMs": 1.4278
+    },
+    {
+      "caseId": "reform-registry-long",
+      "category": "reformulation",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "Moro numa cidade pequena e queria saber como faço para conseguir me inscrever no cadastro único do governo para receber ajuda",
+      "expected": {
+        "status": "matched",
+        "serviceId": "social-registry",
+        "serviceIds": null,
+        "facts": []
+      },
+      "actual": {
+        "status": "unsupported",
+        "serviceIds": [],
+        "message": "Não encontrei informação suficiente na base para orientar sobre essa dúvida e não vou inventar instruções. Para continuar: 1) reformule citando o nome do serviço (por exemplo, CPF ou FGTS); 2) ou escolha um tema: Documentos (Inscrição no CPF, Situação cadastral do CPF); Trabalho (Carteira de Trabalho Digital, Seguro-desemprego); Assistência social (Cadastro Único, Programa Bolsa Família); 3) para outros assuntos, procure o canal oficial do órgão responsável."
+      },
+      "retrievalCorrect": false,
+      "responseCorrect": false,
+      "problems": [
+        "status unsupported (esperado matched)"
+      ],
+      "durationMs": 1.5461
+    },
+    {
+      "caseId": "intent-documents-unemployment",
+      "category": "intent",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "Quais documentos preciso levar para o seguro-desemprego?",
+      "expected": {
+        "status": "matched",
+        "serviceId": "unemployment",
+        "serviceIds": null,
+        "facts": [
+          "Documento do Requerimento do Seguro-Desemprego",
+          "número do CPF"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "unemployment"
+        ],
+        "message": "Seguro-desemprego, em etapas: 1) Separe antes: Ter o Documento do Requerimento do Seguro-Desemprego, entregue pelo empregador no momento da dispensa sem justa causa; Ter o número do CPF; Ter conta gov.br de nível Bronze, Prata ou Ouro; Se for informar conta bancária, usar conta de sua titularidade, com banco, agência e conta corretos; não é aceita conta salário nem conta conjunta. 2) O atendimento é feito por canais digitais e presenciais. Órgão responsável: Ministério do Trabalho e Emprego. 3) Siga os 4 passos da orientação, começando por: Peça o benefício pelo Portal de Serviços, pelo aplicativo da Carteira de Trabalho Digital, pelo telefone 158 ou pela Plataforma FACILITA (atendimento.trabalho.gov.br). Segundo a fonte, o pedido leva até 5 minutos. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: GOV.BR · Solicitar o Seguro-Desemprego (https://www.gov.br/pt-br/servicos/solicitar-o-seguro-desemprego), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 1.4656
+    },
+    {
+      "caseId": "intent-documents-fgts",
+      "category": "intent",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "Que documentos levar para sacar o FGTS?",
+      "expected": {
+        "status": "matched",
+        "serviceId": "fgts",
+        "serviceIds": null,
+        "facts": [
+          "Documento oficial de identificação com foto",
+          "Carteira de Trabalho"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "fgts"
+        ],
+        "message": "Informações sobre o FGTS, em etapas: 1) Separe antes: Documento oficial de identificação com foto; Carteira de Trabalho e Previdência Social; Número de inscrição no PIS/PASEP; Conta bancária (da CAIXA ou de outra instituição) para receber o valor; Para regularizar dados na agência: RG ou outro documento com foto, comprovante de residência atual e Carteira de Trabalho. 2) O atendimento é feito por canais digitais e presenciais. Órgão responsável: Caixa Econômica Federal. 3) Siga os 4 passos da orientação, começando por: Abra o APP FGTS, da CAIXA, e consulte o saldo; no aplicativo também é possível alterar dados cadastrais. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: GOV.BR · Sacar o FGTS (https://www.gov.br/pt-br/servicos/sacar-o-fgts), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 1.4459
+    },
+    {
+      "caseId": "intent-cost-passport",
+      "category": "intent",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "quanto custa o passaporte?",
+      "expected": {
+        "status": "matched",
+        "serviceId": "passport",
+        "serviceIds": null,
+        "facts": [
+          "não informa valores",
+          "Polícia Federal"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "passport"
+        ],
+        "message": "Passaporte brasileiro, em etapas: 1) A base não informa valores ou taxas para Passaporte brasileiro, então não vou estimar; esse dado precisa ser conferido na fonte oficial. 2) Separe antes: Ler os requisitos da Polícia Federal; Conferir documentação e custos atualizados; Consultar as etapas de atendimento. 3) O atendimento é feito por canais digitais e presenciais. Órgão responsável: Polícia Federal. 4) Siga os 3 passos da orientação, começando por: Acesse a área de passaporte da Polícia Federal. 5) Confira na fonte se os requisitos continuam os mesmos. Fonte: Polícia Federal · Passaporte (https://www.gov.br/pt-br/servicos/obter-passaporte-comum-para-brasileiro), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 1.4264
+    },
+    {
+      "caseId": "intent-cost-family",
+      "category": "intent",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "Bolsa Família quanto recebo?",
+      "expected": {
+        "status": "matched",
+        "serviceId": "family-benefit",
+        "serviceIds": null,
+        "facts": [
+          "não informa valores"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "family-benefit"
+        ],
+        "message": "Programa Bolsa Família, em etapas: 1) A base não informa valores ou taxas para Programa Bolsa Família, então não vou estimar; esse dado precisa ser conferido na fonte oficial. 2) Separe antes: Consultar a página oficial do programa; Ler os critérios atualizados; Identificar o atendimento adequado. 3) O atendimento é feito por canais digitais e presenciais. Órgão responsável: Ministério do Desenvolvimento e Assistência Social. 4) Siga os 3 passos da orientação, começando por: Consulte a página institucional do Bolsa Família. 5) Confira na fonte se os requisitos continuam os mesmos. Fonte: MDS · Bolsa Família (https://www.gov.br/mds/pt-br/acoes-e-programas/bolsa-familia), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 1.4495
+    },
+    {
+      "caseId": "intent-deadline-fgts",
+      "category": "intent",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "Qual o prazo do FGTS?",
+      "expected": {
+        "status": "matched",
+        "serviceId": "fgts",
+        "serviceIds": null,
+        "facts": [
+          "não informa prazos"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "fgts"
+        ],
+        "message": "Informações sobre o FGTS, em etapas: 1) A base não informa prazos para Informações sobre o FGTS, então não vou estimar; esse dado precisa ser conferido na fonte oficial. 2) Separe antes: Documento oficial de identificação com foto; Carteira de Trabalho e Previdência Social; Número de inscrição no PIS/PASEP; Conta bancária (da CAIXA ou de outra instituição) para receber o valor; Para regularizar dados na agência: RG ou outro documento com foto, comprovante de residência atual e Carteira de Trabalho. 3) O atendimento é feito por canais digitais e presenciais. Órgão responsável: Caixa Econômica Federal. 4) Siga os 4 passos da orientação, começando por: Abra o APP FGTS, da CAIXA, e consulte o saldo; no aplicativo também é possível alterar dados cadastrais. 5) Confira na fonte se os requisitos continuam os mesmos. Fonte: GOV.BR · Sacar o FGTS (https://www.gov.br/pt-br/servicos/sacar-o-fgts), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7335
+    },
+    {
+      "caseId": "intent-eligibility-bpc",
+      "category": "intent",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "Quem tem direito ao BPC?",
+      "expected": {
+        "status": "matched",
+        "serviceId": "bpc",
+        "serviceIds": null,
+        "facts": [
+          "não decide se você tem direito"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "bpc"
+        ],
+        "message": "Benefício de Prestação Continuada, em etapas: 1) Pela base, esta orientação é para: pessoas interessadas em conhecer as condições e os canais de orientação do BPC. 2) O assistente não decide se você tem direito; isso depende da análise do órgão. 3) Separe antes: Consultar os requisitos atualizados; Ler as orientações de solicitação; Identificar os canais responsáveis. 4) O atendimento é feito por canais digitais e presenciais. Órgão responsável: Ministério do Desenvolvimento e Assistência Social. 5) Siga os 3 passos da orientação, começando por: Leia a explicação do BPC na fonte oficial. 6) Confira na fonte se os requisitos continuam os mesmos. Fonte: MDS · Benefício de Prestação Continuada (BPC) (https://www.gov.br/mds/pt-br/acoes-e-programas/beneficio-de-prestacao-continuada-bpc/conheca-todos-os-detalhes-do-bpc), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 1.4572
+    },
+    {
+      "caseId": "intent-eligibility-bonus",
+      "category": "intent",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "tenho direito ao abono salarial?",
+      "expected": {
+        "status": "matched",
+        "serviceId": "salary-bonus",
+        "serviceIds": null,
+        "facts": [
+          "não decide se você tem direito"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "salary-bonus"
+        ],
+        "message": "Abono salarial, em etapas: 1) Pela base, esta orientação é para: trabalhador que, no ano-base, trabalhou para empregador contribuinte do PIS ou do Pasep por pelo menos 30 dias (consecutivos ou não), está cadastrado há pelo menos 5 anos no Fundo de Participação PIS-Pasep, teve os dados informados corretamente pelo empregador no eSocial e recebeu remuneração dentro do limite. No pagamento de 2026 (ano-base 2024), o limite é remuneração média de até R$ 2.766,00. 2) O assistente não decide se você tem direito; isso depende da análise do órgão. 3) Separe antes: Ter conta gov.br de nível Bronze, Prata ou Ouro; Consultar a Carteira de Trabalho Digital ou o portal gov.br para ver se há abono a receber; Saber o mês de nascimento, que define a data no calendário; Para receber em agência da CAIXA, levar documento oficial de identificação. 4) O atendimento é feito pelos canais digitais. Órgão responsável: Ministério do Trabalho e Emprego. 5) Siga os 4 passos da orientação, começando por: Consulte o calendário e as informações do abono na Carteira de Trabalho Digital ou no portal gov.br. Em 2026, quem nasceu em janeiro recebe a partir de 16 de fevereiro e os demais meses seguem o calendário da página oficial; os valores ficam disponíveis até 30/12/2026. 6) Confira na fonte se os requisitos continuam os mesmos. Fonte: GOV.BR · Receber o Abono Salarial (https://www.gov.br/pt-br/servicos/receber-o-abono-salarial), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 0.7093
+    },
+    {
+      "caseId": "intent-where-cras",
+      "category": "intent",
+      "mode": "steps",
+      "requestMode": "steps",
+      "question": "onde fica o CRAS?",
+      "expected": {
+        "status": "matched",
+        "serviceId": "cras",
+        "serviceIds": null,
+        "facts": [
+          "presencialmente",
+          "Gestão municipal de assistência social"
+        ]
+      },
+      "actual": {
+        "status": "matched",
+        "serviceIds": [
+          "cras"
+        ],
+        "message": "Atendimento no CRAS, em etapas: 1) Separe antes: Identificar a gestão municipal responsável; Confirmar a unidade de referência; Conferir horário e orientações de atendimento. 2) O atendimento é feito presencialmente. Órgão responsável: Gestão municipal de assistência social. 3) Siga os 3 passos da orientação, começando por: Consulte a explicação oficial sobre o CRAS. 4) Confira na fonte se os requisitos continuam os mesmos. Fonte: MDS · CRAS (https://www.gov.br/mds/pt-br/acoes-e-programas/SUAS/unidades-de-atendimento/centro-de-referencia-de-assistencia-social-cras), verificada em 19/11/2026. Aviso: este assistente é um projeto acadêmico, não é canal oficial; confirme os requisitos atualizados na fonte antes de ir ao atendimento."
+      },
+      "retrievalCorrect": true,
+      "responseCorrect": true,
+      "problems": [],
+      "durationMs": 1.406
+    }
+  ]
+}

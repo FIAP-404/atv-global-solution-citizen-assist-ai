@@ -1,14 +1,476 @@
 [
-  { "id": "empty", "question": "   ", "expectedStatus": "empty" },
-  { "id": "unsupported", "question": "Qual a previsão do tempo?", "expectedStatus": "unsupported" },
-  { "id": "ambiguous", "question": "documento", "expectedStatus": "ambiguous" },
-  { "id": "work-card", "question": "Como acessar a Carteira de Trabalho Digital?", "expectedStatus": "matched", "expectedServiceId": "work-card" },
-  { "id": "registry", "question": "Onde faço o CadÚnico?", "expectedStatus": "matched", "expectedServiceId": "social-registry" },
-  { "id": "identity", "question": "Preciso do meu RG", "expectedStatus": "matched", "expectedServiceId": "identity" },
-  { "id": "passport", "question": "passaporte brasileiro", "expectedStatus": "matched", "expectedServiceId": "passport" },
-  { "id": "voter", "question": "título eleitoral", "expectedStatus": "matched", "expectedServiceId": "voter" },
-  { "id": "fgts", "question": "Como consultar FGTS?", "expectedStatus": "matched", "expectedServiceId": "fgts" },
-  { "id": "unemployment", "question": "seguro-desemprego", "expectedStatus": "matched", "expectedServiceId": "unemployment" },
-  { "id": "family", "question": "Bolsa Família", "expectedStatus": "matched", "expectedServiceId": "family-benefit" },
-  { "id": "jobs", "question": "Como achar vagas no SINE?", "expectedStatus": "matched", "expectedServiceId": "jobs" }
+  {
+    "id": "empty",
+    "question": "   ",
+    "category": "limit",
+    "expectedStatus": "empty"
+  },
+  {
+    "id": "empty-punctuation",
+    "question": "?!",
+    "category": "limit",
+    "expectedStatus": "empty"
+  },
+  {
+    "id": "ambiguous",
+    "question": "documento",
+    "category": "limit",
+    "expectedStatus": "ambiguous",
+    "expectedServiceIds": [
+      "cpf",
+      "identity",
+      "voter"
+    ]
+  },
+  {
+    "id": "ambiguous-carteira",
+    "question": "carteira",
+    "category": "limit",
+    "expectedStatus": "ambiguous",
+    "expectedServiceIds": [
+      "identity",
+      "work-card"
+    ]
+  },
+  {
+    "id": "stop-words-only",
+    "question": "como",
+    "category": "limit",
+    "expectedStatus": "unsupported"
+  },
+  {
+    "id": "too-long",
+    "question": "Bom dia, eu queria entender uma situação bem complicada que está acontecendo comigo e com a minha família desde o começo do ano, porque eu trabalhei muitos anos numa empresa pequena aqui do bairro, depois fui dispensado, minha esposa também ficou sem renda, temos três filhos pequenos em casa, um deles com problema de saúde, e eu não sei direito por onde começar, se preciso ir em algum lugar, se dá para fazer pela internet, quais papéis tenho que juntar, quanto tempo isso tudo demora e se a gente tem direito a algum tipo de ajuda do governo enquanto não arrumo outro emprego, então gostaria de uma explicação completa, por favor.",
+    "category": "invalid",
+    "expectedStatus": "error"
+  },
+  {
+    "id": "invalid-mode",
+    "question": "CPF",
+    "category": "invalid",
+    "requestMode": "audio",
+    "expectedStatus": "error"
+  },
+  {
+    "id": "nonexistent-option",
+    "question": "opção 4",
+    "category": "invalid",
+    "expectedStatus": "unsupported"
+  },
+  {
+    "id": "unsupported",
+    "question": "Qual a previsão do tempo?",
+    "category": "out-of-scope",
+    "expectedStatus": "unsupported"
+  },
+  {
+    "id": "out-driver-license",
+    "question": "Como tirar carteira de motorista?",
+    "category": "out-of-scope",
+    "expectedStatus": "unsupported"
+  },
+  {
+    "id": "out-cnpj",
+    "question": "Quero abrir uma empresa e tirar o CNPJ",
+    "category": "out-of-scope",
+    "expectedStatus": "unsupported"
+  },
+  {
+    "id": "out-income-tax",
+    "question": "Como declarar imposto de renda?",
+    "category": "out-of-scope",
+    "expectedStatus": "unsupported"
+  },
+  {
+    "id": "out-sus",
+    "question": "Como marcar consulta no SUS?",
+    "category": "out-of-scope",
+    "expectedStatus": "unsupported"
+  },
+  {
+    "id": "out-football",
+    "question": "Qual o melhor time de futebol?",
+    "category": "out-of-scope",
+    "expectedStatus": "unsupported"
+  },
+  {
+    "id": "out-recipe",
+    "question": "receita de bolo de cenoura",
+    "category": "out-of-scope",
+    "expectedStatus": "unsupported"
+  },
+  {
+    "id": "work-card",
+    "question": "Como acessar a Carteira de Trabalho Digital?",
+    "category": "direct",
+    "expectedStatus": "matched",
+    "expectedServiceId": "work-card",
+    "expectedFacts": [
+      "Ministério do Trabalho e Emprego"
+    ]
+  },
+  {
+    "id": "registry",
+    "question": "Onde faço o CadÚnico?",
+    "category": "direct",
+    "expectedStatus": "matched",
+    "expectedServiceId": "social-registry",
+    "expectedFacts": [
+      "presencialmente",
+      "Ministério do Desenvolvimento e Assistência Social"
+    ]
+  },
+  {
+    "id": "identity",
+    "question": "Preciso do meu RG",
+    "category": "direct",
+    "expectedStatus": "matched",
+    "expectedServiceId": "identity",
+    "expectedFacts": [
+      "órgãos estaduais"
+    ]
+  },
+  {
+    "id": "passport",
+    "question": "passaporte brasileiro",
+    "category": "direct",
+    "expectedStatus": "matched",
+    "expectedServiceId": "passport",
+    "expectedFacts": [
+      "Polícia Federal"
+    ]
+  },
+  {
+    "id": "voter",
+    "question": "título eleitoral",
+    "category": "direct",
+    "expectedStatus": "matched",
+    "expectedServiceId": "voter",
+    "expectedFacts": [
+      "Justiça Eleitoral"
+    ]
+  },
+  {
+    "id": "fgts",
+    "question": "Como consultar FGTS?",
+    "category": "direct",
+    "expectedStatus": "matched",
+    "expectedServiceId": "fgts",
+    "expectedFacts": [
+      "Caixa Econômica Federal",
+      "APP FGTS"
+    ]
+  },
+  {
+    "id": "unemployment",
+    "question": "seguro-desemprego",
+    "category": "direct",
+    "expectedStatus": "matched",
+    "expectedServiceId": "unemployment",
+    "expectedFacts": [
+      "Ministério do Trabalho e Emprego"
+    ]
+  },
+  {
+    "id": "family",
+    "question": "Bolsa Família",
+    "category": "direct",
+    "expectedStatus": "matched",
+    "expectedServiceId": "family-benefit",
+    "expectedFacts": [
+      "Ministério do Desenvolvimento e Assistência Social"
+    ]
+  },
+  {
+    "id": "jobs",
+    "question": "Como achar vagas no SINE?",
+    "category": "direct",
+    "expectedStatus": "matched",
+    "expectedServiceId": "jobs",
+    "expectedFacts": [
+      "Ministério do Trabalho e Emprego"
+    ]
+  },
+  {
+    "id": "cpf",
+    "question": "Inscrição no CPF",
+    "category": "direct",
+    "expectedStatus": "matched",
+    "expectedServiceId": "cpf",
+    "expectedFacts": [
+      "Receita Federal"
+    ]
+  },
+  {
+    "id": "salary-bonus",
+    "question": "Abono salarial",
+    "category": "direct",
+    "expectedStatus": "matched",
+    "expectedServiceId": "salary-bonus",
+    "expectedFacts": [
+      "Ministério do Trabalho e Emprego"
+    ]
+  },
+  {
+    "id": "bpc",
+    "question": "Benefício de Prestação Continuada",
+    "category": "direct",
+    "expectedStatus": "matched",
+    "expectedServiceId": "bpc",
+    "expectedFacts": [
+      "Ministério do Desenvolvimento e Assistência Social"
+    ]
+  },
+  {
+    "id": "cras",
+    "question": "Atendimento no CRAS",
+    "category": "direct",
+    "expectedStatus": "matched",
+    "expectedServiceId": "cras",
+    "expectedFacts": [
+      "Gestão municipal de assistência social"
+    ]
+  },
+  {
+    "id": "youth-id",
+    "question": "Identidade Jovem",
+    "category": "direct",
+    "expectedStatus": "matched",
+    "expectedServiceId": "youth-id",
+    "expectedFacts": [
+      "Secretaria Nacional de Juventude"
+    ]
+  },
+  {
+    "id": "reform-cpf",
+    "question": "Como tirar o CPF?",
+    "category": "reformulation",
+    "expectedStatus": "matched",
+    "expectedServiceId": "cpf",
+    "expectedFacts": [
+      "Receita Federal"
+    ]
+  },
+  {
+    "id": "reform-cpf-status",
+    "question": "Meu CPF está pendente, o que faço?",
+    "category": "reformulation",
+    "expectedStatus": "matched",
+    "expectedServiceId": "cpf-status",
+    "expectedFacts": [
+      "Receita Federal"
+    ]
+  },
+  {
+    "id": "reform-unemployment-1",
+    "question": "fui demitido",
+    "category": "reformulation",
+    "expectedStatus": "matched",
+    "expectedServiceId": "unemployment"
+  },
+  {
+    "id": "reform-unemployment-2",
+    "question": "perdi o emprego",
+    "category": "reformulation",
+    "expectedStatus": "matched",
+    "expectedServiceId": "unemployment"
+  },
+  {
+    "id": "reform-unemployment-3",
+    "question": "fui mandado embora",
+    "category": "reformulation",
+    "expectedStatus": "matched",
+    "expectedServiceId": "unemployment"
+  },
+  {
+    "id": "reform-fgts",
+    "question": "fundo de garantia",
+    "category": "reformulation",
+    "expectedStatus": "matched",
+    "expectedServiceId": "fgts",
+    "expectedFacts": [
+      "Caixa Econômica Federal"
+    ]
+  },
+  {
+    "id": "reform-salary-bonus",
+    "question": "abono PIS",
+    "category": "reformulation",
+    "expectedStatus": "matched",
+    "expectedServiceId": "salary-bonus"
+  },
+  {
+    "id": "reform-registry-1",
+    "question": "cad unico",
+    "category": "reformulation",
+    "expectedStatus": "matched",
+    "expectedServiceId": "social-registry"
+  },
+  {
+    "id": "reform-registry-2",
+    "question": "Cadastro Único",
+    "category": "reformulation",
+    "expectedStatus": "matched",
+    "expectedServiceId": "social-registry"
+  },
+  {
+    "id": "reform-work-card-1",
+    "question": "CTPS",
+    "category": "reformulation",
+    "expectedStatus": "matched",
+    "expectedServiceId": "work-card"
+  },
+  {
+    "id": "reform-work-card-2",
+    "question": "carteira de trabalho",
+    "category": "reformulation",
+    "expectedStatus": "matched",
+    "expectedServiceId": "work-card"
+  },
+  {
+    "id": "reform-jobs",
+    "question": "quero procurar emprego",
+    "category": "reformulation",
+    "expectedStatus": "matched",
+    "expectedServiceId": "jobs"
+  },
+  {
+    "id": "reform-passport",
+    "question": "vou viajar para o exterior",
+    "category": "reformulation",
+    "expectedStatus": "matched",
+    "expectedServiceId": "passport",
+    "expectedFacts": [
+      "Polícia Federal"
+    ]
+  },
+  {
+    "id": "reform-voter",
+    "question": "título de eleitor",
+    "category": "reformulation",
+    "expectedStatus": "matched",
+    "expectedServiceId": "voter"
+  },
+  {
+    "id": "reform-family",
+    "question": "preciso de ajuda com bolsa família",
+    "category": "reformulation",
+    "expectedStatus": "matched",
+    "expectedServiceId": "family-benefit"
+  },
+  {
+    "id": "reform-bpc",
+    "question": "benefício idoso",
+    "category": "reformulation",
+    "expectedStatus": "matched",
+    "expectedServiceId": "bpc"
+  },
+  {
+    "id": "reform-registry-typo",
+    "question": "cadunco",
+    "category": "reformulation",
+    "expectedStatus": "matched",
+    "expectedServiceId": "social-registry",
+    "knownLimitation": true
+  },
+  {
+    "id": "reform-youth-id",
+    "question": "carteirinha de estudante jovem baixa renda",
+    "category": "reformulation",
+    "expectedStatus": "matched",
+    "expectedServiceId": "youth-id",
+    "knownLimitation": true
+  },
+  {
+    "id": "reform-registry-long",
+    "question": "Moro numa cidade pequena e queria saber como faço para conseguir me inscrever no cadastro único do governo para receber ajuda",
+    "category": "reformulation",
+    "expectedStatus": "matched",
+    "expectedServiceId": "social-registry",
+    "knownLimitation": true
+  },
+  {
+    "id": "intent-documents-unemployment",
+    "question": "Quais documentos preciso levar para o seguro-desemprego?",
+    "category": "intent",
+    "expectedStatus": "matched",
+    "expectedServiceId": "unemployment",
+    "expectedFacts": [
+      "Documento do Requerimento do Seguro-Desemprego",
+      "número do CPF"
+    ]
+  },
+  {
+    "id": "intent-documents-fgts",
+    "question": "Que documentos levar para sacar o FGTS?",
+    "category": "intent",
+    "expectedStatus": "matched",
+    "expectedServiceId": "fgts",
+    "expectedFacts": [
+      "Documento oficial de identificação com foto",
+      "Carteira de Trabalho"
+    ]
+  },
+  {
+    "id": "intent-cost-passport",
+    "question": "quanto custa o passaporte?",
+    "category": "intent",
+    "expectedStatus": "matched",
+    "expectedServiceId": "passport",
+    "expectedFacts": [
+      "não informa valores",
+      "Polícia Federal"
+    ]
+  },
+  {
+    "id": "intent-cost-family",
+    "question": "Bolsa Família quanto recebo?",
+    "category": "intent",
+    "expectedStatus": "matched",
+    "expectedServiceId": "family-benefit",
+    "expectedFacts": [
+      "não informa valores"
+    ]
+  },
+  {
+    "id": "intent-deadline-fgts",
+    "question": "Qual o prazo do FGTS?",
+    "category": "intent",
+    "expectedStatus": "matched",
+    "expectedServiceId": "fgts",
+    "expectedFacts": [
+      "não informa prazos"
+    ]
+  },
+  {
+    "id": "intent-eligibility-bpc",
+    "question": "Quem tem direito ao BPC?",
+    "category": "intent",
+    "expectedStatus": "matched",
+    "expectedServiceId": "bpc",
+    "expectedFacts": [
+      "não decide se você tem direito"
+    ]
+  },
+  {
+    "id": "intent-eligibility-bonus",
+    "question": "tenho direito ao abono salarial?",
+    "category": "intent",
+    "expectedStatus": "matched",
+    "expectedServiceId": "salary-bonus",
+    "expectedFacts": [
+      "não decide se você tem direito"
+    ]
+  },
+  {
+    "id": "intent-where-cras",
+    "question": "onde fica o CRAS?",
+    "category": "intent",
+    "expectedStatus": "matched",
+    "expectedServiceId": "cras",
+    "expectedFacts": [
+      "presencialmente",
+      "Gestão municipal de assistência social"
+    ]
+  }
 ]

@@ -8,6 +8,16 @@ from backend.knowledge import load_services
 ROOT = Path(__file__).resolve().parents[1]
 DEMO = ROOT / "data" / "services.demo.json"
 CASES = ROOT / "data" / "demo-test-cases.json"
+
+
+def search_cases():
+    """Casos que dependem só da busca: perguntas diretas e fora da base.
+
+    O conjunto de avaliação também tem casos de intenção, que dependem do
+    assistente, e limitações conhecidas, que devem falhar de propósito.
+    """
+    cases = json.loads(CASES.read_text(encoding="utf-8"))
+    return [c for c in cases if c.get("category") in {"direct", "out-of-scope"}]
 FINAL = ROOT / "data" / "services.demo.json"
 
 
@@ -26,7 +36,7 @@ class SearchTests(unittest.TestCase):
         self.assertEqual(self.ids("TITULO ELEITORAL")[0], "voter")
 
     def test_starter_scenarios_find_expected_service(self):
-        for case in json.loads(CASES.read_text(encoding="utf-8")):
+        for case in search_cases():
             if case.get("expectedStatus") != "matched":
                 continue
             with self.subTest(case=case["id"]):
@@ -112,7 +122,7 @@ class FinalBaseSearchTests(unittest.TestCase):
         cls.records = load_services(FINAL)
 
     def test_starter_scenarios(self):
-        for case in json.loads(CASES.read_text(encoding="utf-8")):
+        for case in search_cases():
             ranked = search.search_services(self.records, case["question"])
             with self.subTest(case=case["id"]):
                 if case["expectedStatus"] == "matched":

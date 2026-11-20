@@ -33,8 +33,17 @@ class AssistantTests(unittest.TestCase):
 
     def test_starter_cases_in_both_modes(self):
         for case in json.loads(CASES.read_text(encoding="utf-8")):
+            if case.get("knownLimitation"):
+                continue  # erros esperados, medidos em tests/test_evaluation.py
             for mode in MODES:
                 with self.subTest(case=case["id"], mode=mode):
+                    request_mode = case.get("requestMode", mode)
+                    if case["expectedStatus"] == "error":
+                        with self.assertRaises(ValueError):
+                            assistant.answer_question(
+                                self.records, case["question"], request_mode
+                            )
+                        continue
                     answer = self.ask(case["question"], mode)
                     self.assertEqual(answer["status"], case["expectedStatus"])
                     self.assertEqual(answer["mode"], mode)

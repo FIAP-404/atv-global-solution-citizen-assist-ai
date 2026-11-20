@@ -89,7 +89,7 @@ INTENTS: dict[str, tuple[str, ...]] = {
         "documentacao", "o que levar", "preciso levar", "levar",
     ),
     "where": (
-        "onde", "local", "endereco", "site", "aplicativo", "app", "online",
+        "onde fica", "onde", "local", "endereco", "site", "aplicativo", "app", "online",
         "presencial", "agencia", "posto",
     ),
 }

@@ -100,31 +100,35 @@ A mensagem responde ao tipo de dúvida (documentos, onde fazer, quem tem direito
 
 ## 5. Testes, indicadores e resultados
 
-**Plano de testes:** `data/demo-test-cases.json` traz 12 perguntas, incluindo consultas diretas, reformulações e casos-limite:
+**Plano de testes:** `data/demo-test-cases.json` traz 56 perguntas, executadas nos dois modelos de resposta (112 consultas):
 
-| Tipo | Casos |
-|---|---|
-| Direta | CadÚnico, RG, passaporte, título eleitoral, FGTS, seguro-desemprego, Bolsa Família, SINE, Carteira de Trabalho Digital |
-| Limite | entrada vazia, consulta ambígua (`documento`), pergunta fora da base (`Qual a previsão do tempo?`) |
-
-Para o conjunto final, acrescentar reformulações e mais perguntas fora do tema.
+| Tipo | Casos | Exemplos |
+|---|---|---|
+| Direta | 14 | `Bolsa Família`, `Como consultar FGTS?` |
+| Reformulação | 19 | `fui mandado embora`, `CTPS`, `benefício idoso`, `cadunco` |
+| Dúvida específica | 8 | `quanto custa o passaporte?`, `Quem tem direito ao BPC?` |
+| Fora da base | 7 | `Qual a previsão do tempo?`, `Como tirar carteira de motorista?` |
+| Limite | 5 | entrada vazia, `?!`, `como`, `documento`, `carteira` |
+| Entrada inválida | 3 | texto com mais de 500 caracteres, modo inexistente, `opção 4` |
 
 ```bash
 python -m src.main --evaluate --output results/evaluation.json
 ```
 
-Indicadores: **taxa de acerto** (respostas corretas ÷ perguntas) e **tempo médio de consulta**, por modelo de resposta.
+Uma resposta é considerada correta quando o status e a orientação são os esperados **e** a mensagem traz o que precisa (fonte, aviso e fatos esperados; opções; limite e temas; ou pedido da pergunta). Critérios e campos em [`docs/avaliacao.md`](docs/avaliacao.md).
 
 | Indicador | `direct` | `steps` |
 |---|---|---|
-| Perguntas testadas | [PREENCHER] | [PREENCHER] |
-| Acertos | [PREENCHER] | [PREENCHER] |
-| Taxa de acerto | [PREENCHER] | [PREENCHER] |
-| Tempo médio de consulta | [PREENCHER] | [PREENCHER] |
+| Perguntas testadas | 56 | 56 |
+| Acertos | 53 | 53 |
+| Taxa de acerto | 94,6% | 94,6% |
+| Tempo médio de consulta | 0,88 ms | 0,88 ms |
 
-**Teste de usabilidade:** [PREENCHER: roteiro de tarefas, quem testou, dificuldades e resultados.]
+Os 3 erros são os mesmos nos dois modelos: erro de digitação (`cadunco`), uma reformulação com palavras que não estão na base e uma pergunta longa. Nos três, o assistente recusou em vez de indicar uma orientação errada.
 
-**Interpretação e limitações da avaliação:** [PREENCHER após a execução.]
+**Teste de usabilidade:** o roteiro de tarefas está em [`docs/teste-usabilidade.md`](docs/teste-usabilidade.md). [PREENCHER após a sessão: quem testou, dificuldades e resultados.]
+
+**Interpretação e limitações da avaliação:** em [`docs/avaliacao.md`](docs/avaliacao.md). Em resumo, as perguntas diretas, fora da base e de limite acertam 100%; o ponto fraco são as reformulações (84%). Os casos foram escritos pela equipe, e a verificação de fatos é literal e baseada na própria base, então não mede a utilidade percebida.
 
 ## 6. Como executar
 
@@ -197,7 +201,7 @@ O uso de IA e a validação crítica feita pela equipe estão registrados em [`d
 
 ## 11. Conclusões, limitações e melhorias
 
-[PREENCHER após a avaliação final.]
+O assistente responde com fonte e aviso em todas as orientações encontradas e não respondeu nenhuma pergunta fora da base (94,6% de acerto nos dois modelos). O modelo `direct` foi mantido como padrão, por ser mais curto e responder primeiro ao que foi perguntado.
 
 Limitações já conhecidas da busca:
 
@@ -205,4 +209,4 @@ Limitações já conhecidas da busca:
 - Perguntas longas, com muitas palavras fora da base, podem cair abaixo da cobertura mínima.
 - A qualidade depende de `keywords` bem escolhidas e de revisão periódica das fontes.
 
-Melhorias possíveis: tolerância a erros de digitação, mais temas e orientações, revisão periódica automática dos links e comparação com um modelo de linguagem confrontado com a base verificada.
+Melhorias possíveis (detalhes em [`docs/avaliacao.md`](docs/avaliacao.md)): tolerância a erros de digitação, cobertura calculada só sobre o vocabulário da base em perguntas longas, `keywords` com termos populares, mais temas e orientações, revisão periódica automática dos links e comparação com um modelo de linguagem confrontado com a base verificada.
