@@ -162,7 +162,10 @@ class HelpersTests(unittest.TestCase):
         self.records = load_services(DEMO)
 
     def test_index_by_id(self):
-        self.assertEqual(knowledge.index_by_id(self.records)["fgts"]["agency"], "CAIXA")
+        index = knowledge.index_by_id(self.records)
+        self.assertEqual(len(index), len(self.records))
+        self.assertEqual(index["fgts"]["id"], "fgts")
+        self.assertIs(index["fgts"], next(r for r in self.records if r["id"] == "fgts"))
 
     def test_list_topics_counts(self):
         topics = {t["id"]: t["count"] for t in knowledge.list_topics(self.records)}
@@ -174,9 +177,14 @@ class HelpersTests(unittest.TestCase):
 
     def test_unverified_ids(self):
         records = copy.deepcopy(self.records)
-        records[0]["source"]["reviewedAt"] = "2026-11-19"
-        self.assertNotIn(records[0]["id"], knowledge.unverified_ids(records))
-        self.assertEqual(len(knowledge.unverified_ids(records)), 14)
+        for item in records:
+            item["source"]["reviewedAt"] = "2026-11-19"
+        self.assertEqual(knowledge.unverified_ids(records), [])
+        records[1]["source"]["reviewedAt"] = None
+        records[3]["source"]["reviewedAt"] = None
+        self.assertEqual(
+            knowledge.unverified_ids(records), [records[1]["id"], records[3]["id"]]
+        )
 
     def test_coverage_minimums(self):
         self.assertEqual(knowledge.check_coverage(self.records), [])
