@@ -417,7 +417,7 @@
     "expectedStatus": "matched",
     "expectedServiceId": "passport",
     "expectedFacts": [
-      "não informa valores",
+      "R$ 257,25",
       "Polícia Federal"
     ]
   },
@@ -438,7 +438,7 @@
     "expectedStatus": "matched",
     "expectedServiceId": "fgts",
     "expectedFacts": [
-      "não informa prazos"
+      "até 5 dias úteis"
     ]
   },
   {

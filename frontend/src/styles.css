@@ -240,7 +240,7 @@ main:focus { outline:none; }
 .chat-sidebar li svg { color:var(--accent);margin-top:3px; }
 .response-mode { padding:20px 0 5px;border:0;border-top:1px solid var(--line); }
 .response-mode legend { float:left;width:100%;padding:0;margin-bottom:14px;font-size:.8rem;font-weight:550; }
-.response-mode label { display:flex;gap:8px;align-items:center;font-size:.8rem;margin-bottom:11px;cursor:pointer; }
+.response-mode label { display:flex;clear:both;gap:8px;align-items:center;font-size:.8rem;margin-bottom:11px;cursor:pointer; }
 .response-mode input { width:16px;height:16px; }
 .new-chat { width:100%;margin-top:18px; }
 .chat-privacy { display:flex;gap:9px;margin-top:25px;color:var(--muted); }

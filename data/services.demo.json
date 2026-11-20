@@ -41,7 +41,7 @@
     "id": "cpf-status",
     "topic": "documents",
     "title": "Situação cadastral do CPF",
-    "summary": "Saiba onde encontrar a consulta oficial da situação cadastral do seu CPF.",
+    "summary": "A situação cadastral do CPF é consultada de graça no site da Receita Federal, pela área Meu CPF, sem ir a um posto. Ali também ficam os serviços de inscrição e atualização do CPF. O atendimento presencial só é necessário quando um pedido gera protocolo, com agendamento em unidade da Receita Federal.",
     "keywords": [
       "cpf",
       "situacao",
@@ -79,7 +79,7 @@
     "id": "identity",
     "topic": "documents",
     "title": "Carteira de Identidade Nacional",
-    "summary": "Entenda por onde começar a consulta sobre a CIN e como localizar o órgão emissor do seu estado.",
+    "summary": "A Carteira de Identidade Nacional (CIN) usa o mesmo número do CPF e existe nos formatos digital e físico, com QR Code para conferência. Segundo a página oficial, a primeira emissão em papel é gratuita. A emissão é feita pelo órgão de identificação do seu estado; a página oficial traz o link \"Onde emitir a sua nova Carteira de Identidade?\".",
     "keywords": [
       "cin",
       "rg",
@@ -116,13 +116,14 @@
     "id": "passport",
     "topic": "documents",
     "title": "Passaporte brasileiro",
-    "summary": "Localize o serviço oficial da Polícia Federal e consulte as etapas para solicitar um passaporte.",
+    "summary": "O passaporte comum é pedido à Polícia Federal: formulário online, pagamento da taxa, agendamento e atendimento presencial com coleta biométrica. Segundo a página oficial (versão de 07/10/2026), a taxa comum é de R$ 257,25 (R$ 334,42 na urgência), a entrega leva de 6 a 10 dias úteis após o atendimento e o documento vale 10 anos para maiores de 18 anos.",
     "keywords": [
       "passaporte",
       "viagem",
       "viajar",
       "exterior",
-      "policia federal"
+      "policia federal",
+      "tirar passaporte"
     ],
     "agency": "Polícia Federal",
     "channel": "mixed",
@@ -131,18 +132,20 @@
       "url": "https://www.gov.br/pt-br/servicos/obter-passaporte-comum-para-brasileiro",
       "reviewedAt": "2026-11-19"
     },
-    "audience": "Pessoas que precisam consultar os requisitos para um passaporte brasileiro.",
+    "audience": "Brasileiros que estão em território brasileiro e atendem aos requisitos legais. Quem está no exterior usa o atendimento consular.",
     "steps": [
-      "Acesse a área de passaporte da Polícia Federal.",
-      "Confira os requisitos e as etapas para o seu caso.",
-      "Realize preenchimento e agendamento somente nos canais oficiais."
+      "Preencha o formulário de solicitação no site da Polícia Federal (gov.br/pf).",
+      "Pague a taxa pelo PagTesouro (Pix, cartão ou boleto): R$ 257,25 na emissão comum, segundo a página oficial.",
+      "Agende o atendimento online no posto da Polícia Federal escolhido (a página estima de 1 a 15 dias úteis para a vaga).",
+      "Compareça com a documentação original para a coleta biométrica, acompanhe o andamento online e retire o passaporte no mesmo posto, em até 90 dias corridos."
     ],
     "preparation": [
-      "Ler os requisitos da Polícia Federal",
-      "Conferir documentação e custos atualizados",
-      "Consultar as etapas de atendimento"
+      "Conferir a lista de documentos originais no link da página oficial.",
+      "Ter a forma de pagamento da taxa (Pix, cartão ou boleto).",
+      "Escolher o posto da Polícia Federal para o agendamento.",
+      "Em caso de passaporte anterior extraviado, a taxa é de R$ 514,50."
     ],
-    "limitations": "Documentação, taxas e prazos devem ser conferidos diretamente com a Polícia Federal.",
+    "limitations": "Valores e prazos são os da página oficial em 07/10/2026 e podem mudar; confirme na Polícia Federal antes de pagar. Este portal não agenda atendimento nem acompanha pedidos.",
     "relatedIds": [
       "identity",
       "cpf-status",
@@ -153,7 +156,7 @@
     "id": "voter",
     "topic": "documents",
     "title": "Título e situação eleitoral",
-    "summary": "Encontre o autoatendimento da Justiça Eleitoral para consultar os serviços disponíveis ao eleitor.",
+    "summary": "O autoatendimento eleitoral do TSE reúne os serviços do eleitor pela internet: tirar o primeiro título, transferir, atualizar dados ou local de votação, regularizar título cancelado, emitir a 2ª via, consultar situação, local de votação e débitos, justificar ausência e emitir certidões, como a de quitação eleitoral.",
     "keywords": [
       "titulo",
       "eleitor",
@@ -172,8 +175,8 @@
     "audience": "Pessoas interessadas em orientações sobre cadastro e situação eleitoral.",
     "steps": [
       "Acesse o autoatendimento eleitoral do TSE.",
-      "Selecione o serviço correspondente à sua necessidade.",
-      "Confira os períodos de atendimento e eventuais orientações do TRE."
+      "Escolha o grupo do serviço: Consultas (situação, número do título, onde votar), Eleitora/Eleitor (primeiro título, transferência, regularização, 2ª via), Certidões ou Justificativa.",
+      "Siga as instruções do serviço escolhido; se precisar de atendimento presencial, use a opção de consultar cartórios e centrais de atendimento ao eleitor."
     ],
     "preparation": [
       "Identificar o serviço eleitoral desejado",
@@ -448,7 +451,7 @@
     "id": "family-benefit",
     "topic": "social",
     "title": "Programa Bolsa Família",
-    "summary": "Localize informações do programa e os canais oficiais para esclarecer dúvidas sobre atendimento.",
+    "summary": "O Bolsa Família é o programa de transferência de renda do governo federal para famílias de baixa renda. Para participar, a família precisa estar inscrita no Cadastro Único. Quem recebe assume compromissos de saúde e educação, como pré-natal, vacinação e frequência escolar mínima de 60% (4 e 5 anos) e 75% (6 a 18 anos). Dúvidas podem ser tiradas no Disque Social 121.",
     "keywords": [
       "bolsa",
       "familia",
@@ -485,7 +488,7 @@
     "id": "bpc",
     "topic": "social",
     "title": "Benefício de Prestação Continuada",
-    "summary": "Encontre referências oficiais sobre o BPC e os canais para consultar os requisitos do benefício.",
+    "summary": "O Benefício de Prestação Continuada (BPC) não é aposentadoria e não exige contribuição ao INSS. Para pedir, a pessoa idosa ou com deficiência precisa estar no Cadastro Único com dados atualizados nos últimos 24 meses; o pedido é feito pelo Meu INSS (site ou aplicativo), pela Central 135 ou em uma Agência da Previdência Social, e é gratuito. Pessoas com deficiência passam por avaliação biopsicossocial.",
     "keywords": [
       "bpc",
       "loas",
@@ -523,7 +526,7 @@
     "id": "cras",
     "topic": "social",
     "title": "Atendimento no CRAS",
-    "summary": "Conheça o papel do Centro de Referência de Assistência Social e como buscar informações locais.",
+    "summary": "O Centro de Referência de Assistência Social (CRAS) é a unidade pública municipal de assistência social. Atende famílias em situação de vulnerabilidade, pessoas idosas e com deficiência, inscritos no Cadastro Único e beneficiários do Bolsa Família e do BPC. Os serviços são gratuitos e o atendimento é presencial, no CRAS mais próximo da sua casa.",
     "keywords": [
       "cras",
       "assistencia",

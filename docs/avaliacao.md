@@ -52,7 +52,7 @@ Cada consulta recebe duas classificações:
 
 **Taxa de acerto** = consultas com `responseCorrect` ÷ total de consultas, por modo. **Tempo médio** = média simples do tempo de `answer_question` (`time.perf_counter`), em milissegundos. Em `results/evaluation.json`, cada consulta registra a pergunta, o esperado, o obtido (status, ids e mensagem), as duas classificações, os problemas encontrados e o tempo.
 
-## Resultados (execução de 19/11/2026, após completar as orientações de CPF, Cadastro Único e ID Jovem; base `services.demo.json` com 15 orientações)
+## Resultados (execução de 19/11/2026, após completar as 10 orientações que estavam genéricas e citar valores e prazos da base; base `services.demo.json` com 15 orientações)
 
 | Indicador | `direct` | `steps` |
 | --- | --- | --- |
@@ -60,9 +60,9 @@ Cada consulta recebe duas classificações:
 | Acertos (resposta) | 54 | 54 |
 | **Taxa de acerto** | **96,4%** | **96,4%** |
 | Taxa de recuperação | 96,4% | 96,4% |
-| **Tempo médio de consulta** | **1,54 ms** | **1,49 ms** |
-| Tempo máximo | 3,48 ms | 2,69 ms |
-| Tamanho médio da mensagem `matched` | 574 caracteres | 933 caracteres |
+| **Tempo médio de consulta** | **1,86 ms** | **1,84 ms** |
+| Tempo máximo | 3,66 ms | 3,53 ms |
+| Tamanho médio da mensagem `matched` | 585 caracteres | 954 caracteres |
 
 Por categoria (iguais nos dois modos): diretas 14/14, dúvidas específicas 8/8, fora da base 7/7, limites 5/5, inválidas 3/3, reformulações 17/19.
 
@@ -83,7 +83,7 @@ Na execução anterior, com as orientações de CPF, Cadastro Único e ID Jovem 
 - **O ponto fraco é a reformulação (89%)**, não as perguntas diretas (100%). Quem não conhece o nome do serviço ou escreve com erro é exatamente o público com menos familiaridade com portais públicos.
 - **A taxa de resposta é igual à de recuperação.** Sempre que a orientação certa foi escolhida, a mensagem trouxe fonte, aviso e os fatos esperados. Isso mostra que as regras dos modelos são cumpridas, mas também que a verificação automática de fatos é pouco exigente (veja as limitações).
 - **Os dois modelos acertam o mesmo.** Eles usam a mesma busca e as mesmas regras, então a escolha entre eles depende de clareza, não de acerto.
-- **O tempo não é um problema:** cerca de 1,5 ms em média, porque a base tem 15 registros e a busca é linear em memória.
+- **O tempo não é um problema:** menos de 2 ms em média, porque a base tem 15 registros e a busca é linear em memória.
 
 ## Comparação dos modelos de resposta
 
@@ -91,7 +91,7 @@ Na execução anterior, com as orientações de CPF, Cadastro Único e ID Jovem 
 | --- | --- | --- |
 | Acerto | 96,4% | 96,4% |
 | Fonte e aviso nas respostas `matched` | 39/39 | 39/39 |
-| Tamanho médio | 574 caracteres | 933 caracteres (+63%) |
+| Tamanho médio | 585 caracteres | 954 caracteres (+63%) |
 | Estrutura | Varia conforme a dúvida (documentos, local, custo...) | Sempre as mesmas etapas: separar → canal → passos → confirmar |
 
 - **Mais claro: `direct`.** A informação pedida aparece na primeira frase. No `steps`, uma pergunta de custo recebe também a preparação, o canal e os passos, que a pessoa não pediu. O texto é 63% maior e chega a quase 1.600 caracteres.

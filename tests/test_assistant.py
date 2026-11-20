@@ -125,16 +125,30 @@ class AssistantTests(unittest.TestCase):
 
     def test_cost_and_deadline_are_not_invented(self):
         for question, what in {
-            "quanto custa o passaporte?": "valores ou taxas",
-            "Qual o prazo do passaporte?": "prazos",
+            "quanto custa o título de eleitor?": "valores ou taxas",
+            "Qual o prazo do título de eleitor?": "prazos",
         }.items():
             for mode in MODES:
                 with self.subTest(question=question, mode=mode):
                     answer = self.ask(question, mode)
                     self.assertEqual(answer["status"], "matched")
-                    self.assertEqual(answer["services"][0]["id"], "passport")
+                    self.assertEqual(answer["services"][0]["id"], "voter")
                     self.assertIn(f"A base não informa {what}", answer["message"])
-                    self.assertNotRegex(answer["message"], r"R\$")
+                    self.assertNotRegex(answer["message"], r"R\$|\d+ dias")
+
+    def test_cost_and_deadline_are_quoted_when_the_base_has_them(self):
+        for question, expected in {
+            "quanto custa o passaporte?": "R$ 257,25",
+            "Qual o prazo do FGTS?": "até 5 dias úteis",
+            "quanto tempo demora o seguro desemprego?": "31 a 60 dias corridos",
+        }.items():
+            for mode in MODES:
+                with self.subTest(question=question, mode=mode):
+                    answer = self.ask(question, mode)
+                    self.assertEqual(answer["status"], "matched")
+                    self.assertIn("A base informa:", answer["message"])
+                    self.assertIn(expected, answer["message"])
+                    self.assertNotIn("A base não informa", answer["message"])
 
     def test_eligibility_is_not_decided(self):
         answer = self.ask("Quem tem direito ao BPC?")

@@ -94,7 +94,7 @@ O assistente **não usa IA externa**: ele seleciona o registro da base e o forma
 
 Ambos têm as mesmas regras: citar a fonte, não alegar atendimento oficial, não inventar valores nem prazos e avisar quando a informação não estiver na base.
 
-A mensagem responde ao tipo de dúvida (documentos, onde fazer, quem tem direito, custo ou prazo). Quando a base não tem o dado pedido, como valores e prazos, o assistente diz isso em vez de estimar. Regras, intenções e limites estão em [`docs/modelos-de-resposta.md`](docs/modelos-de-resposta.md).
+A mensagem responde ao tipo de dúvida (documentos, onde fazer, quem tem direito, custo ou prazo). Quando a base traz o valor ou o prazo, a resposta cita a frase do registro e pede para confirmar na fonte; quando não traz, o assistente diz isso em vez de estimar. Regras, intenções e limites estão em [`docs/modelos-de-resposta.md`](docs/modelos-de-resposta.md).
 
 **Comparação dos modelos:** nas 12 perguntas de teste, os dois acertam status e orientação (12/12), porque usam a mesma busca. O `direct` é mais claro para dúvidas pontuais: a resposta vem na primeira frase, com cerca de 40% menos texto. O `steps` é mais consistente na estrutura: separar, canal, passos e confirmar, sempre na mesma ordem. `direct` é o padrão; a avaliação com usuários (pacote 4) deve confirmar essa escolha.
 
@@ -122,11 +122,11 @@ Uma resposta é considerada correta quando o status e a orientação são os esp
 | Perguntas testadas | 56 | 56 |
 | Acertos | 54 | 54 |
 | Taxa de acerto | 96,4% | 96,4% |
-| Tempo médio de consulta | 1,54 ms | 1,49 ms |
+| Tempo médio de consulta | 1,86 ms | 1,84 ms |
 
 Os 2 erros são os mesmos nos dois modelos: erro de digitação (`cadunco`) e uma pergunta longa. Nos dois, o assistente recusou em vez de indicar uma orientação errada.
 
-**Teste de usabilidade:** o roteiro de tarefas está em [`docs/teste-usabilidade.md`](docs/teste-usabilidade.md). [PREENCHER após a sessão: quem testou, dificuldades e resultados.]
+**Teste de usabilidade:** o roteiro de 7 tarefas foi executado na interface web conectada à API, por um agente de IA operando o navegador (não é um usuário real; detalhes e limites em [`docs/teste-usabilidade.md`](docs/teste-usabilidade.md)). Na primeira passada, 4 de 6 tarefas foram concluídas sem reformular. Falharam o custo do passaporte com "tirar" e o CRAS "da minha cidade". A sessão revelou um defeito de layout que impedia voltar ao modo direto, respostas de custo e prazo que negavam dados presentes na base e 7 orientações ainda genéricas. Os três primeiros problemas foram corrigidos e as tarefas repetidas; o CRAS "da minha cidade" continua sem resposta (melhoria 2 de `docs/avaliacao.md`).
 
 **Interpretação e limitações da avaliação:** em [`docs/avaliacao.md`](docs/avaliacao.md). Em resumo, as perguntas diretas, fora da base e de limite acertam 100%; o ponto fraco são as reformulações (89%). Os casos foram escritos pela equipe, e a verificação de fatos é literal e baseada na própria base, então não mede a utilidade percebida.
 

@@ -38,6 +38,6 @@ The section above records the scaffold before the team's modules. After packages
 - `python -m unittest discover -s tests -v`: 94 tests passed (Python 3.12.3), including `tests/test_assistant.py` and `tests/test_evaluation.py`.
 - A real Uvicorn process on loopback port 8765: `GET /api/v1/services` returned HTTP 200; `POST /api/v1/assistant/query` returned `matched` (1 service) for `Onde faço o CadÚnico?`, `ambiguous` (3) for `documento` in `steps` mode, `unsupported` (0) for `Qual a previsão do tempo?` and `empty` (0) for a blank question; a 501-character question returned HTTP 422.
 - `python -m src.main --question "..."` returns real source-bound answers; examples are in the README, section 7.
-- `python -m src.main --evaluate` wrote `results/evaluation.json`: 54/56 correct (96.4%) in both response modes, mean about 1.5 ms per query (after completing the CPF, Cadastro Único and ID Jovem records). See `avaliacao.md`.
+- `python -m src.main --evaluate` wrote `results/evaluation.json`: 54/56 correct (96.4%) in both response modes, mean about 1.9 ms per query (after completing the CPF, Cadastro Único and ID Jovem records). See `avaliacao.md`.
 
 Still not proven: the usability session with a real user (`teste-usabilidade.md`) and the end-to-end check through the React interface connected to this server.

@@ -4,9 +4,9 @@ export const copy = {
   project: 'Citizen Assist AI',
   academic: 'Projeto acadêmico',
   demo: 'Demonstração',
-  review: 'Conteúdo em revisão',
+  review: 'Conteúdo verificado',
   demoNotice:
-    'Você está explorando uma demonstração. As orientações ainda passam por revisão da equipe.',
+    'Projeto acadêmico. As orientações foram conferidas nas fontes oficiais em 19/11/2026; confirme sempre os requisitos no canal oficial.',
   skip: 'Ir para o conteúdo',
   home: 'Início',
   services: 'Serviços e informações',
@@ -188,7 +188,7 @@ export const copy = {
   backendNotice:
     'A API Python ainda não está conectada. Os dados e as respostas apresentados nesta versão são de demonstração.',
   sourceNotice:
-    'As referências orientam a pesquisa da equipe. Datas de verificação serão exibidas quando o conteúdo de cada registro for validado.',
+    'Cada orientação cita a fonte oficial consultada e a data de verificação. O conteúdo pode mudar: confirme os requisitos no órgão responsável antes de ir ao atendimento.',
   footerTitle: 'Informação acessível.',
   footerHighlight: 'Cidadania possível.',
   footerAcademic:
@@ -215,7 +215,7 @@ export const copy = {
   copied: 'Link copiado',
   copyError: 'Não foi possível copiar. Use o endereço do navegador.',
   aboutHelp: 'Entenda o projeto',
-  lastUpdate: 'Versão de demonstração · Novembro de 2026',
+  lastUpdate: 'Global Solution 2026.2 · Novembro de 2026',
   national: 'Serviços públicos reais',
 };
 export const topics = [

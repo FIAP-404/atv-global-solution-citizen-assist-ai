@@ -28,8 +28,8 @@ Encontrar o serviço certo não basta: a mensagem precisa responder à dúvida. 
 
 | Intenção | Exemplos de expressão | Campo usado | Comportamento |
 | --- | --- | --- | --- |
-| `cost` | quanto custa, valor, taxa, gratuito | — | **A base não traz valores.** Diz isso explicitamente, não estima e indica o canal/órgão para confirmar. |
-| `deadline` | prazo, quanto tempo, demora | — | **A base não traz prazos.** Mesmo tratamento. |
+| `cost` | quanto custa, valor, taxa, gratuito | frases do registro com `R$` ou "gratuito" | Se a base traz o valor, cita até duas frases do registro ("A base informa: ...") e pede para confirmar o valor atual na fonte. Se não traz, diz isso explicitamente, não estima e indica o canal/órgão. |
+| `deadline` | prazo, quanto tempo, demora | frases do registro com número + dias/horas/meses | Mesmo tratamento: cita o prazo da base quando existe (ex.: FGTS, "até 5 dias úteis") e avisa quando não existe. |
 | `eligibility` | tenho direito, quem pode, requisitos | `audience` | Informa o público da orientação e avisa que o assistente não decide se a pessoa tem direito. |
 | `documents` | quais documentos, o que levar | `preparation` | Lista o que separar e o primeiro passo. |
 | `where` | onde, site, aplicativo, presencial | `channel`, `agency` | Informa o canal e o órgão responsável e o primeiro passo. |
@@ -53,7 +53,7 @@ O resumo (`summary`), os passos completos e as limitações do registro **não s
 - **Formato:** `Título, em etapas: 1) ... 2) ... Fonte: ... Aviso: ...`. A numeração fica na mesma linha para funcionar tanto no terminal (JSON) quanto no parágrafo da interface web.
 - **Citação:** igual ao modelo direto.
 - **Exemplo** (`quanto custa o passaporte?`):
-  > Passaporte brasileiro, em etapas: 1) A base não informa valores ou taxas para Passaporte brasileiro, então não vou estimar; esse dado precisa ser conferido na fonte oficial. 2) Separe antes: Ler os requisitos da Polícia Federal; ... 3) O atendimento é feito por canais digitais e presenciais. Órgão responsável: Polícia Federal. 4) Siga os 3 passos da orientação, começando por: Acesse a área de passaporte da Polícia Federal. 5) Confira na fonte se os requisitos continuam os mesmos. Fonte: ... Aviso: ...
+  > Passaporte brasileiro, em etapas: 1) A base informa: Segundo a página oficial (versão de 07/10/2026), a taxa comum é de R$ 257,25 (R$ 334,42 na urgência), ... Confirme o valor atual na fonte oficial. 2) Separe antes: Conferir a lista de documentos originais no link da página oficial; ... 3) O atendimento é feito por canais digitais e presenciais. Órgão responsável: Polícia Federal. 4) Siga os 4 passos da orientação, começando por: Preencha o formulário de solicitação no site da Polícia Federal (gov.br/pf). 5) Confira na fonte se os requisitos continuam os mesmos. Fonte: ... Aviso: ...
 
 ## Regras comuns aos dois modelos
 
@@ -66,7 +66,7 @@ O resumo (`summary`), os passos completos e as limitações do registro **não s
 
 ## Limites
 
-- **Só sabe o que está na base.** Valores, prazos, endereços de unidades e critérios legais detalhados não estão nos registros; o assistente avisa e manda conferir na fonte.
+- **Só sabe o que está na base.** Valores e prazos aparecem apenas quando o registro os traz (passaporte, CPF em conveniadas, abono, FGTS, seguro-desemprego, CIN); nos demais, e para endereços de unidades e critérios legais detalhados, o assistente avisa e manda conferir na fonte. A detecção é por padrão de texto (`R$`, "gratuito", número + unidade de tempo) e pode trazer uma frase próxima do assunto, não exatamente a pedida.
 - **Intenção por palavras.** A tabela de intenções é curta e não entende frases indiretas ("vou ter que pagar alguma coisa?" não é reconhecida como custo). Nesses casos a resposta cai no padrão `how`, que continua correta, mas menos focada.
 - **Uma intenção por pergunta.** "Quanto custa e onde faço o passaporte?" responde só ao custo (primeira na ordem de prioridade); o canal aparece mesmo assim, porque a resposta de custo também o inclui.
 - **Herda os limites da busca:** sem tolerância a erros de digitação e com cobertura mínima de 60% (consulte `docs/search-strategy.md`).

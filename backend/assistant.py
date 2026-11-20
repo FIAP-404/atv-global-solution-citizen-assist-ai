@@ -13,6 +13,7 @@ Status devolvidos (contrato em ``backend/contracts.py``):
 * ``matched``: uma orientação clara; responde ao que foi perguntado, com fonte e aviso.
 """
 
+import re
 from datetime import date
 from typing import Any
 
@@ -228,13 +229,43 @@ def _missing(record: dict[str, Any], what: str) -> str:
     )
 
 
+# Marcas, no texto normalizado (sem "$", acentos ou pontuação), de que uma
+# frase da base fala de custo ou de prazo.
+COST_PATTERN = re.compile(r"\br \d|\bgratuit")
+DEADLINE_PATTERN = re.compile(r"\b\d+ (?:a \d+ )?(?:dia|dias|hora|horas|mes|meses)\b")
+INTENT_EVIDENCE = {
+    "cost": (COST_PATTERN, "valores ou taxas", "o valor"),
+    "deadline": (DEADLINE_PATTERN, "prazos", "o prazo"),
+}
+
+
+def _evidence(record: dict[str, Any], pattern: re.Pattern[str], limit: int = 2) -> list[str]:
+    """Frases do próprio registro que tratam do assunto pedido (custo ou prazo)."""
+    found: list[str] = []
+    fields = (record["summary"], *record["steps"], *record["preparation"], record["limitations"])
+    for text in fields:
+        for piece in re.split(r"(?<=[.;])\s+", text):
+            sentence = _sentence(piece.rstrip(";"))
+            sentence = sentence[:1].upper() + sentence[1:]
+            if pattern.search(search.normalize(sentence)) and sentence not in found:
+                found.append(sentence)
+    return found[:limit]
+
+
+def _intent_answer(record: dict[str, Any], intent: str) -> str:
+    """Cita a base quando ela traz custo/prazo; senão, avisa que não traz."""
+    pattern, missing, noun = INTENT_EVIDENCE[intent]
+    evidence = _evidence(record, pattern)
+    if not evidence:
+        return _missing(record, missing)
+    return f"A base informa: {' '.join(evidence)} Confirme {noun} atual na fonte oficial."
+
+
 def _facts(record: dict[str, Any], intent: str) -> list[str]:
     """Frases que respondem à intenção, todas tiradas de campos do registro."""
     first_step = _sentence(record["steps"][0])
-    if intent == "cost":
-        return [_missing(record, "valores ou taxas"), _where(record)]
-    if intent == "deadline":
-        return [_missing(record, "prazos"), _where(record)]
+    if intent in {"cost", "deadline"}:
+        return [_intent_answer(record, intent), _where(record)]
     if intent == "eligibility":
         return [
             f"Pela base, esta orientação é para: {_lower_first(_sentence(record['audience']))}",
