@@ -1,6 +1,6 @@
 # Roteiro do vídeo: Citizen Assist AI (máx. 5 min)
 
-Vídeo de tela narrado: a gravação mostra o portal web conectado à API Python, o menu de terminal (`python src/sistema.py`) e os indicadores medidos. A narração usa voz sintética (edge-tts, `pt-BR-AntonioNeural`) a partir das falas abaixo. Os números vêm de `results/evaluation.json` (execução de 19/11/2026).
+Vídeo de tela narrado: a gravação mostra o portal web conectado à API Python, o menu de terminal (`python src/sistema.py`) e os indicadores medidos. A narração foi gravada por Caetano lendo as falas abaixo; a gravação de tela foi sincronizada com cada trecho da fala. Os números vêm de `results/evaluation.json` (execução de 19/11/2026).
 
 | # | Trecho | Tela | Itens do enunciado |
 |---|---|---|---|
