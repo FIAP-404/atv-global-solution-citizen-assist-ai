@@ -94,7 +94,9 @@ O assistente **não usa IA externa**: ele seleciona o registro da base e o forma
 
 Ambos têm as mesmas regras: citar a fonte, não alegar atendimento oficial, não inventar valores nem prazos e avisar quando a informação não estiver na base.
 
-**Comparação dos modelos:** [PREENCHER após a avaliação: qual deu respostas mais claras e consistentes e por quê.]
+A mensagem responde ao tipo de dúvida (documentos, onde fazer, quem tem direito, custo ou prazo). Quando a base não tem o dado pedido, como valores e prazos, o assistente diz isso em vez de estimar. Regras, intenções e limites estão em [`docs/modelos-de-resposta.md`](docs/modelos-de-resposta.md).
+
+**Comparação dos modelos:** nas 12 perguntas de teste, os dois acertam status e orientação (12/12), porque usam a mesma busca. O `direct` é mais claro para dúvidas pontuais: a resposta vem na primeira frase, com cerca de 40% menos texto. O `steps` é mais consistente na estrutura: separar, canal, passos e confirmar, sempre na mesma ordem. `direct` é o padrão; a avaliação com usuários (pacote 4) deve confirmar essa escolha.
 
 ## 5. Testes, indicadores e resultados
 
